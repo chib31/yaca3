@@ -15,7 +15,7 @@ public class PlayerBattingInningsDetails {
     @Id
     private Integer id;
 
-    @Column
+    @Column(name = "scorecard_name")
     private String playerName;
 
     @Column

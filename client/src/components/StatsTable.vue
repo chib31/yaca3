@@ -3,13 +3,14 @@
 <!--    <b-form-input v-model="filterKey" placeholder="Search..." class="search"/>-->
     <span>Results : {{ filteredDataLength }}</span>
     <div class="container">
-      <b-pagination v-if="isPaginated" :total-rows="filteredDataLength" v-model="currentPage" :per-page="limit"/>
+      <b-pagination v-if="isPaginated" :total-rows="filteredDataLength" v-model="currentPage" :per-page="limit">
+      </b-pagination>
       <table class="table-striped">
         <thead>
         <tr>
           <th v-for="(key, index) in columns" :class="{ active: sortKey === key }" :key="index" @click="sortBy(key)">
             {{ key }}
-            <span :class="sortOrders[key] > 0 ? 'asc' : 'dsc'" class="arrow"/>
+            <span :class="sortOrders[key] > 0 ? 'asc' : 'dsc'" class="arrow"></span>
           </th>
         </tr>
         </thead>
@@ -21,7 +22,8 @@
         </tr>
         </tbody>
       </table>
-      <b-pagination v-if="isPaginated" :total-rows="filteredDataLength" v-model="currentPage" :per-page="limit"/>
+      <b-pagination v-if="isPaginated" :total-rows="filteredDataLength" v-model="currentPage" :per-page="limit">
+      </b-pagination>
       <div v-else-if="isButtonsDisplayed">
         <button v-if="limit < filteredDataLength" class="btn btn-primary" @click="setLimit(filteredDataLength)">
           Show all ({{ filteredDataLength }}) rows
