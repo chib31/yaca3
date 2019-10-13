@@ -9,10 +9,10 @@ import javax.persistence.Id;
 import javax.persistence.Table;
 
 @Entity
-@Data
 @Immutable
-@Table(name = "player_batting_innings_details")
-public class PlayerBattingInningsDetails {
+@Data
+@Table(name = "player_bowling_innings_details")
+public class PlayerBowlingInningsDetails {
 
     @Id
     private Integer id;
@@ -24,26 +24,32 @@ public class PlayerBattingInningsDetails {
     private String opposition;
 
     @Column
-    private Integer position;
+    private Integer bowlerNumber;
 
     @Column
     private Integer deliveries;
 
     @Column
+    private Integer maidens;
+
+    @Column
     private Integer runs;
 
     @Column
-    private Integer fours;
+    private Integer wickets;
 
     @Column
-    private Integer sixes;
+    private Integer wides;
 
     @Column
-    private String wicketType;
+    private Integer noBalls;
+
+    @Column
+    private Integer hatTricks;
+
+    @Column
+    private Float economy;
 
     @Column
     private Float strikeRate;
-
-    @Column
-    private Float percentOfTotal;
 }

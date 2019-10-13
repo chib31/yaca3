@@ -2,6 +2,8 @@ SELECT COUNT(*) FROM fixture;
 
 SELECT COUNT(*) FROM player_batting_innings;
 
+SELECT * FROM squad_member;
+
 SELECT * FROM fixture_details;
 
 SELECT * FROM innings_details;

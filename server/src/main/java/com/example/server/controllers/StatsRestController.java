@@ -1,6 +1,7 @@
 package com.example.server.controllers;
 
 import com.example.server.entities.PlayerBattingInningsDetails;
+import com.example.server.entities.PlayerBowlingInningsDetails;
 import com.example.server.services.StatsService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.CrossOrigin;
@@ -18,15 +19,15 @@ public class StatsRestController {
     @Autowired
     private StatsService statsService;
 
-    @RequestMapping(path = "/hello")
-    public @ResponseBody
-    String sayHello() {
-        return "Hello from Spring Boot Backend!";
-    }
-
     @RequestMapping(path = "/playerBatting")
     public @ResponseBody
     List<PlayerBattingInningsDetails> getPlayerBatting() {
         return statsService.fetchAllPlayerBattingInningsDetails();
+    }
+
+    @RequestMapping(path = "/playerBowling")
+    public @ResponseBody
+    List<PlayerBowlingInningsDetails> getPlayerBowling() {
+        return statsService.fetchAllPlayerBowlingInningsDetails();
     }
 }

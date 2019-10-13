@@ -96,16 +96,16 @@ FROM player_bowling_innings_details pbid
 
 -- Highest score per position
 SELECT 
-	pbid.position
-,	pbid.player_name
+	pbid.position AS "#"
+,	pbid.scorecard_name AS name
 , pbid.opposition
 , pbid.runs
 , pbid.deliveries
 , pbid.fours
 , pbid.sixes
 , pbid.wicket
-, pbid.strike_rate
-, pbid.percent_of_total
+, pbid.strike_rate AS "S/R"
+, pbid.percent_of_total AS "% of Total"
 FROM player_batting_innings_details pbid
 JOIN (
   SELECT position, MAX(runs) max_val
@@ -114,7 +114,7 @@ JOIN (
 ) m
 ON m.position = pbid.position
 WHERE pbid.runs = m.max_val
-ORDER BY position ASC
+ORDER BY pbid.position ASC
 ;
 
 -- Runs without boundaries
@@ -194,4 +194,18 @@ ORDER BY runs DESC
 ;
 
 SELECT * FROM player_batting_innings_details WHERE runs > 10 ORDER BY strike_rate DESC;
+
+-- Personal win %
+SELECT
+  p.scorecard_name "name"
+     , COUNT(*) matches
+     , COUNT(*) FILTER (WHERE f.result = 'won') wins
+     , COUNT(*) FILTER (WHERE f.result = 'lost') losses
+     , CONCAT((COUNT(*) FILTER (WHERE f.result = 'won') * 100) / COUNT(*), '%') "win %"
+FROM squad_member sm
+       JOIN player p on sm.player_id = p.id
+       JOIN fixture f ON sm.fixture_id = f.id
+GROUP BY p.scorecard_name
+HAVING COUNT(*) > 2
+ORDER BY (COUNT(*) FILTER (WHERE f.result = 'won') * 100) / COUNT(*) DESC, matches DESC;
 

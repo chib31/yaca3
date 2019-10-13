@@ -1,27 +1,28 @@
 <template>
-  <div class="stats-table">
+  <b-container class="stats-table">
 <!--    <b-form-input v-model="filterKey" placeholder="Search..." class="search"/>-->
     <span>Results : {{ filteredDataLength }}</span>
     <div class="container">
-      <b-pagination v-if="isPaginated" :total-rows="filteredDataLength" v-model="currentPage" :per-page="limit">
+      <b-pagination v-if="isPaginated" :total-rows="filteredDataLength" v-model="currentPage" :per-page="limit" style="color: hotpink">
       </b-pagination>
-      <table class="table-striped">
-        <thead>
-        <tr>
-          <th v-for="(key, index) in columns" :class="{ active: sortKey === key }" :key="index" @click="sortBy(key)">
-            {{ key }}
-            <span :class="sortOrders[key] > 0 ? 'asc' : 'dsc'" class="arrow"></span>
-          </th>
-        </tr>
-        </thead>
-        <tbody>
-        <tr v-for="(entry, index) in displayedData" :key="index">
-          <td v-for="(key, index) in columns" :key="index">
-            <div>{{ entry[key] }}</div>
-          </td>
-        </tr>
-        </tbody>
-      </table>
+      <b-table striped hover small responsive :items="displayedData"/>
+<!--      <table class="table-striped">-->
+<!--        <thead>-->
+<!--        <tr>-->
+<!--          <th v-for="(key, index) in columns" :class="{ active: sortKey === key }" :key="index" @click="sortBy(key)">-->
+<!--            {{ key }}-->
+<!--          <br/><span :class="sortOrders[key] > 0 ? 'asc' : 'dsc'" class="arrow"></span>-->
+<!--          </th>-->
+<!--        </tr>-->
+<!--        </thead>-->
+<!--        <tbody>-->
+<!--        <tr v-for="(entry, index) in displayedData" :key="index">-->
+<!--          <td v-for="(key, index) in columns" :key="index">-->
+<!--            <div>{{ entry[key] }}</div>-->
+<!--          </td>-->
+<!--        </tr>-->
+<!--        </tbody>-->
+<!--      </table>-->
       <b-pagination v-if="isPaginated" :total-rows="filteredDataLength" v-model="currentPage" :per-page="limit">
       </b-pagination>
       <div v-else-if="isButtonsDisplayed">
@@ -33,7 +34,7 @@
         </button>
       </div>
     </div>
-  </div>
+  </b-container>
 </template>
 
 <script>
@@ -147,62 +148,62 @@
     };
 </script>
 
-<style scoped lang="scss">
-  .container {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    .search {
-      margin-bottom: 10px;
-      margin-right: 10px;
-    }
-    table {
-      border-collapse: separate;
-      border-spacing: 2px;
-      border-radius: 3px;
-      background-color: white;
-      margin: 10px;
-      &.table-striped > tbody > tr:nth-child(even) > td,
-      .table-striped > tbody > tr:nth-child(even) > th {
-        background-color: #f9f9f9;
-      }
-      &.table-striped > tbody > tr:nth-child(odd) > td,
-      .table-striped > tbody > tr:nth-child(odd) > th {
-        background-color: white;
-      }
-      th {
-        padding: 8px;
-        background-color: #f9f9f9;
-        color: rgba(76, 89, 90, 0.66);
-        cursor: pointer;
-        &.active {
-          color: #4C595A;
-          & .arrow {
-            opacity: 1;
-          }
-        }
-      }
-      .arrow {
-        display: inline-block;
-        vertical-align: middle;
-        width: 0;
-        height: 0;
-        margin-left: 5px;
-        opacity: 0.66;
-        &.asc {
-          border-left: 4px solid transparent;
-          border-right: 4px solid transparent;
-          border-bottom: 4px solid rgba(76, 89, 90, 0.66);;
-        }
-        &.dsc {
-          border-left: 4px solid transparent;
-          border-right: 4px solid transparent;
-          border-top: 4px solid rgba(76, 89, 90, 0.66);;
-        }
-      }
-      td {
-        padding: 8px;
-      }
-    }
-  }
-</style>
+<!--<style scoped lang="scss">-->
+<!--  .container {-->
+<!--    display: flex;-->
+<!--    flex-direction: column;-->
+<!--    align-items: center;-->
+<!--    .search {-->
+<!--      margin-bottom: 10px;-->
+<!--      margin-right: 10px;-->
+<!--    }-->
+<!--    table {-->
+<!--      border-collapse: separate;-->
+<!--      border-spacing: 2px;-->
+<!--      border-radius: 3px;-->
+<!--      background-color: white;-->
+<!--      margin: 10px;-->
+<!--      &.table-striped > tbody > tr:nth-child(even) > td,-->
+<!--      .table-striped > tbody > tr:nth-child(even) > th {-->
+<!--        background-color: #f9f9f9;-->
+<!--      }-->
+<!--      &.table-striped > tbody > tr:nth-child(odd) > td,-->
+<!--      .table-striped > tbody > tr:nth-child(odd) > th {-->
+<!--        background-color: white;-->
+<!--      }-->
+<!--      th {-->
+<!--        padding: 8px;-->
+<!--        background-color: #f9f9f9;-->
+<!--        color: rgba(76, 89, 90, 0.66);-->
+<!--        cursor: pointer;-->
+<!--        &.active {-->
+<!--          color: #4C595A;-->
+<!--          & .arrow {-->
+<!--            opacity: 1;-->
+<!--          }-->
+<!--        }-->
+<!--      }-->
+<!--      .arrow {-->
+<!--        display: inline-block;-->
+<!--        vertical-align: middle;-->
+<!--        width: 0;-->
+<!--        height: 0;-->
+<!--        margin-left: 5px;-->
+<!--        opacity: 0.66;-->
+<!--        &.asc {-->
+<!--          border-left: 4px solid transparent;-->
+<!--          border-right: 4px solid transparent;-->
+<!--          border-bottom: 4px solid rgba(76, 89, 90, 0.66);;-->
+<!--        }-->
+<!--        &.dsc {-->
+<!--          border-left: 4px solid transparent;-->
+<!--          border-right: 4px solid transparent;-->
+<!--          border-top: 4px solid rgba(76, 89, 90, 0.66);;-->
+<!--        }-->
+<!--      }-->
+<!--      td {-->
+<!--        padding: 8px;-->
+<!--      }-->
+<!--    }-->
+<!--  }-->
+<!--</style>-->
