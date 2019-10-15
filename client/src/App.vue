@@ -1,20 +1,28 @@
 <template>
   <div id="app">
     <navbar/>
+<!--    <b-container class="m-4">-->
+<!--      <b-form-row class="mb-4">-->
+<!--        <b-col cols="4">-->
+<!--          Report:-->
+<!--        </b-col>-->
+<!--        <b-col cols="8">-->
+<!--          <b-form-select v-model="selectedReport" :options="reportOptions"></b-form-select>-->
+<!--        </b-col>-->
+<!--      </b-form-row>-->
+<!--      <b-row class="mb-4">-->
+<!--        <b-col>-->
+<!--          <b-button size="m" type="submit" @click.prevent="fetchReport">Submit</b-button>-->
+<!--        </b-col>-->
+<!--      </b-row>-->
+<!--    </b-container>-->
     <b-container class="m-4">
-      <b-form-row class="mb-4">
-        <b-col cols="4">
-          Report:
-        </b-col>
-        <b-col cols="8">
-          <b-form-select v-model="selectedReport" :options="reportOptions"></b-form-select>
-        </b-col>
-      </b-form-row>
-      <b-row class="mb-4">
-        <b-col>
-          <b-button size="m" class="btn-primary" type="submit" @click.prevent="fetchReport">Submit</b-button>
-        </b-col>
-      </b-row>
+      <b-form @change="fetchReport">
+        <b-form-group id="reportType" label="Please select a report: " label-cols="4">
+          <b-form-select v-model="selectedReport" :options="reportOptions" @change="fetchReport"></b-form-select>
+        </b-form-group>
+<!--        <b-button type="submit" variant="primary">Submit</b-button>-->
+      </b-form>
     </b-container>
     <stats-table v-if="data.length > 0" :columns="columns" :data="data" :init-limit="limit" :is-paginated="isPaginated"
                  :init-sort-key="columns[0].key"/>
@@ -43,7 +51,7 @@
                     { value: null, text: 'Please select an option' },
                     { value: 'playerBatting', text: 'Individual Batting Performances' },
                     { value: 'playerBowling', text: 'Individual Bowling Performances' },
-                ]
+                ],
             };
         },
         mounted() {

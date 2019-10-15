@@ -1,39 +1,35 @@
 <template>
-  <b-container class="stats-table">
-<!--    <b-form-input v-model="filterKey" placeholder="Search..." class="search"/>-->
-    <span>Results : {{ filteredDataLength }}</span>
-    <div class="container">
-      <b-pagination v-if="isPaginated" :total-rows="filteredDataLength" v-model="currentPage" :per-page="limit" style="color: hotpink">
-      </b-pagination>
-      <b-table striped hover small responsive :items="displayedData"/>
-<!--      <table class="table-striped">-->
-<!--        <thead>-->
-<!--        <tr>-->
-<!--          <th v-for="(key, index) in columns" :class="{ active: sortKey === key }" :key="index" @click="sortBy(key)">-->
-<!--            {{ key }}-->
-<!--          <br/><span :class="sortOrders[key] > 0 ? 'asc' : 'dsc'" class="arrow"></span>-->
-<!--          </th>-->
-<!--        </tr>-->
-<!--        </thead>-->
-<!--        <tbody>-->
-<!--        <tr v-for="(entry, index) in displayedData" :key="index">-->
-<!--          <td v-for="(key, index) in columns" :key="index">-->
-<!--            <div>{{ entry[key] }}</div>-->
-<!--          </td>-->
-<!--        </tr>-->
-<!--        </tbody>-->
-<!--      </table>-->
-      <b-pagination v-if="isPaginated" :total-rows="filteredDataLength" v-model="currentPage" :per-page="limit">
-      </b-pagination>
-      <div v-else-if="isButtonsDisplayed">
-        <button v-if="limit < filteredDataLength" class="btn btn-primary" @click="setLimit(filteredDataLength)">
-          Show all ({{ filteredDataLength }}) rows
-        </button>
-        <button v-else class="btn btn-primary" @click="setLimit(initLimit)">
-          Show less
-        </button>
-      </div>
-    </div>
+  <b-container fluid>
+    <hr/>
+    <!--    <b-form-input v-model="filterKey" placeholder="Search..." class="search"/>-->
+    <b-row align-h="center" class="mb-2">
+      <b-col align-h="right">
+        <b-pagination v-if="isPaginated" :total-rows="filteredDataLength" v-model="currentPage" :per-page="limit"
+                      type="dark" align="right"/>
+      </b-col>
+      <b-col align-h="left">
+        <b-form inline>
+          <label> Showing </label>
+          <b-form-select v-model="limit" :options="perPageOptions" size="sm" class="mx-1"/>
+          <label> of {{ filteredDataLength }} results </label>
+        </b-form>
+      </b-col>
+    </b-row>
+    <b-table striped hover small sticky-header="1000px" :items="displayedData"/>
+    <b-row align-h="center" class="mb-2">
+      <b-col align-h="right">
+        <b-pagination v-if="isPaginated" :total-rows="filteredDataLength" v-model="currentPage" :per-page="limit"
+                      type="dark" align="right"/>
+      </b-col>
+      <b-col align-h="left">
+        <b-form inline>
+          <label> Showing </label>
+          <b-form-select v-model="limit" :options="perPageOptions" size="sm" class="mx-1"/>
+          <label> of {{ filteredDataLength }} results </label>
+        </b-form>
+      </b-col>
+    </b-row>
+    <hr/>
   </b-container>
 </template>
 
@@ -83,6 +79,13 @@
                 currentPage: 1,
                 filterKey: this.searchQuery,
                 limit: this.initLimit,
+                perPageOptions: [
+                    {value: 10, text: 10},
+                    {value: 25, text: 25},
+                    {value: 50, text: 50},
+                    {value: 100, text: 100},
+                    {value: 9999, text: 'All'}
+                ]
             };
         },
         computed: {

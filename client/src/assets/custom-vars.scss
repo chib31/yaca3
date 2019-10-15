@@ -1,4 +1,5 @@
-@import "node_modules/bootstrap/scss/bootstrap";
+@import "~bootstrap/scss/bootstrap";
+@import '~bootstrap/scss/functions', '~bootstrap/scss/variables';
 
 #app {
   font-family: 'Avenir', Helvetica, Arial, sans-serif;
@@ -6,4 +7,72 @@
   -moz-osx-font-smoothing: grayscale;
   text-align: center;
   color: #2c3e50;
+}
+
+.btn-primary {
+  color: #fff;
+  background-color: hotpink !important;
+  border-color: hotpink !important;
+}
+
+$main-grey: #343a40;
+
+$pagination-color: $main-grey !important;
+//$pagination-bg: white !important;
+//$pagination-hover-border-color: black !important;
+$pagination-hover-bg: $main-grey !important;
+$pagination-hover-color: white !important;
+//$pagination-border-color: grey !important;
+$pagination-active-color: white !important;
+$pagination-active-bg: hotpink !important;
+$pagination-active-border-color: grey !important;
+$pagination-disabled-color: lightgrey !important;
+//$pagination-disabled-bg: hotpink !important;
+//$pagination-disabled-border-color: grey !important;
+
+.page-link {
+  position: relative;
+  display: block;
+  padding: $pagination-padding-y $pagination-padding-x;
+  margin-left: -$pagination-border-width;
+  line-height: $pagination-line-height;
+  color: $pagination-color;
+  background-color: $pagination-bg;
+  border: $pagination-border-width solid $pagination-border-color;
+
+  &:hover {
+    z-index: 2;
+    color: $pagination-hover-color;
+    text-decoration: none;
+    background-color: $pagination-hover-bg;
+    border-color: $pagination-hover-border-color;
+  }
+
+  &:focus {
+    z-index: 2;
+    outline: $pagination-focus-outline;
+    box-shadow: $pagination-focus-box-shadow;
+  }
+
+  .page-item {
+    &:first-child {
+      .page-link {
+        margin-left: 0;
+        @include border-left-radius($border-radius);
+      }
+    }
+
+    &:last-child {
+      .page-link {
+        @include border-right-radius($border-radius);
+      }
+    }
+
+    &.active .page-link {
+      z-index: 1;
+      color: $pagination-active-color;
+      background-color: $pagination-active-bg;
+      border-color: $pagination-active-border-color;
+    }
+  }
 }
