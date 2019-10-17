@@ -62,6 +62,9 @@
                 AXIOS.get('http://localhost:9090/api/' + this.selectedReport, {auth: {username: 'user', password: 'password'}})
                     .then(response => {this.data = response.data; this.columns = Object.keys(response.data[0]);})
                     .catch(e => {this.errors.push(e)})
+                // AXIOS.get('http://localhost:9090/api/' + this.selectedReport + 'columns', {auth: {username: 'user', password: 'password'}})
+                //     .then(response => {this.data = response.data; this.columns = Object.keys(response.data[0]);})
+                //     .catch(e => {this.errors.push(e)})
             }
         }
     }

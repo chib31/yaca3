@@ -1,7 +1,8 @@
 package com.example.server.controllers;
 
-import com.example.server.entities.PlayerBattingInningsDetails;
-import com.example.server.entities.PlayerBowlingInningsDetails;
+import com.example.server.JsonObjects.PlayerBattingDetailsJson;
+import com.example.server.entities.PlayerBattingDetails;
+import com.example.server.entities.PlayerBowlingDetails;
 import com.example.server.services.StatsService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.CrossOrigin;
@@ -21,13 +22,19 @@ public class StatsRestController {
 
     @RequestMapping(path = "/playerBatting")
     public @ResponseBody
-    List<PlayerBattingInningsDetails> getPlayerBatting() {
-        return statsService.fetchAllPlayerBattingInningsDetails();
+    List<PlayerBattingDetailsJson> getPlayerBatting() {
+        return statsService.fetchAllPlayerBattingDetails();
     }
+
+//    @RequestMapping(path = "/playerBattingColumns")
+//    public @ResponseBody
+//    String getPlayerBattingColumns() {
+//        return statsService.fetchPlayerBattingInningsColumns();
+//    }
 
     @RequestMapping(path = "/playerBowling")
     public @ResponseBody
-    List<PlayerBowlingInningsDetails> getPlayerBowling() {
+    List<PlayerBowlingDetails> getPlayerBowling() {
         return statsService.fetchAllPlayerBowlingInningsDetails();
     }
 }

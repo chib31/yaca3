@@ -1,35 +1,55 @@
-<template>
+<template xmlns:v-slot="http://www.w3.org/1999/XSL/Transform">
   <b-container fluid>
     <hr/>
-    <!--    <b-form-input v-model="filterKey" placeholder="Search..." class="search"/>-->
-    <b-row align-h="center" class="mb-2">
-      <b-col align-h="right">
-        <b-pagination v-if="isPaginated" :total-rows="filteredDataLength" v-model="currentPage" :per-page="limit"
-                      type="dark" align="right"/>
-      </b-col>
-      <b-col align-h="left">
+    <b-row class="justify-content-md-center mb-1">
+      <b-col md="auto">
         <b-form inline>
           <label> Showing </label>
-          <b-form-select v-model="limit" :options="perPageOptions" size="sm" class="mx-1"/>
+          <b-form-select v-model="perPage" :options="perPageOptions" size="sm" class="mx-1"/>
           <label> of {{ filteredDataLength }} results </label>
         </b-form>
       </b-col>
     </b-row>
-    <b-table striped hover small sticky-header="1000px" :items="displayedData"/>
-    <b-row align-h="center" class="mb-2">
-      <b-col align-h="right">
-        <b-pagination v-if="isPaginated" :total-rows="filteredDataLength" v-model="currentPage" :per-page="limit"
-                      type="dark" align="right"/>
-      </b-col>
-      <b-col align-h="left">
-        <b-form inline>
-          <label> Showing </label>
-          <b-form-select v-model="limit" :options="perPageOptions" size="sm" class="mx-1"/>
-          <label> of {{ filteredDataLength }} results </label>
-        </b-form>
+    <b-row class="justify-content-md-center">
+      <b-col md="auto">
+        <b-pagination v-model="currentPage"
+                      :total-rows="filteredDataLength"
+                      :per-page="perPage"
+                      aria-controls="stats-table"
+                      class="small"/>
       </b-col>
     </b-row>
-    <hr/>
+    <b-row>
+      <b-col>
+        <b-table id="stats-table"
+                 :items="filteredData"
+                 :fields="fields"
+                 :perPage="perPage"
+                 :currentPage="currentPage"
+                 style="text-align: left;"
+                 sticky-header="1000px"
+                 striped hover small sort-icon-left>
+          <template v-slot:cell(index)="filteredData">
+            {{ (filteredData.index + 1) + (perPage * (currentPage - 1)) }}
+          </template>
+          <template v-slot:cell(strikeRate)="filteredData">
+            {{ filteredData.value.toFixed(2) }}
+          </template>
+          <template v-slot:cell(percentOfTotal)="filteredData">
+            {{ filteredData.value.toFixed(2) }}%
+          </template>
+        </b-table>
+      </b-col>
+    </b-row>
+    <b-row class="justify-content-md-center">
+      <b-col md="auto">
+        <b-pagination v-model="currentPage"
+                      :total-rows="filteredDataLength"
+                      :per-page="perPage"
+                      aria-controls="stats-table"
+                      class="small"/>
+      </b-col>
+    </b-row>
   </b-container>
 </template>
 
@@ -48,10 +68,6 @@
             searchQuery: {
                 type: String,
                 default: null,
-            },
-            initLimit: {
-                type: Number,
-                default: 5,
             },
             isPaginated: {
                 type: Boolean,
@@ -78,13 +94,25 @@
                 sortOrders: initSortOrders,
                 currentPage: 1,
                 filterKey: this.searchQuery,
-                limit: this.initLimit,
+                perPage: 20,
                 perPageOptions: [
-                    {value: 10, text: 10},
-                    {value: 25, text: 25},
+                    {value: 20, text: 20},
                     {value: 50, text: 50},
                     {value: 100, text: 100},
-                    {value: 9999, text: 'All'}
+                    {value: 'all', text: 'All'}
+                ],
+                fields: [
+                  { key: 'index', label: '#' },
+                  { key: 'playerName', sortable: true },
+                  { key: 'runs', sortable: true },
+                  { key: 'deliveries', sortable: true },
+                  { key: 'fours', sortable: true },
+                  { key: 'sixes', sortable: true },
+                  { key: 'wicketType', label: 'Wicket', sortable: true },
+                  { key: 'strikeRate', label: 'S/R', sortable: true },
+                  { key: 'percentOfTotal', label: '% of Total', sortable: true },
+                  { key: 'position', sortable: true },
+                  { key: 'fixture', sortable: true },
                 ]
             };
         },

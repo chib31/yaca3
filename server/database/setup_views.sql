@@ -79,6 +79,7 @@ CREATE OR REPLACE VIEW player_batting_innings_details AS (
 		pbi.id
 	, p.scorecard_name
 	, fd.opposition
+	, fd.date
 	, pbi.position
 	, pbi.runs
 	, pbi.deliveries
@@ -89,8 +90,10 @@ CREATE OR REPLACE VIEW player_batting_innings_details AS (
 			ELSE 0
 		END wicket
 	, pbi.wicket wicket_type
-	, ROUND((pbi.runs::decimal / NULLIF(pbi.deliveries::decimal, 0)) * 100, 2) strike_rate
-	, ROUND((pbi.runs::decimal / NULLIF(i.runs::decimal, 0)) * 100, 2) percent_of_total
+	, i.runs team_total
+	, fd.result
+-- 	, ROUND((pbi.runs::decimal / NULLIF(pbi.deliveries::decimal, 0)) * 100, 2) strike_rate
+-- 	, ROUND((pbi.runs::decimal / NULLIF(i.runs::decimal, 0)) * 100, 2) percent_of_total
 	FROM player_batting_innings pbi
 	JOIN squad_member sm ON pbi.squad_member_id = sm.id
 	JOIN player p ON sm.player_id = p.id
