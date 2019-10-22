@@ -1,9 +1,9 @@
 package com.example.server.controllers;
 
-import com.example.server.JsonObjects.PlayerBattingDetailsJson;
-import com.example.server.entities.PlayerBattingDetails;
-import com.example.server.entities.PlayerBowlingDetails;
-import com.example.server.services.StatsService;
+import com.example.server.services.PlayerBattingService;
+import com.example.server.services.PlayerBowlingService;
+import com.example.server.statsEntities.PlayerBattingStat;
+import com.example.server.statsEntities.PlayerBowlingStat;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -18,23 +18,32 @@ import java.util.List;
 public class StatsRestController {
 
     @Autowired
-    private StatsService statsService;
+    private PlayerBattingService playerBattingService;
+
+    @Autowired
+    private PlayerBowlingService playerBowlingService;
 
     @RequestMapping(path = "/playerBatting")
     public @ResponseBody
-    List<PlayerBattingDetailsJson> getPlayerBatting() {
-        return statsService.fetchAllPlayerBattingDetails();
+    List<PlayerBattingStat> getPlayerBatting() {
+        return playerBattingService.fetchAllPlayerBattingDetails();
     }
 
-//    @RequestMapping(path = "/playerBattingColumns")
-//    public @ResponseBody
-//    String getPlayerBattingColumns() {
-//        return statsService.fetchPlayerBattingInningsColumns();
-//    }
+    @RequestMapping(path = "/playerBattingColumns")
+    public @ResponseBody
+    String getPlayerBattingColumns() {
+        return playerBattingService.constructPlayerBattingColumnsJson();
+    }
 
     @RequestMapping(path = "/playerBowling")
     public @ResponseBody
-    List<PlayerBowlingDetails> getPlayerBowling() {
-        return statsService.fetchAllPlayerBowlingInningsDetails();
+    List<PlayerBowlingStat> getPlayerBowling() {
+        return playerBowlingService.fetchAllPlayerBowlingDetails();
+    }
+
+    @RequestMapping(path = "/playerBowlingColumns")
+    public @ResponseBody
+    String getPlayerBowlingColumns() {
+        return playerBowlingService.constructPlayerBowlingColumnsJson();
     }
 }

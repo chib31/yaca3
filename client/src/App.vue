@@ -1,38 +1,21 @@
 <template>
   <div id="app">
     <navbar/>
-<!--    <b-container class="m-4">-->
-<!--      <b-form-row class="mb-4">-->
-<!--        <b-col cols="4">-->
-<!--          Report:-->
-<!--        </b-col>-->
-<!--        <b-col cols="8">-->
-<!--          <b-form-select v-model="selectedReport" :options="reportOptions"></b-form-select>-->
-<!--        </b-col>-->
-<!--      </b-form-row>-->
-<!--      <b-row class="mb-4">-->
-<!--        <b-col>-->
-<!--          <b-button size="m" type="submit" @click.prevent="fetchReport">Submit</b-button>-->
-<!--        </b-col>-->
-<!--      </b-row>-->
-<!--    </b-container>-->
     <b-container class="m-4">
-      <b-form @change="fetchReport">
+      <b-form>
         <b-form-group id="reportType" label="Please select a report: " label-cols="4">
-          <b-form-select v-model="selectedReport" :options="reportOptions" @change="fetchReport"></b-form-select>
+          <b-form-select v-model="selectedReport" :options="reportOptions" v-on:change="fetchReport"/>
         </b-form-group>
-<!--        <b-button type="submit" variant="primary">Submit</b-button>-->
       </b-form>
     </b-container>
-    <stats-table v-if="data.length > 0" :columns="columns" :data="data" :init-limit="limit" :is-paginated="isPaginated"
-                 :init-sort-key="columns[0].key"/>
+    <stats-table v-if="data.length > 0" :columns="columns" :tableData="data" :tableLoading="tableLoading"/>
   </div>
 </template>
 
 <script>
     import StatsTable from './components/StatsTable'
     import Navbar from './components/Navbar'
-    import {AXIOS} from "./http-commons"
+    import axios from 'axios'
 
     export default {
         name: 'app',
@@ -52,20 +35,37 @@
                     { value: 'playerBatting', text: 'Individual Batting Performances' },
                     { value: 'playerBowling', text: 'Individual Bowling Performances' },
                 ],
+                errors: [],
+                tableLoading: false,
             };
         },
         mounted() {
-            this.fetchReport()
+            this.fetchReport();
         },
         methods: {
-            fetchReport() {
-                AXIOS.get('http://localhost:9090/api/' + this.selectedReport, {auth: {username: 'user', password: 'password'}})
-                    .then(response => {this.data = response.data; this.columns = Object.keys(response.data[0]);})
-                    .catch(e => {this.errors.push(e)})
-                // AXIOS.get('http://localhost:9090/api/' + this.selectedReport + 'columns', {auth: {username: 'user', password: 'password'}})
-                //     .then(response => {this.data = response.data; this.columns = Object.keys(response.data[0]);})
-                //     .catch(e => {this.errors.push(e)})
-            }
+          fetchReport() {
+            this.tableLoading = true;
+            console.log(this.selectedReport);
+            axios.all([
+                axios.get('http://localhost:9090/api/' + this.selectedReport + 'Columns',
+                    {auth: { username: 'user', password: 'password' }, timeout: 5000}),
+                axios.get('http://localhost:9090/api/' + this.selectedReport,
+                    {auth: { username: 'user', password: 'password' }, timeout: 5000})
+            ])
+            .catch(error => {
+              if (error.code === 'ECONNABORTED') {
+                this.tableLoading = false;
+                return 'timeout';
+              } else {
+                throw error;
+              }
+            })
+            .then(responseArr => {
+               this.columns = responseArr[0].data;
+               this.data = responseArr[1].data;
+               this.tableLoading = false;
+            });
+          }
         }
     }
 </script>

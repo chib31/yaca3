@@ -2,31 +2,35 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="79734e85-9db1-48f8-af36-7666f7a90495" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/.idea/codeStyles/Project.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/uiDesigner.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/server/src/main/java/com/example/server/JsonObjects/PlayerBattingDetailsJson.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/server/src/main/java/com/example/server/utils/Result.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/server/src/main/java/com/example/server/utils/Utils.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/server/src/main/java/com/example/server/utils/WicketType.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/server/src/main/java/com/example/server/annotations/DisplayName.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/server/src/main/java/com/example/server/annotations/Formatter.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/server/src/main/java/com/example/server/annotations/Hidden.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/server/src/main/java/com/example/server/annotations/Sortable.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/server/src/main/java/com/example/server/enumerations/Index.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/server/src/main/java/com/example/server/services/PlayerBowlingService.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/server/src/main/java/com/example/server/statsEntities/PlayerBowlingStat.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/server/src/main/java/com/example/server/utils/JSONFunction.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/codeStyles/Project.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/codeStyles/Project.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/dataSources/94a761cf-e948-4c82-8431-d134b75afd25.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/dataSources/94a761cf-e948-4c82-8431-d134b75afd25.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/dataSources/94a761cf-e948-4c82-8431-d134b75afd25/storage_v2/_src_/database/postgres.edMnLQ/schema/public.abK9xQ.meta" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/dataSources/94a761cf-e948-4c82-8431-d134b75afd25/storage_v2/_src_/database/postgres.edMnLQ/schema/public.abK9xQ.meta" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/dataSources/94a761cf-e948-4c82-8431-d134b75afd25/storage_v2/_src_/database/postgres.edMnLQ/schema/public.abK9xQ.zip" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/dataSources/94a761cf-e948-4c82-8431-d134b75afd25/storage_v2/_src_/database/postgres.edMnLQ/schema/public.abK9xQ.zip" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/modules.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/modules.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/client/src/App.vue" beforeDir="false" afterPath="$PROJECT_DIR$/client/src/App.vue" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/client/src/components/StatsTable.vue" beforeDir="false" afterPath="$PROJECT_DIR$/client/src/components/StatsTable.vue" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/client/src/http-commons.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/server/build.gradle" beforeDir="false" afterPath="$PROJECT_DIR$/server/build.gradle" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/server/database/setup_views.sql" beforeDir="false" afterPath="$PROJECT_DIR$/server/database/setup_views.sql" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/server/src/main/java/com/example/server/JsonObjects/PlayerBattingDetailsJson.java" beforeDir="false" afterPath="$PROJECT_DIR$/server/src/main/java/com/example/server/statsEntities/PlayerBattingStat.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/server/src/main/java/com/example/server/controllers/StatsRestController.java" beforeDir="false" afterPath="$PROJECT_DIR$/server/src/main/java/com/example/server/controllers/StatsRestController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/server/src/main/java/com/example/server/entities/Player.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/server/src/main/java/com/example/server/entities/PlayerBattingInnings.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/server/src/main/java/com/example/server/entities/PlayerBattingInningsDetails.java" beforeDir="false" afterPath="$PROJECT_DIR$/server/src/main/java/com/example/server/entities/PlayerBattingDetails.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/server/src/main/java/com/example/server/entities/PlayerBowlingInningsDetails.java" beforeDir="false" afterPath="$PROJECT_DIR$/server/src/main/java/com/example/server/entities/PlayerBowlingDetails.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/server/src/main/java/com/example/server/entities/PlayerDetails.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/server/src/main/java/com/example/server/repositories/PlayerBattingInningsDetailsRepository.java" beforeDir="false" afterPath="$PROJECT_DIR$/server/src/main/java/com/example/server/repositories/PlayerBattingDetailsRepository.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/server/src/main/java/com/example/server/repositories/PlayerBattingInningsRepository.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/server/src/main/java/com/example/server/repositories/PlayerBowlingInningsDetailsRepository.java" beforeDir="false" afterPath="$PROJECT_DIR$/server/src/main/java/com/example/server/repositories/PlayerBowlingDetailsRepository.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/server/src/main/java/com/example/server/repositories/PlayerDetailsRepository.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/server/src/main/java/com/example/server/repositories/PlayerRepository.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/server/src/main/java/com/example/server/services/StatsService.java" beforeDir="false" afterPath="$PROJECT_DIR$/server/src/main/java/com/example/server/services/StatsService.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/server/src/main/java/com/example/server/entities/PlayerBattingDetails.java" beforeDir="false" afterPath="$PROJECT_DIR$/server/src/main/java/com/example/server/entities/PlayerBattingDetail.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/server/src/main/java/com/example/server/entities/PlayerBowlingDetails.java" beforeDir="false" afterPath="$PROJECT_DIR$/server/src/main/java/com/example/server/entities/PlayerBowlingDetail.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/server/src/main/java/com/example/server/repositories/PlayerBattingDetailsRepository.java" beforeDir="false" afterPath="$PROJECT_DIR$/server/src/main/java/com/example/server/repositories/PlayerBattingDetailsRepository.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/server/src/main/java/com/example/server/repositories/PlayerBowlingDetailsRepository.java" beforeDir="false" afterPath="$PROJECT_DIR$/server/src/main/java/com/example/server/repositories/PlayerBowlingDetailsRepository.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/server/src/main/java/com/example/server/services/StatsService.java" beforeDir="false" afterPath="$PROJECT_DIR$/server/src/main/java/com/example/server/services/PlayerBattingService.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/server/src/main/java/com/example/server/utils/Result.java" beforeDir="false" afterPath="$PROJECT_DIR$/server/src/main/java/com/example/server/enumerations/Result.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/server/src/main/java/com/example/server/utils/Utils.java" beforeDir="false" afterPath="$PROJECT_DIR$/server/src/main/java/com/example/server/utils/Utils.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/server/src/main/java/com/example/server/utils/WicketType.java" beforeDir="false" afterPath="$PROJECT_DIR$/server/src/main/java/com/example/server/enumerations/WicketType.java" afterDir="false" />
     </list>
     <ignored path="$PROJECT_DIR$/out/" />
     <ignored path="$PROJECT_DIR$/server/.gradle/" />
@@ -37,6 +41,9 @@
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
     <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="CodeInsightWorkspaceSettings">
+    <option name="optimizeImportsOnTheFly" value="true" />
   </component>
   <component name="DatabaseView">
     <option name="SHOW_INTERMEDIATE" value="true" />
@@ -108,12 +115,48 @@
     </system>
   </component>
   <component name="FileEditorManager">
-    <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
+    <leaf>
       <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/server/src/main/java/com/example/server/entities/PlayerBattingDetails.java">
+        <entry file="file://$PROJECT_DIR$/server/src/main/java/com/example/server/entities/PlayerBowlingDetail.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="632">
-              <caret line="72" column="53" selection-start-line="72" selection-start-column="53" selection-end-line="72" selection-end-column="53" />
+            <state relative-caret-position="567">
+              <caret line="54" column="26" selection-start-line="54" selection-start-column="26" selection-end-line="54" selection-end-column="26" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/client/src/App.vue">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="346">
+              <caret line="55" column="50" lean-forward="true" selection-start-line="55" selection-start-column="50" selection-end-line="55" selection-end-column="50" />
+              <folding>
+                <element signature="e#1136#1184#0" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/client/src/main.js">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="272">
+              <caret line="16" column="22" selection-start-line="16" selection-start-column="22" selection-end-line="16" selection-end-column="22" />
+              <folding>
+                <element signature="e#0#21#0" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/server/src/main/java/com/example/server/services/PlayerBowlingService.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="731">
+              <caret line="43" column="61" selection-start-line="43" selection-start-column="61" selection-end-line="43" selection-end-column="61" />
+              <folding>
+                <element signature="imports" expanded="true" />
+              </folding>
             </state>
           </provider>
         </entry>
@@ -121,50 +164,26 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/client/src/components/StatsTable.vue">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="561">
-              <caret line="114" column="53" selection-start-line="114" selection-start-column="53" selection-end-line="114" selection-end-column="53" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/server/database/setup_views.sql">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="595">
-              <caret line="101" column="2" selection-start-line="101" selection-start-column="2" selection-end-line="101" selection-end-column="2" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/server/database/setup.sql">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="595">
-              <caret line="35" column="66" selection-start-line="35" selection-start-column="33" selection-end-line="35" selection-end-column="66" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/server/src/main/java/com/example/server/utils/Result.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="442">
-              <caret line="26" selection-start-line="26" selection-end-line="26" />
+            <state relative-caret-position="1700">
+              <caret line="100" column="18" selection-start-line="100" selection-start-column="18" selection-end-line="100" selection-end-column="18" />
               <folding>
-                <element signature="e#405#406#0" expanded="true" />
-                <element signature="e#427#428#0" expanded="true" />
-                <element signature="e#468#469#0" expanded="true" />
-                <element signature="e#483#484#0" expanded="true" />
+                <element signature="n#style#0;n#b-table#0;n#b-col#0;n#b-row#2;n#b-container#0;n#template#0;n#!!top" expanded="true" />
               </folding>
             </state>
           </provider>
         </entry>
       </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/server/src/main/java/com/example/server/utils/Utils.java">
+      <file pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/server/src/main/java/com/example/server/controllers/StatsRestController.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="272">
-              <caret line="16" column="3" selection-start-line="16" selection-start-column="3" selection-end-line="16" selection-end-column="3" />
+            <state relative-caret-position="343">
+              <caret line="28" selection-start-line="28" selection-end-line="28" />
+              <folding>
+                <element signature="imports" expanded="true" />
+                <element signature="e#1082#1083#0" expanded="true" />
+                <element signature="e#1589#1590#0" expanded="true" />
+                <element signature="e#1668#1669#0" expanded="true" />
+              </folding>
             </state>
           </provider>
         </entry>
@@ -176,8 +195,9 @@
       <list>
         <option value="Vue Single File Component" />
         <option value="SCSS File" />
-        <option value="Class" />
         <option value="Enum" />
+        <option value="AnnotationType" />
+        <option value="Class" />
       </list>
     </option>
   </component>
@@ -199,6 +219,13 @@
       <find>'(.+?)',</find>
       <find>//  private .+? (.+?);</find>
       <find>);</find>
+      <find>&quot;data</find>
+      <find>this.</find>
+      <find>playerBattingDetails\.(.+?)\)</find>
+      <find>array</find>
+      <find>false</find>
+      <find>\)$</find>
+      <find>@Column</find>
     </findStrings>
     <replaceStrings>
       <replace>null,'$1',null,'$1',</replace>
@@ -212,6 +239,14 @@
       <replace>$1(&quot;$1&quot;),\r\n</replace>
       <replace>jSon.set$1(this.$1);</replace>
       <replace>),</replace>
+      <replace>this.data</replace>
+      <replace>&quot;this.data</replace>
+      <replace>playerBattingDetailsJson.</replace>
+      <replace>playerBattingDetails.</replace>
+      <replace>playerBattingDetails.get$1)</replace>
+      <replace>true</replace>
+      <replace>))</replace>
+      <replace>@Sortable</replace>
     </replaceStrings>
     <dirStrings>
       <dir>C:\Programming\yaca3\client\node_modules\bootstrap-vue</dir>
@@ -225,21 +260,6 @@
   <component name="IdeDocumentHistory">
     <option name="CHANGED_PATHS">
       <list>
-        <option value="$PROJECT_DIR$/server/database/ref_data.sql" />
-        <option value="$PROJECT_DIR$/server/database/setup.sql" />
-        <option value="$PROJECT_DIR$/server/database/FixturePatches/flying_ducksmen.sql" />
-        <option value="$PROJECT_DIR$/server/database/FixturePatches/graces.sql" />
-        <option value="$PROJECT_DIR$/server/database/FixturePatches/clapham_cc.sql" />
-        <option value="$PROJECT_DIR$/server/database/FixturePatches/crossbats.sql" />
-        <option value="$PROJECT_DIR$/server/database/FixturePatches/camel.sql" />
-        <option value="$PROJECT_DIR$/server/database/FixturePatches/egham_roses.sql" />
-        <option value="$PROJECT_DIR$/server/database/FixturePatches/railway_taverners.sql" />
-        <option value="$PROJECT_DIR$/server/database/FixturePatches/gowl.sql" />
-        <option value="$PROJECT_DIR$/server/database/FixturePatches/norwood.sql" />
-        <option value="$PROJECT_DIR$/server/database/FixturePatches/holtwhites.sql" />
-        <option value="$PROJECT_DIR$/server/database/FixturePatches/woodside_green.sql" />
-        <option value="$PROJECT_DIR$/server/database/FixturePatches/hendricks.sql" />
-        <option value="$PROJECT_DIR$/server/database/FixturePatches/princes_head.sql" />
         <option value="$PROJECT_DIR$/server/database/FixturePatches/railway_taverners_2.sql" />
         <option value="$PROJECT_DIR$/server/database/FixturePatches/cincinnati.sql" />
         <option value="$PROJECT_DIR$/server/database/FixturePatches/crossbats_2.sql" />
@@ -266,16 +286,31 @@
         <option value="$PROJECT_DIR$/server/src/main/java/com/example/server/entities/PlayerBatting.java" />
         <option value="$PROJECT_DIR$/server/src/main/java/com/example/server/entities/PlayerBattingView.java" />
         <option value="$PROJECT_DIR$/server/src/main/java/com/example/server/repositories/PlayerBattingDetailsRepository.java" />
-        <option value="$PROJECT_DIR$/client/src/App.vue" />
-        <option value="$PROJECT_DIR$/server/src/main/java/com/example/server/services/StatsService.java" />
-        <option value="$PROJECT_DIR$/server/src/main/java/com/example/server/controllers/StatsRestController.java" />
         <option value="$PROJECT_DIR$/server/src/main/java/com/example/server/utils/WicketType.java" />
         <option value="$PROJECT_DIR$/server/src/main/java/com/example/server/JsonObjects/PlayerBattingDetailsJson.java" />
-        <option value="$PROJECT_DIR$/client/src/components/StatsTable.vue" />
-        <option value="$PROJECT_DIR$/server/database/setup_views.sql" />
         <option value="$PROJECT_DIR$/server/src/main/java/com/example/server/utils/Result.java" />
-        <option value="$PROJECT_DIR$/server/src/main/java/com/example/server/utils/Utils.java" />
         <option value="$PROJECT_DIR$/server/src/main/java/com/example/server/entities/PlayerBattingDetails.java" />
+        <option value="$PROJECT_DIR$/server/src/main/java/com/example/server/services/StatsService.java" />
+        <option value="$PROJECT_DIR$/server/build.gradle" />
+        <option value="$PROJECT_DIR$/server/src/main/java/com/example/server/annotations/NoSort.java" />
+        <option value="$PROJECT_DIR$/server/src/main/java/com/example/server/annotations/DisplayName.java" />
+        <option value="$PROJECT_DIR$/server/src/main/java/com/example/server/annotations/Hidden.java" />
+        <option value="$PROJECT_DIR$/server/src/main/java/com/example/server/enumerations/Index.java" />
+        <option value="$PROJECT_DIR$/server/src/main/java/com/example/server/annotations/Formatter.java" />
+        <option value="$PROJECT_DIR$/server/src/main/java/com/example/server/utils/JSONFunction.java" />
+        <option value="$PROJECT_DIR$/server/src/main/java/com/example/server/entities/PlayerBattingDetail.java" />
+        <option value="$PROJECT_DIR$/server/src/main/java/com/example/server/annotations/Sortable.java" />
+        <option value="$PROJECT_DIR$/server/src/main/java/com/example/server/services/PlayerBattingService.java" />
+        <option value="$PROJECT_DIR$/server/src/main/java/com/example/server/controllers/StatsRestController.java" />
+        <option value="$PROJECT_DIR$/server/src/main/java/com/example/server/repositories/PlayerBowlingDetailsRepository.java" />
+        <option value="$PROJECT_DIR$/server/database/setup_views.sql" />
+        <option value="$PROJECT_DIR$/server/src/main/java/com/example/server/statsEntities/PlayerBowlingStat.java" />
+        <option value="$PROJECT_DIR$/server/src/main/java/com/example/server/statsEntities/PlayerBattingStat.java" />
+        <option value="$PROJECT_DIR$/server/src/main/java/com/example/server/utils/Utils.java" />
+        <option value="$PROJECT_DIR$/server/src/main/java/com/example/server/entities/PlayerBowlingDetail.java" />
+        <option value="$PROJECT_DIR$/server/src/main/java/com/example/server/services/PlayerBowlingService.java" />
+        <option value="$PROJECT_DIR$/client/src/components/StatsTable.vue" />
+        <option value="$PROJECT_DIR$/client/src/App.vue" />
       </list>
     </option>
   </component>
@@ -287,7 +322,7 @@
   </component>
   <component name="ProjectFrameBounds">
     <option name="x" value="-7" />
-    <option name="width" value="1341" />
+    <option name="width" value="1294" />
     <option name="height" value="1407" />
   </component>
   <component name="ProjectLevelVcsManager" settingsEditedManually="true">
@@ -298,28 +333,6 @@
       <foldersAlwaysOnTop value="true" />
     </navigator>
     <panes>
-      <pane id="Scope">
-        <subPane subId="Scope 'Project Files'; set:Project Files; class com.intellij.psi.search.scope.ProjectFilesScope">
-          <expand>
-            <path>
-              <item name="server" type="3d21c010:ScopeViewTreeModel$ProjectNode" />
-              <item name="client" type="2674bda8:ScopeViewTreeModel$GroupNode" />
-            </path>
-            <path>
-              <item name="server" type="3d21c010:ScopeViewTreeModel$ProjectNode" />
-              <item name="client" type="2674bda8:ScopeViewTreeModel$GroupNode" />
-              <item name="src" type="9f88c78c:ScopeViewTreeModel$FileNode" />
-            </path>
-            <path>
-              <item name="server" type="3d21c010:ScopeViewTreeModel$ProjectNode" />
-              <item name="client" type="2674bda8:ScopeViewTreeModel$GroupNode" />
-              <item name="src" type="9f88c78c:ScopeViewTreeModel$FileNode" />
-              <item name="components" type="9f88c78c:ScopeViewTreeModel$FileNode" />
-            </path>
-          </expand>
-          <select />
-        </subPane>
-      </pane>
       <pane id="ProjectPane">
         <subPane>
           <expand>
@@ -346,40 +359,34 @@
             </path>
             <path>
               <item name="server" type="b2602c69:ProjectViewProjectNode" />
-              <item name="server" type="462c0819:PsiDirectoryNode" />
+              <item name="server" type="8a07ba80:GradleTreeStructureProvider$GradleModuleDirectoryNode" />
             </path>
             <path>
               <item name="server" type="b2602c69:ProjectViewProjectNode" />
-              <item name="server" type="462c0819:PsiDirectoryNode" />
+              <item name="server" type="8a07ba80:GradleTreeStructureProvider$GradleModuleDirectoryNode" />
               <item name="database" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
               <item name="server" type="b2602c69:ProjectViewProjectNode" />
-              <item name="server" type="462c0819:PsiDirectoryNode" />
-              <item name="database" type="462c0819:PsiDirectoryNode" />
-              <item name="Reports" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="server" type="b2602c69:ProjectViewProjectNode" />
-              <item name="server" type="462c0819:PsiDirectoryNode" />
+              <item name="server" type="8a07ba80:GradleTreeStructureProvider$GradleModuleDirectoryNode" />
               <item name="src" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
               <item name="server" type="b2602c69:ProjectViewProjectNode" />
-              <item name="server" type="462c0819:PsiDirectoryNode" />
+              <item name="server" type="8a07ba80:GradleTreeStructureProvider$GradleModuleDirectoryNode" />
               <item name="src" type="462c0819:PsiDirectoryNode" />
               <item name="main" type="8a07ba80:GradleTreeStructureProvider$GradleModuleDirectoryNode" />
             </path>
             <path>
               <item name="server" type="b2602c69:ProjectViewProjectNode" />
-              <item name="server" type="462c0819:PsiDirectoryNode" />
+              <item name="server" type="8a07ba80:GradleTreeStructureProvider$GradleModuleDirectoryNode" />
               <item name="src" type="462c0819:PsiDirectoryNode" />
               <item name="main" type="8a07ba80:GradleTreeStructureProvider$GradleModuleDirectoryNode" />
               <item name="java" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
               <item name="server" type="b2602c69:ProjectViewProjectNode" />
-              <item name="server" type="462c0819:PsiDirectoryNode" />
+              <item name="server" type="8a07ba80:GradleTreeStructureProvider$GradleModuleDirectoryNode" />
               <item name="src" type="462c0819:PsiDirectoryNode" />
               <item name="main" type="8a07ba80:GradleTreeStructureProvider$GradleModuleDirectoryNode" />
               <item name="java" type="462c0819:PsiDirectoryNode" />
@@ -387,7 +394,16 @@
             </path>
             <path>
               <item name="server" type="b2602c69:ProjectViewProjectNode" />
+              <item name="server" type="8a07ba80:GradleTreeStructureProvider$GradleModuleDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="main" type="8a07ba80:GradleTreeStructureProvider$GradleModuleDirectoryNode" />
+              <item name="java" type="462c0819:PsiDirectoryNode" />
               <item name="server" type="462c0819:PsiDirectoryNode" />
+              <item name="annotations" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="server" type="b2602c69:ProjectViewProjectNode" />
+              <item name="server" type="8a07ba80:GradleTreeStructureProvider$GradleModuleDirectoryNode" />
               <item name="src" type="462c0819:PsiDirectoryNode" />
               <item name="main" type="8a07ba80:GradleTreeStructureProvider$GradleModuleDirectoryNode" />
               <item name="java" type="462c0819:PsiDirectoryNode" />
@@ -396,7 +412,7 @@
             </path>
             <path>
               <item name="server" type="b2602c69:ProjectViewProjectNode" />
-              <item name="server" type="462c0819:PsiDirectoryNode" />
+              <item name="server" type="8a07ba80:GradleTreeStructureProvider$GradleModuleDirectoryNode" />
               <item name="src" type="462c0819:PsiDirectoryNode" />
               <item name="main" type="8a07ba80:GradleTreeStructureProvider$GradleModuleDirectoryNode" />
               <item name="java" type="462c0819:PsiDirectoryNode" />
@@ -405,16 +421,16 @@
             </path>
             <path>
               <item name="server" type="b2602c69:ProjectViewProjectNode" />
-              <item name="server" type="462c0819:PsiDirectoryNode" />
+              <item name="server" type="8a07ba80:GradleTreeStructureProvider$GradleModuleDirectoryNode" />
               <item name="src" type="462c0819:PsiDirectoryNode" />
               <item name="main" type="8a07ba80:GradleTreeStructureProvider$GradleModuleDirectoryNode" />
               <item name="java" type="462c0819:PsiDirectoryNode" />
               <item name="server" type="462c0819:PsiDirectoryNode" />
-              <item name="JsonObjects" type="462c0819:PsiDirectoryNode" />
+              <item name="enumerations" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
               <item name="server" type="b2602c69:ProjectViewProjectNode" />
-              <item name="server" type="462c0819:PsiDirectoryNode" />
+              <item name="server" type="8a07ba80:GradleTreeStructureProvider$GradleModuleDirectoryNode" />
               <item name="src" type="462c0819:PsiDirectoryNode" />
               <item name="main" type="8a07ba80:GradleTreeStructureProvider$GradleModuleDirectoryNode" />
               <item name="java" type="462c0819:PsiDirectoryNode" />
@@ -423,7 +439,7 @@
             </path>
             <path>
               <item name="server" type="b2602c69:ProjectViewProjectNode" />
-              <item name="server" type="462c0819:PsiDirectoryNode" />
+              <item name="server" type="8a07ba80:GradleTreeStructureProvider$GradleModuleDirectoryNode" />
               <item name="src" type="462c0819:PsiDirectoryNode" />
               <item name="main" type="8a07ba80:GradleTreeStructureProvider$GradleModuleDirectoryNode" />
               <item name="java" type="462c0819:PsiDirectoryNode" />
@@ -432,12 +448,43 @@
             </path>
             <path>
               <item name="server" type="b2602c69:ProjectViewProjectNode" />
+              <item name="server" type="8a07ba80:GradleTreeStructureProvider$GradleModuleDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="main" type="8a07ba80:GradleTreeStructureProvider$GradleModuleDirectoryNode" />
+              <item name="java" type="462c0819:PsiDirectoryNode" />
               <item name="server" type="462c0819:PsiDirectoryNode" />
+              <item name="statsEntities" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="server" type="b2602c69:ProjectViewProjectNode" />
+              <item name="server" type="8a07ba80:GradleTreeStructureProvider$GradleModuleDirectoryNode" />
               <item name="src" type="462c0819:PsiDirectoryNode" />
               <item name="main" type="8a07ba80:GradleTreeStructureProvider$GradleModuleDirectoryNode" />
               <item name="java" type="462c0819:PsiDirectoryNode" />
               <item name="server" type="462c0819:PsiDirectoryNode" />
               <item name="utils" type="462c0819:PsiDirectoryNode" />
+            </path>
+          </expand>
+          <select />
+        </subPane>
+      </pane>
+      <pane id="Scope">
+        <subPane subId="Scope 'Project Files'; set:Project Files; class com.intellij.psi.search.scope.ProjectFilesScope">
+          <expand>
+            <path>
+              <item name="server" type="3d21c010:ScopeViewTreeModel$ProjectNode" />
+              <item name="client" type="2674bda8:ScopeViewTreeModel$GroupNode" />
+            </path>
+            <path>
+              <item name="server" type="3d21c010:ScopeViewTreeModel$ProjectNode" />
+              <item name="client" type="2674bda8:ScopeViewTreeModel$GroupNode" />
+              <item name="src" type="9f88c78c:ScopeViewTreeModel$FileNode" />
+            </path>
+            <path>
+              <item name="server" type="3d21c010:ScopeViewTreeModel$ProjectNode" />
+              <item name="client" type="2674bda8:ScopeViewTreeModel$GroupNode" />
+              <item name="src" type="9f88c78c:ScopeViewTreeModel$FileNode" />
+              <item name="components" type="9f88c78c:ScopeViewTreeModel$FileNode" />
             </path>
           </expand>
           <select />
@@ -477,26 +524,32 @@
     <property name="project.structure.proportion" value="0.15" />
     <property name="project.structure.side.proportion" value="0.2" />
     <property name="restartRequiresConfirmation" value="false" />
-    <property name="settings.editor.selected.configurable" value="editor.preferences.tabs" />
+    <property name="settings.editor.selected.configurable" value="preferences.sourceCode.Other File Types" />
     <property name="ts.external.directory.path" value="C:\Program Files\JetBrains\IntelliJ IDEA 2019.1.3\plugins\JavaScriptLanguage\jsLanguageServicesImpl\external" />
   </component>
   <component name="RecentsManager">
+    <key name="MoveFile.RECENT_KEYS">
+      <recent name="C:\Programming\yaca3\server\database\Reports" />
+      <recent name="C:\Programming\yaca3\server\database" />
+    </key>
+    <key name="MoveClassesOrPackagesDialog.RECENTS_KEY">
+      <recent name="com.example.server.enumerations" />
+    </key>
+    <key name="CreateClassDialog.RecentsKey">
+      <recent name="com.example.server.annotations" />
+    </key>
+    <key name="CopyClassDialog.RECENTS_KEY">
+      <recent name="com.example.server.services" />
+      <recent name="com.example.server.repositories" />
+      <recent name="com.example.server.entities" />
+      <recent name="com.example.server.controllers" />
+    </key>
     <key name="CopyFile.RECENT_KEYS">
       <recent name="C:\Programming\yaca3\server\database\Reports" />
       <recent name="C:\Programming\yaca3\server\database\FixturePatches" />
       <recent name="C:\Programming\yaca3\server\database" />
       <recent name="C:\Programming\yaca3\client\src\assets" />
       <recent name="C:\Programming\yaca3\client\src\components" />
-    </key>
-    <key name="CopyClassDialog.RECENTS_KEY">
-      <recent name="com.example.server.repositories" />
-      <recent name="com.example.server.entities" />
-      <recent name="com.example.server.services" />
-      <recent name="com.example.server.controllers" />
-    </key>
-    <key name="MoveFile.RECENT_KEYS">
-      <recent name="C:\Programming\yaca3\server\database\Reports" />
-      <recent name="C:\Programming\yaca3\server\database" />
     </key>
   </component>
   <component name="RunDashboard">
@@ -547,7 +600,8 @@
       <workItem from="1570839237160" duration="6728000" />
       <workItem from="1570890914122" duration="54796000" />
       <workItem from="1571086311219" duration="12743000" />
-      <workItem from="1571178224838" duration="19097000" />
+      <workItem from="1571178224838" duration="19728000" />
+      <workItem from="1571524230505" duration="38227000" />
     </task>
     <task id="LOCAL-00001" summary="Adding client directory">
       <created>1570841819278</created>
@@ -560,13 +614,12 @@
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="93364000" />
+    <option name="totallyTimeSpent" value="132222000" />
   </component>
   <component name="ToolWindowManager">
-    <frame x="-7" y="0" width="1341" height="1407" extended-state="0" />
-    <editor active="true" />
+    <frame x="-7" y="0" width="1294" height="1407" extended-state="0" />
     <layout>
-      <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.2529274" />
+      <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.2682334" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
       <window_info id="Designer" order="2" />
       <window_info id="Image Layers" order="3" />
@@ -574,11 +627,11 @@
       <window_info id="UI Designer" order="5" />
       <window_info id="Favorites" order="6" side_tool="true" />
       <window_info id="Web" order="7" side_tool="true" />
-      <window_info active="true" anchor="bottom" id="Database Console" order="0" sideWeight="0.49960256" visible="true" weight="0.2857143" />
+      <window_info anchor="bottom" id="Database Console" order="0" sideWeight="0.49960256" weight="0.28414443" />
       <window_info anchor="bottom" id="Message" order="1" />
       <window_info anchor="bottom" id="Find" order="2" weight="0.32967034" />
-      <window_info anchor="bottom" id="Run" order="3" sideWeight="0.49918962" weight="0.3288854" />
-      <window_info anchor="bottom" id="Debug" order="4" weight="0.39952904" />
+      <window_info anchor="bottom" id="Run" order="3" sideWeight="0.49918962" weight="0.33045527" />
+      <window_info active="true" anchor="bottom" id="Debug" order="4" visible="true" weight="0.39952904" />
       <window_info anchor="bottom" id="Cvs" order="5" weight="0.25" />
       <window_info anchor="bottom" id="Inspection" order="6" weight="0.4" />
       <window_info anchor="bottom" id="TODO" order="7" />
@@ -587,7 +640,7 @@
       <window_info anchor="bottom" id="Terminal" order="10" sideWeight="0.493517" weight="0.32967034" />
       <window_info anchor="bottom" id="Docker" order="11" show_stripe_button="false" />
       <window_info anchor="bottom" id="Event Log" order="12" sideWeight="0.50648296" side_tool="true" weight="0.32967034" />
-      <window_info anchor="bottom" id="Messages" order="13" weight="0.32967034" />
+      <window_info anchor="bottom" id="Messages" order="13" weight="0.32810047" />
       <window_info anchor="bottom" id="Java Enterprise" order="14" weight="0.32967034" />
       <window_info anchor="bottom" id="Database Changes" order="15" />
       <window_info anchor="bottom" id="Version Control" order="16" sideWeight="0.49837926" weight="0.3288854" />
@@ -617,101 +670,19 @@
     <MESSAGE value="Adding client directory" />
     <option name="LAST_COMMIT_MESSAGE" value="Adding client directory" />
   </component>
+  <component name="XDebuggerManager">
+    <breakpoint-manager>
+      <breakpoints>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/server/src/main/java/com/example/server/controllers/StatsRestController.java</url>
+          <line>28</line>
+          <properties />
+          <option name="timeStamp" value="5" />
+        </line-breakpoint>
+      </breakpoints>
+    </breakpoint-manager>
+  </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/server/database/FixturePatches/railway_taverners_2.sql">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="1122">
-          <caret line="66" column="18" selection-start-line="66" selection-start-column="18" selection-end-line="66" selection-end-column="18" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/server/database/FixturePatches/cincinnati.sql">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="731">
-          <caret line="66" column="18" selection-start-line="66" selection-start-column="18" selection-end-line="66" selection-end-column="18" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/server/database/FixturePatches/crossbats_2.sql">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="792">
-          <caret line="66" column="18" selection-start-line="66" selection-start-column="18" selection-end-line="66" selection-end-column="18" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/server/database/FixturePatches/winchmore_hill_tigers.sql">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="792">
-          <caret line="66" column="18" selection-start-line="66" selection-start-column="18" selection-end-line="66" selection-end-column="18" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/server/database/FixturePatches/merton_boars.sql">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="685">
-          <caret line="67" column="18" lean-forward="true" selection-start-line="67" selection-start-column="18" selection-end-line="67" selection-end-column="18" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/server/database/FixturePatches/cumnor_challengers.sql">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="792">
-          <caret line="66" column="18" selection-start-line="66" selection-start-column="18" selection-end-line="66" selection-end-column="18" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/server/database/FixturePatches/omcc.sql">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="646">
-          <caret line="38" column="18" selection-start-line="38" selection-start-column="18" selection-end-line="38" selection-end-column="18" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/server/database/FixturePatches/kings_road.sql">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="265">
-          <caret line="35" lean-forward="true" selection-end-line="66" selection-end-column="18" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/server/database/FixturePatches/mavericks.sql">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="792">
-          <caret line="66" column="18" selection-start-line="66" selection-start-column="18" selection-end-line="66" selection-end-column="18" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/server/database/TablesDiagram.PNG">
-      <provider selected="true" editor-type-id="images" />
-    </entry>
-    <entry file="file://$PROJECT_DIR$/server/src/main/java/com/example/server/controllers/StatsController.java" />
-    <entry file="file://$APPLICATION_CONFIG_DIR$/javascript/nodejs/10.16.0/core-modules/internal/modules/cjs/loader.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="271">
-          <caret line="561" column="24" selection-start-line="561" selection-start-column="24" selection-end-line="561" selection-end-column="24" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/server/src/main/java/com/example/server/entities/PlayerBattingInnings.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="119">
-          <caret line="12" column="13" selection-start-line="12" selection-start-column="13" selection-end-line="12" selection-end-column="13" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/client/package-lock.json">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-204" />
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/client/src/components/Cards.vue" />
-    <entry file="file://$PROJECT_DIR$/client/package.json">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="238">
-          <caret line="14" column="20" selection-start-line="14" selection-start-column="20" selection-end-line="14" selection-end-column="20" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/server/database/Reports/misc.sql">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="68">
@@ -733,30 +704,7 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/server/src/main/java/com/example/server/repositories/PlayerRepository.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="153">
-          <caret line="9" column="17" selection-start-line="9" selection-start-column="17" selection-end-line="9" selection-end-column="17" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/server/src/main/java/com/example/server/repositories/PlayerBowlingDetailsRepository.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="238">
-          <caret line="14" column="1" lean-forward="true" selection-start-line="14" selection-start-column="1" selection-end-line="14" selection-end-column="1" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/server/src/main/java/com/example/server/entities/PlayerBowlingDetails.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="102">
-          <caret line="12" column="5" selection-start-line="12" selection-start-column="5" selection-end-line="12" selection-end-column="5" />
-        </state>
-      </provider>
-    </entry>
+    <entry file="file://$PROJECT_DIR$/server/src/main/java/com/example/server/repositories/PlayerRepository.java" />
     <entry file="file://$PROJECT_DIR$/client/node_modules/bootstrap/dist/css/bootstrap-grid.css">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="276">
@@ -806,16 +754,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/client/src/main.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="34">
-          <caret line="16" column="22" selection-start-line="16" selection-start-column="22" selection-end-line="16" selection-end-column="22" />
-          <folding>
-            <element signature="e#0#21#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/client/node_modules/bootstrap-vue/src/_variables.scss">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="1054">
@@ -841,27 +779,9 @@
       </provider>
       <provider editor-type-id="sourcemapFileViewerProvider" />
     </entry>
-    <entry file="file://$PROJECT_DIR$/server/src/main/java/com/example/server/entities/PlayerDetails.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="119">
-          <caret line="12" column="13" selection-start-line="12" selection-start-column="13" selection-end-line="12" selection-end-column="13" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/server/src/main/java/com/example/server/repositories/PlayerBattingInningsRepository.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="85">
-          <caret line="8" column="17" selection-start-line="8" selection-start-column="17" selection-end-line="8" selection-end-column="17" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/server/src/main/java/com/example/server/repositories/PlayerDetailsRepository.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="85">
-          <caret line="8" column="17" selection-start-line="8" selection-start-column="17" selection-end-line="8" selection-end-column="17" />
-        </state>
-      </provider>
-    </entry>
+    <entry file="file://$PROJECT_DIR$/server/src/main/java/com/example/server/entities/PlayerDetails.java" />
+    <entry file="file://$PROJECT_DIR$/server/src/main/java/com/example/server/repositories/PlayerBattingInningsRepository.java" />
+    <entry file="file://$PROJECT_DIR$/server/src/main/java/com/example/server/repositories/PlayerDetailsRepository.java" />
     <entry file="file://$PROJECT_DIR$/server/database/Reports/reports.sql">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="-8">
@@ -869,33 +789,7 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/server/src/main/java/com/example/server/repositories/PlayerBattingDetailsRepository.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-7">
-          <caret line="9" column="17" selection-start-line="9" selection-start-column="17" selection-end-line="9" selection-end-column="17" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/client/src/App.vue">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="906">
-          <caret line="64" selection-start-line="64" selection-end-line="66" selection-end-column="57" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/server/src/main/java/com/example/server/controllers/StatsRestController.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="459">
-          <caret line="27" lean-forward="true" selection-start-line="27" selection-end-line="27" />
-          <folding>
-            <element signature="imports" expanded="true" />
-            <element signature="e#876#877#0" expanded="true" />
-            <element signature="e#949#950#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/server/src/main/java/com/example/server/utils/WicketType.java">
+    <entry file="file://$PROJECT_DIR$/server/src/main/java/com/example/server/enumerations/WicketType.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="459">
           <caret line="27" column="18" selection-start-line="27" selection-start-column="18" selection-end-line="27" selection-end-column="18" />
@@ -908,33 +802,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/server/src/main/java/com/example/server/services/StatsService.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="442">
-          <caret line="26" column="74" selection-start-line="26" selection-start-column="74" selection-end-line="26" selection-end-column="74" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/server/src/main/java/com/example/server/JsonObjects/PlayerBattingDetailsJson.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="289">
-          <caret line="17" column="27" lean-forward="true" selection-start-line="17" selection-start-column="27" selection-end-line="17" selection-end-column="27" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/client/src/components/StatsTable.vue">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="561">
-          <caret line="114" column="53" selection-start-line="114" selection-start-column="53" selection-end-line="114" selection-end-column="53" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/server/database/setup.sql">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="595">
@@ -942,37 +809,260 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/server/src/main/java/com/example/server/utils/Result.java">
+    <entry file="jar://$USER_HOME$/.gradle/caches/modules-2/files-2.1/com.fasterxml.jackson.core/jackson-databind/2.9.9.3/5e509c4752b34340e2fe6844d8ade42ee8a4e8f/jackson-databind-2.9.9.3-sources.jar!/com/fasterxml/jackson/databind/util/JSONPObject.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="442">
-          <caret line="26" selection-start-line="26" selection-end-line="26" />
+        <state relative-caret-position="187">
+          <caret line="16" column="13" selection-start-line="16" selection-start-column="13" selection-end-line="16" selection-end-column="13" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="jar://$USER_HOME$/.gradle/caches/modules-2/files-2.1/javax.json/javax.json-api/1.0/fbe493e2f03a114cca5d7e9ab7de837654b91135/javax.json-api-1.0-sources.jar!/javax/json/JsonArrayBuilder.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="416">
+          <caret line="99" column="17" selection-start-line="99" selection-start-column="17" selection-end-line="99" selection-end-column="17" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="jar://$USER_HOME$/.gradle/caches/modules-2/files-2.1/javax.json/javax.json-api/1.0/fbe493e2f03a114cca5d7e9ab7de837654b91135/javax.json-api-1.0-sources.jar!/javax/json/Json.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="651">
+          <caret line="255" column="26" selection-start-line="255" selection-start-column="26" selection-end-line="255" selection-end-column="26" />
           <folding>
-            <element signature="e#405#406#0" expanded="true" />
-            <element signature="e#427#428#0" expanded="true" />
-            <element signature="e#468#469#0" expanded="true" />
-            <element signature="e#483#484#0" expanded="true" />
+            <element signature="e#9531#9532#0" expanded="true" />
+            <element signature="e#9598#9599#0" expanded="true" />
+            <element signature="e#9756#9757#0" expanded="true" />
+            <element signature="e#9824#9825#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/server/build.gradle">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="476">
+          <caret line="28" column="51" selection-start-line="28" selection-start-column="51" selection-end-line="28" selection-end-column="51" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/server/src/main/java/com/example/server/annotations/Hidden.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="85">
+          <caret line="5" column="35" selection-start-line="5" selection-start-column="35" selection-end-line="5" selection-end-column="35" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/server/src/main/java/com/example/server/enumerations/Result.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="34">
+          <caret line="2" column="12" selection-start-line="2" selection-start-column="12" selection-end-line="2" selection-end-column="12" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/server/src/main/java/com/example/server/enumerations/Index.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="85">
+          <caret line="5" column="1" lean-forward="true" selection-start-line="5" selection-start-column="1" selection-end-line="5" selection-end-column="1" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="jar://C:/Program Files/Java/jdk-12.0.1/lib/src.zip!/java.base/java/lang/Math.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="1194">
+          <caret line="738" column="23" selection-start-line="738" selection-start-column="23" selection-end-line="738" selection-end-column="23" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/server/src/main/java/com/example/server/annotations/DisplayName.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="68">
+          <caret line="4" lean-forward="true" selection-start-line="4" selection-end-line="5" selection-end-column="35" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/server/src/main/java/com/example/server/annotations/Formatter.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="136">
+          <caret line="8" column="1" selection-start-line="8" selection-start-column="1" selection-end-line="8" selection-end-column="1" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="jar://$USER_HOME$/.gradle/caches/modules-2/files-2.1/org.skyscreamer/jsonassert/1.5.0/d729b258165a2fd9b5d6156c05c4c4f7ca053117/jsonassert-1.5.0-sources.jar!/org/json/JSONString.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="221">
+          <caret line="25" column="17" selection-start-line="25" selection-start-column="17" selection-end-line="25" selection-end-column="17" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/server/src/main/java/com/example/server/utils/JSONFunction.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="68">
+          <caret line="4" column="42" lean-forward="true" selection-start-line="4" selection-start-column="42" selection-end-line="4" selection-end-column="42" />
+          <folding>
+            <element signature="e#178#179#0" expanded="true" />
+            <element signature="e#208#209#0" expanded="true" />
+            <element signature="e#254#255#0" expanded="true" />
+            <element signature="e#277#278#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="jar://$USER_HOME$/.gradle/caches/modules-2/files-2.1/javax.json/javax.json-api/1.0/fbe493e2f03a114cca5d7e9ab7de837654b91135/javax.json-api-1.0-sources.jar!/javax/json/JsonObjectBuilder.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="17">
+          <caret line="118" column="17" selection-start-line="118" selection-start-column="17" selection-end-line="118" selection-end-column="17" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/server/src/main/java/com/example/server/annotations/Sortable.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="136">
+          <caret line="8" lean-forward="true" selection-start-line="8" selection-end-line="8" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/server/src/main/java/com/example/server/entities/PlayerBattingDetail.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="289">
+          <caret line="24" column="30" selection-start-line="24" selection-start-column="30" selection-end-line="27" selection-end-column="22" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/server/src/main/java/com/example/server/repositories/PlayerBattingDetailsRepository.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="102">
+          <caret line="10" column="40" selection-start-line="10" selection-start-column="40" selection-end-line="10" selection-end-column="40" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/server/src/main/java/com/example/server/repositories/PlayerBowlingDetailsRepository.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="204">
+          <caret line="12" column="16" selection-start-line="12" selection-start-column="16" selection-end-line="12" selection-end-column="16" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/server/database/setup_views.sql">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="452">
+          <caret line="126" column="2" selection-start-line="126" selection-start-column="2" selection-end-line="126" selection-end-column="2" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/server/src/main/java/com/example/server/statsEntities/PlayerBowlingStat.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="17">
+          <caret line="16" column="28" lean-forward="true" selection-start-line="16" selection-start-column="28" selection-end-line="16" selection-end-column="28" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/server/src/main/java/com/example/server/services/PlayerBattingService.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="544">
+          <caret line="32" column="3" selection-start-line="32" selection-start-column="3" selection-end-line="32" selection-end-column="3" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/server/src/main/java/com/example/server/statsEntities/PlayerBattingStat.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="221">
+          <caret line="13" column="9" selection-start-line="13" selection-start-column="9" selection-end-line="13" selection-end-column="9" />
+          <folding>
+            <element signature="imports" expanded="true" />
           </folding>
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/server/src/main/java/com/example/server/utils/Utils.java">
       <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="451">
+          <caret line="97" column="71" selection-start-line="97" selection-start-column="71" selection-end-line="97" selection-end-column="71" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/server/src/main/java/com/example/server/entities/PlayerBowlingDetail.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="567">
+          <caret line="54" column="26" selection-start-line="54" selection-start-column="26" selection-end-line="54" selection-end-column="26" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/server/src/main/java/com/example/server/services/PlayerBowlingService.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="731">
+          <caret line="43" column="61" selection-start-line="43" selection-start-column="61" selection-end-line="43" selection-end-column="61" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/client/src/main.js">
+      <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="272">
-          <caret line="16" column="3" selection-start-line="16" selection-start-column="3" selection-end-line="16" selection-end-column="3" />
+          <caret line="16" column="22" selection-start-line="16" selection-start-column="22" selection-end-line="16" selection-end-column="22" />
+          <folding>
+            <element signature="e#0#21#0" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/server/src/main/java/com/example/server/entities/PlayerBattingDetails.java">
+    <entry file="file://$PROJECT_DIR$/client/src/http-commons.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="632">
-          <caret line="72" column="53" selection-start-line="72" selection-start-column="53" selection-end-line="72" selection-end-column="53" />
+        <state>
+          <caret selection-end-column="25" />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/server/database/setup_views.sql">
+    <entry file="file://$PROJECT_DIR$/client/src/components/StatsTable.vue">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="595">
-          <caret line="101" column="2" selection-start-line="101" selection-start-column="2" selection-end-line="101" selection-end-column="2" />
+        <state relative-caret-position="1700">
+          <caret line="100" column="18" selection-start-line="100" selection-start-column="18" selection-end-line="100" selection-end-column="18" />
+          <folding>
+            <element signature="n#style#0;n#b-table#0;n#b-col#0;n#b-row#2;n#b-container#0;n#template#0;n#!!top" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/client/src/App.vue">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="346">
+          <caret line="55" column="50" lean-forward="true" selection-start-line="55" selection-start-column="50" selection-end-line="55" selection-end-column="50" />
+          <folding>
+            <element signature="e#1136#1184#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/server/src/main/java/com/example/server/controllers/StatsRestController.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="343">
+          <caret line="28" selection-start-line="28" selection-end-line="28" />
+          <folding>
+            <element signature="imports" expanded="true" />
+            <element signature="e#1082#1083#0" expanded="true" />
+            <element signature="e#1589#1590#0" expanded="true" />
+            <element signature="e#1668#1669#0" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>

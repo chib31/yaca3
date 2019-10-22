@@ -43,6 +43,7 @@ CREATE OR REPLACE VIEW fixture_details AS (
 			WHEN f.result = 'drawn' THEN 'Match drawn'
 			ELSE 'No result'
 		END result_details
+	, f.over_length
 	FROM fixture f
 	JOIN opposition o ON f.opposition_id = o.id
 	JOIN squad_member sm ON (sm.fixture_id = f.id AND sm.captain IS TRUE)
@@ -103,11 +104,11 @@ CREATE OR REPLACE VIEW player_batting_innings_details AS (
 
 CREATE OR REPLACE VIEW player_bowling_innings_details AS (
 	SELECT
-		pbi.id
+    pbi.id
   , p.scorecard_name
 	, fd.opposition
+  , fd.date
 	, pbi.bowler_number
-	, TRUNC(pbi.deliveries::decimal / 6) + (0.1 * MOD(pbi.deliveries::decimal, 6)) overs
 	, pbi.deliveries
 	, pbi.maidens
 	, pbi.runs
@@ -115,8 +116,9 @@ CREATE OR REPLACE VIEW player_bowling_innings_details AS (
 	, pbi.wides
 	, pbi.no_balls
 	, pbi.hat_tricks
-	, ROUND(pbi.runs::decimal / NULLIF((pbi.deliveries::decimal / 6),0), 2) economy
-	, ROUND(pbi.deliveries / NULLIF(pbi.wickets, 0), 2) strike_rate
+	, fd.result
+  , ROUND(pbi.runs::decimal / NULLIF((pbi.deliveries::decimal / 6),0), 2) economy
+	, fd.over_length
 	FROM player_bowling_innings pbi
   JOIN squad_member sm ON pbi.squad_member_id = sm.id
   JOIN player p ON sm.player_id = p.id

@@ -7,12 +7,13 @@ import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.Id;
 import javax.persistence.Table;
+import java.sql.Date;
 
 @Entity
 @Immutable
 @Data
 @Table(name = "player_bowling_innings_details")
-public class PlayerBowlingDetails {
+public class PlayerBowlingDetail {
 
     @Id
     private Integer id;
@@ -22,6 +23,9 @@ public class PlayerBowlingDetails {
 
     @Column
     private String opposition;
+
+    @Column
+    private Date date;
 
     @Column
     private Integer bowlerNumber;
@@ -48,8 +52,11 @@ public class PlayerBowlingDetails {
     private Integer hatTricks;
 
     @Column
-    private Float economy;
+    private String result;
 
     @Column
-    private Float strikeRate;
+    private String economy;
+
+    @Column
+    private Integer overLength;
 }

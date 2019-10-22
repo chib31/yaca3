@@ -1,4 +1,4 @@
-package com.example.server.utils;
+package com.example.server.enumerations;
 
 public enum WicketType {
 
