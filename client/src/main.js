@@ -13,6 +13,10 @@ import { BFormRow } from 'bootstrap-vue'
 import { BFormGroup } from 'bootstrap-vue'
 import { BTable } from 'bootstrap-vue'
 import { BPagination } from 'bootstrap-vue'
+import { BInputGroup } from 'bootstrap-vue'
+import { BButton } from 'bootstrap-vue'
+import { BInputGroupAppend } from 'bootstrap-vue'
+import { BFormInput } from 'bootstrap-vue'
 
 Vue.use(BootstrapVue);
 Vue.use(LayoutPlugin);
@@ -26,6 +30,10 @@ Vue.component('b-form', BForm);
 Vue.component('b-form-group', BFormGroup);
 Vue.component('b-table', BTable);
 Vue.component('b-pagination', BPagination);
+Vue.component('b-input-group', BInputGroup);
+Vue.component('b-button', BButton);
+Vue.component('b-input-group-append', BInputGroupAppend);
+Vue.component('b-form-input', BFormInput);
 
 Vue.config.productionTip = false
 

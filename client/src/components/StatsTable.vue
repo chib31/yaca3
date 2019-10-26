@@ -22,7 +22,7 @@
     <b-row>
       <b-col>
         <b-table id="stats-table"
-                 :items="tableData"
+                 :items="filteredData"
                  :fields="columns"
                  :perPage="perPage"
                  :currentPage="currentPage"
@@ -38,26 +38,26 @@
               <strong>Loading...</strong>
             </div>
           </template>
-          <template v-slot:cell(index)="tableData">
-            {{ (tableData.index + 1) + (perPage * (currentPage - 1)) }}
+          <template v-slot:cell(index)="filteredData">
+            {{ (filteredData.index + 1) + (perPage * (currentPage - 1)) }}
           </template>
-          <template v-slot:cell(strikeRate)="tableData">
-            {{ tableData.value === '' ? 'n/a' : tableData.value.toFixed(1) }}
+          <template v-slot:cell(strikeRate)="filteredData">
+            {{ filteredData.value === '' ? 'n/a' : filteredData.value.toFixed(1) }}
           </template>
-          <template v-slot:cell(average)="tableData">
-            {{ tableData.value === '' ? 'n/a' : tableData.value.toFixed(1) }}
+          <template v-slot:cell(average)="filteredData">
+            {{ filteredData.value === '' ? 'n/a' : filteredData.value.toFixed(1) }}
           </template>
-          <template v-slot:cell(percentOfTotal)="tableData">
-            {{ tableData.value === '' ? 'n/a' : tableData.value.toFixed(1) + '%' }}
+          <template v-slot:cell(percentOfTotal)="filteredData">
+            {{ filteredData.value === '' ? 'n/a' : filteredData.value.toFixed(1) + '%' }}
           </template>
-          <template v-slot:cell(economy)="tableData">
-            {{ tableData.value === '' ? 'n/a' : tableData.value.toFixed(2) }}
+          <template v-slot:cell(economy)="filteredData">
+            {{ filteredData.value === '' ? 'n/a' : filteredData.value.toFixed(2) }}
           </template>
-          <template v-slot:cell(playerName)="tableData">
-            {{ tableData.value }}
+          <template v-slot:cell(playerName)="filteredData">
+            {{ filteredData.value }}
           </template>
-          <template v-slot:cell(fixture)="tableData">
-            {{ tableData.value }}
+          <template v-slot:cell(fixture)="filteredData">
+            {{ filteredData.value }}
           </template>
         </b-table>
       </b-col>
@@ -85,7 +85,7 @@
                 type: Array,
                 required: true,
             },
-            tableLoading: Boolean
+            tableLoading: Boolean,
         },
         data() {
             return {
@@ -102,9 +102,26 @@
             };
         },
         computed: {
-            dataLength() {
-                return this.tableData.length;
+          dataLength() {
+            return this.filteredData.length;
+          },
+          filteredData() {
+            let result = this.tableData;
+            const textFilterColumns = this.columns.filter(e => Object.prototype.hasOwnProperty.call(e, 'filterValue'));
+            for(const column of textFilterColumns) {
+              result = result.filter(e =>
+                  e[column['key']].toLowerCase().includes(column['filterValue'].toLowerCase()));
             }
+            const minFilterColumns = this.columns.filter(e => Object.prototype.hasOwnProperty.call(e, 'filterMin'));
+            for(const column of minFilterColumns) {
+              result = result.filter(e => e[column['key']] >= column['filterMin']);
+            }
+            const maxFilterColumns = this.columns.filter(e => Object.prototype.hasOwnProperty.call(e, 'filterMax'));
+            for(const column of maxFilterColumns) {
+              result = result.filter(e => e[column['key']] <= column['filterMax']);
+            }
+            return result;
+          }
         },
     };
 </script>

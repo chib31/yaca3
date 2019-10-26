@@ -1,12 +1,13 @@
 package com.example.server.utils;
 
 import com.example.server.annotations.DisplayName;
-import com.example.server.annotations.Formatter;
+import com.example.server.annotations.Filter;
 import com.example.server.annotations.Hidden;
 import com.example.server.annotations.Sortable;
 import com.example.server.enumerations.Index;
 import com.example.server.enumerations.Result;
 import com.example.server.enumerations.WicketType;
+import org.apache.commons.lang3.StringUtils;
 import org.springframework.lang.Nullable;
 
 import javax.json.Json;
@@ -112,7 +113,7 @@ public class Utils {
       if (!field.isAnnotationPresent(Hidden.class)) {
         arrayBuilder.add(createStatColumn(field.getName(),
             field.getAnnotation(DisplayName.class) == null ? null : field.getAnnotation(DisplayName.class).value(),
-            field.getAnnotation(Formatter.class) == null ? null : field.getAnnotation(Formatter.class).value(),
+            field.getAnnotation(Filter.class) == null ? null : field.getAnnotation(Filter.class).value(),
             field.isAnnotationPresent(Sortable.class)));
       }
     }
@@ -120,14 +121,15 @@ public class Utils {
   }
 
   private static JsonObjectBuilder createStatColumn(String name, @Nullable String displayName,
-                                                    @Nullable String formatter, boolean sortable) {
+                                                    @Nullable String filterType,
+                                                    boolean sortable) {
     JsonObjectBuilder jsonObjectBuilder = Json.createObjectBuilder().add("key", name);
-    if (displayName != null) {
-      jsonObjectBuilder.add("label", displayName);
+    jsonObjectBuilder.add("label", displayName == null ?
+        StringUtils.capitalize(StringUtils.join(StringUtils.splitByCharacterTypeCamelCase(name), StringUtils.SPACE)) :
+        displayName);
+    if (filterType != null) {
+      jsonObjectBuilder.add("filterable", filterType);
     }
-//    if (formatter != null) {
-//      jsonObjectBuilder.add("formatter", formatter );
-//    }
     if (sortable) {
       jsonObjectBuilder.add("sortable", true);
     }

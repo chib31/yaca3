@@ -17,33 +17,33 @@ import java.util.List;
 @RequestMapping("/api")
 public class StatsRestController {
 
-    @Autowired
-    private PlayerBattingService playerBattingService;
+  @Autowired
+  private PlayerBattingService playerBattingService;
 
-    @Autowired
-    private PlayerBowlingService playerBowlingService;
+  @Autowired
+  private PlayerBowlingService playerBowlingService;
 
-    @RequestMapping(path = "/playerBatting")
-    public @ResponseBody
-    List<PlayerBattingStat> getPlayerBatting() {
-        return playerBattingService.fetchAllPlayerBattingDetails();
-    }
+  @RequestMapping(path = "/playerBatting")
+  public @ResponseBody
+  List<PlayerBattingStat> getPlayerBatting() {
+    return playerBattingService.fetchAllPlayerBattingDetails();
+  }
 
-    @RequestMapping(path = "/playerBattingColumns")
-    public @ResponseBody
-    String getPlayerBattingColumns() {
-        return playerBattingService.constructPlayerBattingColumnsJson();
-    }
+  @RequestMapping(path = "/playerBattingColumns")
+  public @ResponseBody
+  String getPlayerBattingColumns() {
+    return playerBattingService.constructPlayerBattingColumnsJson();
+  }
 
-    @RequestMapping(path = "/playerBowling")
-    public @ResponseBody
-    List<PlayerBowlingStat> getPlayerBowling() {
-        return playerBowlingService.fetchAllPlayerBowlingDetails();
-    }
+  @RequestMapping(path = "/playerBowling")
+  public @ResponseBody
+  List<PlayerBowlingStat> getPlayerBowling() {
+    return playerBowlingService.fetchAllPlayerBowlingDetails();
+  }
 
-    @RequestMapping(path = "/playerBowlingColumns")
-    public @ResponseBody
-    String getPlayerBowlingColumns() {
-        return playerBowlingService.constructPlayerBowlingColumnsJson();
-    }
+  @RequestMapping(path = "/playerBowlingColumns")
+  public @ResponseBody
+  String getPlayerBowlingColumns() {
+    return playerBowlingService.constructPlayerBowlingColumnsJson();
+  }
 }
