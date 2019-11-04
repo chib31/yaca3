@@ -4,6 +4,7 @@ import com.example.server.annotations.DisplayName;
 import com.example.server.annotations.Filter;
 import com.example.server.annotations.Hidden;
 import com.example.server.annotations.Sortable;
+import com.example.server.enumerations.FilterType;
 import lombok.Data;
 
 import java.sql.Date;
@@ -15,11 +16,11 @@ public class PlayerBattingStat {
   private Integer id;
 
   // Filter - multi select dropdown
-  @Filter("text")
+  @Filter(FilterType.TEXT)
   @Sortable
   private String playerName;
 
-  @Filter("number")
+  @Filter(FilterType.NUMBER)
   @Sortable
   private Integer deliveries;
 
@@ -36,7 +37,7 @@ public class PlayerBattingStat {
   private Integer sixes;
 
   // Filter - multi select dropdown
-  @Filter("text")
+  @Filter(FilterType.TEXT)
   @Sortable
   @DisplayName("Wicket")
   private String wicketType;

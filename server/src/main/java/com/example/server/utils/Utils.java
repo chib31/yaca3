@@ -4,6 +4,7 @@ import com.example.server.annotations.DisplayName;
 import com.example.server.annotations.Filter;
 import com.example.server.annotations.Hidden;
 import com.example.server.annotations.Sortable;
+import com.example.server.enumerations.FilterType;
 import com.example.server.enumerations.Index;
 import com.example.server.enumerations.Result;
 import com.example.server.enumerations.WicketType;
@@ -121,14 +122,14 @@ public class Utils {
   }
 
   private static JsonObjectBuilder createStatColumn(String name, @Nullable String displayName,
-                                                    @Nullable String filterType,
+                                                    @Nullable FilterType filterType,
                                                     boolean sortable) {
     JsonObjectBuilder jsonObjectBuilder = Json.createObjectBuilder().add("key", name);
     jsonObjectBuilder.add("label", displayName == null ?
         StringUtils.capitalize(StringUtils.join(StringUtils.splitByCharacterTypeCamelCase(name), StringUtils.SPACE)) :
         displayName);
     if (filterType != null) {
-      jsonObjectBuilder.add("filterable", filterType);
+      jsonObjectBuilder.add("filterType", filterType.toString());
     }
     if (sortable) {
       jsonObjectBuilder.add("sortable", true);

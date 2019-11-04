@@ -1,59 +1,57 @@
-<template xmlns:v-slot="http://www.w3.org/1999/XSL/Transform">
+<template>
   <div id="app">
     <navbar/>
-    <b-container class="m-4">
-      <b-form-group id="reportType" label="Please select a report: " label-cols="4">
-        <b-form-select v-model="selectedReport" :options="reportOptions" v-on:change="fetchReport"/>
-      </b-form-group>
-      <b-form-group v-for="item in filterableColumns"
-                    v-bind:key="item.id"
-                    :id="item.id"
-                    :label="item.label"
-                    label-cols="4">
-        <b-input-group v-if="item['filterable'] === 'text'">
-          <b-form-select v-model="item['filterValue']" :options="Array.from(new Set(data.map(e => e[item.key])))"/>
-          <b-input-group-append>
-            <b-button @click="item['filterValue'] = ''">Clear</b-button>
-          </b-input-group-append>
-        </b-input-group>
-        <b-input-group v-if="item['filterable'] === 'number'">
-          <label class="mr-3">Min: {{ item['filterMin'] }}</label>
-          <b-form-input v-model="item['filterMin']" type="range" :min="getMinValue(item.key)" :max="getMaxValue(item.key)"/>
-          <label class="mx-3">Max: {{ item['filterMax'] }}</label>
-          <b-form-input v-model="item['filterMax']" type="range" :min="getMinValue(item.key)" :max="getMaxValue(item.key)"/>
-        </b-input-group>
-      </b-form-group>
+    <b-container class="mt-2">
+      <b-row align-h="between">
+        <b-col>
+          <b-form-group label-cols="4" label-for="reportSelect" label="Select Report:" class="m-0">
+            <b-form-select
+                id="reportSelect"
+                v-model="selectedReport"
+                :options="reportOptions"
+                v-on:change="fetchReport"/>
+          </b-form-group>
+        </b-col>
+        <b-col md="auto">
+          <b-button :pressed.sync="showFilters">Show Filters</b-button>
+        </b-col>
+      </b-row>
     </b-container>
-    <stats-table v-if="data.length > 0" :columns="columns" :tableData="data" :tableLoading="tableLoading"/>
+    <stat-filters v-if="showFilters" :filterableColumns="filterableColumns" :tableData="tableData"/>
+    <stats-table v-if="tableData.length > 0" :columns="columns" :tableData="tableData" :tableLoading="tableLoading"/>
   </div>
 </template>
 
 <script>
     import StatsTable from './components/StatsTable'
     import Navbar from './components/Navbar'
+    import StatFilters from './components/StatFilters'
     import axios from 'axios'
+    import Vue from 'vue'
 
     export default {
         name: 'app',
         components: {
-            StatsTable,
-            Navbar
+          StatsTable,
+          Navbar,
+          StatFilters,
         },
         data() {
-            return {
-                isPaginated: true,
-                limit: 10,
-                columns: [],
-                data: [],
-                selectedReport: 'playerBatting',
-                reportOptions: [
-                    { value: null, text: 'Please select an option' },
-                    { value: 'playerBatting', text: 'Individual Batting Performances' },
-                    { value: 'playerBowling', text: 'Individual Bowling Performances' },
-                ],
-                errors: [],
-                tableLoading: false,
-            };
+          return {
+            isPaginated: true,
+            limit: 10,
+            columns: [],
+            tableData: [],
+            selectedReport: 'playerBatting',
+            reportOptions: [
+                { value: null, text: 'Please select an option' },
+                { value: 'playerBatting', text: 'Individual Batting Performances' },
+                { value: 'playerBowling', text: 'Individual Bowling Performances' },
+            ],
+            errors: [],
+            tableLoading: false,
+            showFilters: false,
+          };
         },
         mounted() {
             this.fetchReport();
@@ -77,22 +75,38 @@
             })
             .then(responseArr => {
                this.columns = responseArr[0].data;
-               this.data = responseArr[1].data;
+               this.tableData = responseArr[1].data;
+               this.getMinMaxValues();
                this.tableLoading = false;
             });
           },
-          getMinValue(column) {
-            const values = this.data.map(e => e[column]);
+          getMinMaxValues() {
+            for (const column of this.columns.filter(e => e['filterType'] === 'NUMBER')) {
+              const key = column['key'];
+              const min = this.getMinValue(key);
+              const max = this.getMaxValue(key);
+              Vue.set(column, 'minValue', min);
+              Vue.set(column, 'maxValue', max);
+              Vue.set(column, 'filterMin', min);
+              Vue.set(column, 'filterMax', max);
+            }
+          },
+          getMinValue(columnKey) {
+            const values = this.tableData.map(e => e[columnKey]);
             return Math.min(...values);
           },
-          getMaxValue(column) {
-            const values = this.data.map(e => e[column]);
+          getMaxValue(columnKey) {
+            const values = this.tableData.map(e => e[columnKey]);
             return Math.max(...values);
+          },
+          resetMinMaxFilter(column) {
+            column['filterMin'] = column['minValue'];
+            column['filterMax'] = column['maxValue'];
           },
         },
         computed: {
           filterableColumns() {
-            return this.columns.filter(e => e['filterable'] != null);
+            return this.columns.filter(e => e['filterType'] != null);
           }
         }
     }

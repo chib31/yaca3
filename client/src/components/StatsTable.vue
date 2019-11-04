@@ -1,6 +1,5 @@
 <template xmlns:v-slot="http://www.w3.org/1999/XSL/Transform">
-  <b-container fluid>
-    <hr/>
+  <b-container fluid class="mt-2">
     <b-row class="justify-content-md-center mb-1">
       <b-col md="auto">
         <b-form inline>
@@ -13,6 +12,7 @@
     <b-row class="justify-content-md-center">
       <b-col md="auto">
         <b-pagination v-model="currentPage"
+                      v-if="paginationRequired"
                       :total-rows="dataLength"
                       :per-page="perPage"
                       aria-controls="stats-table"
@@ -65,6 +65,7 @@
     <b-row class="justify-content-md-center">
       <b-col md="auto">
         <b-pagination v-model="currentPage"
+                      v-if="paginationRequired"
                       :total-rows="dataLength"
                       :per-page="perPage"
                       aria-controls="stats-table"
@@ -97,7 +98,7 @@
                     {value: 20, text: 20},
                     {value: 50, text: 50},
                     {value: 100, text: 100},
-                    {value: 'all', text: 'All'}
+                    {value: 99999, text: 'All'}
                 ],
             };
         },
@@ -121,7 +122,10 @@
               result = result.filter(e => e[column['key']] <= column['filterMax']);
             }
             return result;
-          }
+          },
+          paginationRequired() {
+            return this.dataLength > this.perPage;
+          },
         },
     };
 </script>
