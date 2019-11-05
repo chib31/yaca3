@@ -1,34 +1,27 @@
 <template>
   <div id="app">
     <navbar :teamName="teamName" :navOptions="navOptions" v-on:navRequest="fetchReport"/>
-<!--    <b-container class="mt-2">-->
-<!--      <b-row align-h="between">-->
-<!--        <b-col>-->
-<!--          <b-form-group label-cols="4" label-for="reportSelect" label="Select Report:" class="m-0">-->
-<!--            <b-form-select-->
-<!--                id="reportSelect"-->
-<!--                v-model="selectedReport"-->
-<!--                :options="reportOptions"-->
-<!--                v-on:change="fetchReport"/>-->
-<!--          </b-form-group>-->
-<!--        </b-col>-->
-<!--        <b-col md="auto">-->
-<!--          <b-button :pressed.sync="showFilters">Show Filters</b-button>-->
-<!--        </b-col>-->
-<!--      </b-row>-->
-<!--    </b-container>-->
-    <b-container class="mt-3 mx-4">
-      <b-row align-h="start" align-v="center">
-        <b-col md="auto">
-          <h1>{{ this.currentTitle }}</h1>
+    <h1 class="m-3 text-left">
+      <span class="mr-2">{{ this.currentTitle }}</span>
+      <b-button :pressed.sync="showFilters" style="display: inline">Show Filters</b-button>
+    </h1>
+    <hr class="my-2"/>
+    <b-container fluid>
+      <b-row>
+        <b-col cols="3" v-if="showFilters" class="pr-1">
+          <stat-filters
+              :filterableColumns="filterableColumns"
+              :tableData="tableData"/>
         </b-col>
-        <b-col md="auto">
-          <b-button :pressed.sync="showFilters">Show Filters</b-button>
+        <b-col style="overflow-x: auto" class="pl-1">
+          <stats-table
+              v-if="tableData.length > 0"
+              :columns="columns"
+              :tableData="tableData"
+              :tableLoading="tableLoading"/>
         </b-col>
       </b-row>
     </b-container>
-    <stat-filters v-if="showFilters" :filterableColumns="filterableColumns" :tableData="tableData"/>
-    <stats-table v-if="tableData.length > 0" :columns="columns" :tableData="tableData" :tableLoading="tableLoading"/>
   </div>
 </template>
 

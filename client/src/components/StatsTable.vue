@@ -1,87 +1,86 @@
 <template xmlns:v-slot="http://www.w3.org/1999/XSL/Transform">
-  <b-container fluid>
-    <hr class="mt-2"/>
-    <b-row class="justify-content-md-center mt-2">
-      <b-col md="auto">
-        <b-form inline>
-          <label> Showing </label>
-          <b-form-select v-model="perPage" :options="perPageOptions" size="sm" class="mx-1"/>
-          <label> of {{ dataLength }} results </label>
-        </b-form>
-      </b-col>
-      <b-col md="auto">
-        <b-pagination v-model="currentPage"
-                      v-if="paginationRequired"
-                      :total-rows="dataLength"
-                      :per-page="perPage"
-                      aria-controls="stats-table"
-                      class="small m-0"/>
-      </b-col>
-    </b-row>
-    <b-row class="mt-2">
-      <b-col>
-        <b-table
-            id="stats-table"
-            :items="filteredData"
-            :fields="columns"
-            :perPage="perPage"
-            :currentPage="currentPage"
-            :busy="tableLoading"
-            thead-class="text-nowrap"
-            tbody-class="text-nowrap"
-            style="text-align: left;"
-            sticky-header="1000px"
-            striped hover small sort-icon-left
-            class="my-0">
-          <template v-slot:table-busy>
-            <div class="text-center text-danger my-2">
-              <b-spinner class="align-middle"></b-spinner>
-              <strong>Loading...</strong>
-            </div>
-          </template>
-          <template v-slot:cell(index)="filteredData">
-            {{ (filteredData.index + 1) + (perPage * (currentPage - 1)) }}
-          </template>
-          <template v-slot:cell(strikeRate)="filteredData">
-            {{ filteredData.value === '' ? 'n/a' : filteredData.value.toFixed(1) }}
-          </template>
-          <template v-slot:cell(average)="filteredData">
-            {{ filteredData.value === '' ? 'n/a' : filteredData.value.toFixed(1) }}
-          </template>
-          <template v-slot:cell(percentOfTotal)="filteredData">
-            {{ filteredData.value === '' ? 'n/a' : filteredData.value.toFixed(1) + '%' }}
-          </template>
-          <template v-slot:cell(economy)="filteredData">
-            {{ filteredData.value === '' ? 'n/a' : filteredData.value.toFixed(2) }}
-          </template>
-          <template v-slot:cell(playerName)="filteredData">
-            {{ filteredData.value }}
-          </template>
-          <template v-slot:cell(fixture)="filteredData">
-            {{ filteredData.value }}
-          </template>
-        </b-table>
-      </b-col>
-    </b-row>
-    <b-row class="justify-content-md-center mt-2">
-      <b-col md="auto">
-        <b-form inline>
-          <label> Showing </label>
-          <b-form-select v-model="perPage" :options="perPageOptions" size="sm" class="mx-1"/>
-          <label> of {{ dataLength }} results </label>
-        </b-form>
-      </b-col>
-      <b-col md="auto">
-        <b-pagination v-model="currentPage"
-                      v-if="paginationRequired"
-                      :total-rows="dataLength"
-                      :per-page="perPage"
-                      aria-controls="stats-table"
-                      class="small m-0"/>
-      </b-col>
-    </b-row>
-    <hr/>
-  </b-container>
+  <div>
+    <b-container fluid class="border border-secondary rounded m-0 p-2">
+      <b-row class="justify-content-center">
+        <b-col cols="auto">
+          <b-form inline>
+            <label> Showing </label>
+            <b-form-select v-model="perPage" :options="perPageOptions" size="sm" class="mx-1"/>
+            <label> of {{ dataLength }} results </label>
+          </b-form>
+        </b-col>
+        <b-col cols="auto">
+          <b-pagination v-model="currentPage"
+                        v-if="paginationRequired"
+                        :total-rows="dataLength"
+                        :per-page="perPage"
+                        aria-controls="stats-table"
+                        class="small m-0"/>
+        </b-col>
+      </b-row>
+      <b-row class="mt-2">
+        <b-col>
+          <b-table
+              id="stats-table"
+              :items="filteredData"
+              :fields="columns"
+              :perPage="perPage"
+              :currentPage="currentPage"
+              :busy="tableLoading"
+              thead-class="text-nowrap"
+              tbody-class="text-nowrap"
+              sticky-header="1000px"
+              striped hover small sort-icon-left
+              class="my-0 text-left">
+            <template v-slot:table-busy>
+              <div class="text-center text-danger my-2">
+                <b-spinner class="align-middle"></b-spinner>
+                <strong>Loading...</strong>
+              </div>
+            </template>
+            <template v-slot:cell(index)="filteredData">
+              {{ (filteredData.index + 1) + (perPage * (currentPage - 1)) }}
+            </template>
+            <template v-slot:cell(strikeRate)="filteredData">
+              {{ filteredData.value === '' ? 'n/a' : filteredData.value.toFixed(1) }}
+            </template>
+            <template v-slot:cell(average)="filteredData">
+              {{ filteredData.value === '' ? 'n/a' : filteredData.value.toFixed(1) }}
+            </template>
+            <template v-slot:cell(percentOfTotal)="filteredData">
+              {{ filteredData.value === '' ? 'n/a' : filteredData.value.toFixed(1) + '%' }}
+            </template>
+            <template v-slot:cell(economy)="filteredData">
+              {{ filteredData.value === '' ? 'n/a' : filteredData.value.toFixed(2) }}
+            </template>
+            <template v-slot:cell(playerName)="filteredData">
+              {{ filteredData.value }}
+            </template>
+            <template v-slot:cell(fixture)="filteredData">
+              {{ filteredData.value }}
+            </template>
+          </b-table>
+        </b-col>
+      </b-row>
+      <b-row class="justify-content-center mt-2">
+        <b-col cols="auto">
+          <b-form inline>
+            <label> Showing </label>
+            <b-form-select v-model="perPage" :options="perPageOptions" size="sm" class="mx-1"/>
+            <label> of {{ dataLength }} results </label>
+          </b-form>
+        </b-col>
+        <b-col cols="auto">
+          <b-pagination v-model="currentPage"
+                        v-if="paginationRequired"
+                        :total-rows="dataLength"
+                        :per-page="perPage"
+                        aria-controls="stats-table"
+                        class="small m-0"/>
+        </b-col>
+      </b-row>
+    </b-container>
+  </div>
 </template>
 
 <script>
