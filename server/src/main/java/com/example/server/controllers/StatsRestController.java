@@ -23,25 +23,25 @@ public class StatsRestController {
   @Autowired
   private PlayerBowlingService playerBowlingService;
 
-  @RequestMapping(path = "/playerBatting")
+  @RequestMapping(path = "/batting")
   public @ResponseBody
   List<PlayerBattingStat> getPlayerBatting() {
     return playerBattingService.fetchAllPlayerBattingDetails();
   }
 
-  @RequestMapping(path = "/playerBattingColumns")
+  @RequestMapping(path = "/battingColumns")
   public @ResponseBody
   String getPlayerBattingColumns() {
     return playerBattingService.constructPlayerBattingColumnsJson();
   }
 
-  @RequestMapping(path = "/playerBowling")
+  @RequestMapping(path = "/bowling")
   public @ResponseBody
   List<PlayerBowlingStat> getPlayerBowling() {
     return playerBowlingService.fetchAllPlayerBowlingDetails();
   }
 
-  @RequestMapping(path = "/playerBowlingColumns")
+  @RequestMapping(path = "/bowlingColumns")
   public @ResponseBody
   String getPlayerBowlingColumns() {
     return playerBowlingService.constructPlayerBowlingColumnsJson();

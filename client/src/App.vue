@@ -1,16 +1,26 @@
 <template>
   <div id="app">
-    <navbar/>
-    <b-container class="mt-2">
-      <b-row align-h="between">
-        <b-col>
-          <b-form-group label-cols="4" label-for="reportSelect" label="Select Report:" class="m-0">
-            <b-form-select
-                id="reportSelect"
-                v-model="selectedReport"
-                :options="reportOptions"
-                v-on:change="fetchReport"/>
-          </b-form-group>
+    <navbar :teamName="teamName" :navOptions="navOptions" v-on:navRequest="fetchReport"/>
+<!--    <b-container class="mt-2">-->
+<!--      <b-row align-h="between">-->
+<!--        <b-col>-->
+<!--          <b-form-group label-cols="4" label-for="reportSelect" label="Select Report:" class="m-0">-->
+<!--            <b-form-select-->
+<!--                id="reportSelect"-->
+<!--                v-model="selectedReport"-->
+<!--                :options="reportOptions"-->
+<!--                v-on:change="fetchReport"/>-->
+<!--          </b-form-group>-->
+<!--        </b-col>-->
+<!--        <b-col md="auto">-->
+<!--          <b-button :pressed.sync="showFilters">Show Filters</b-button>-->
+<!--        </b-col>-->
+<!--      </b-row>-->
+<!--    </b-container>-->
+    <b-container class="mt-3 mx-4">
+      <b-row align-h="start" align-v="center">
+        <b-col md="auto">
+          <h1>{{ this.currentTitle }}</h1>
         </b-col>
         <b-col md="auto">
           <b-button :pressed.sync="showFilters">Show Filters</b-button>
@@ -42,7 +52,6 @@
             limit: 10,
             columns: [],
             tableData: [],
-            selectedReport: 'playerBatting',
             reportOptions: [
                 { value: null, text: 'Please select an option' },
                 { value: 'playerBatting', text: 'Individual Batting Performances' },
@@ -51,18 +60,31 @@
             errors: [],
             tableLoading: false,
             showFilters: false,
+            teamName: 'Plastics XI',
+            navOptions: [
+              {'key': 'results', 'display': 'Results', 'title': 'Results'},
+              {'key': 'players', 'display': 'Players', 'title': 'Players'},
+              {'key': 'stats', 'display': 'Stats', 'subOptions': [
+                {'key': 'batting', 'display': 'Batting', 'title': 'Batting Stats'},
+                {'key': 'bowling', 'display': 'Bowling', 'title': 'Bowling Stats'},
+                {'key': 'fielding', 'display': 'Fielding', 'title': 'Fielding Stats'}
+              ]}
+            ],
+            currentTitle: 'Batting Stats',
           };
         },
-        mounted() {
-            this.fetchReport();
-        },
+        // mounted() {
+        //     this.fetchReport('batting');
+        // },
         methods: {
-          fetchReport() {
+          fetchReport(navOption) {
             this.tableLoading = true;
+            this.currentTitle = navOption.title;
+            const report = navOption.key;
             axios.all([
-                axios.get('http://localhost:9090/api/' + this.selectedReport + 'Columns',
+                axios.get('http://localhost:9090/api/' + report + 'Columns',
                     {auth: { username: 'user', password: 'password' }, timeout: 5000}),
-                axios.get('http://localhost:9090/api/' + this.selectedReport,
+                axios.get('http://localhost:9090/api/' + report,
                     {auth: { username: 'user', password: 'password' }, timeout: 5000})
             ])
             .catch(error => {
@@ -99,15 +121,11 @@
             const values = this.tableData.map(e => e[columnKey]);
             return Math.max(...values);
           },
-          resetMinMaxFilter(column) {
-            column['filterMin'] = column['minValue'];
-            column['filterMax'] = column['maxValue'];
-          },
         },
         computed: {
           filterableColumns() {
             return this.columns.filter(e => e['filterType'] != null);
-          }
+          },
         }
     }
 </script>

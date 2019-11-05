@@ -1,6 +1,7 @@
 <template xmlns:v-slot="http://www.w3.org/1999/XSL/Transform">
-  <b-container fluid class="mt-2">
-    <b-row class="justify-content-md-center mb-1">
+  <b-container fluid>
+    <hr class="mt-2"/>
+    <b-row class="justify-content-md-center mt-2">
       <b-col md="auto">
         <b-form inline>
           <label> Showing </label>
@@ -8,30 +9,30 @@
           <label> of {{ dataLength }} results </label>
         </b-form>
       </b-col>
-    </b-row>
-    <b-row class="justify-content-md-center">
       <b-col md="auto">
         <b-pagination v-model="currentPage"
                       v-if="paginationRequired"
                       :total-rows="dataLength"
                       :per-page="perPage"
                       aria-controls="stats-table"
-                      class="small"/>
+                      class="small m-0"/>
       </b-col>
     </b-row>
-    <b-row>
+    <b-row class="mt-2">
       <b-col>
-        <b-table id="stats-table"
-                 :items="filteredData"
-                 :fields="columns"
-                 :perPage="perPage"
-                 :currentPage="currentPage"
-                 :busy="tableLoading"
-                 thead-class="text-nowrap"
-                 tbody-class="text-nowrap"
-                 style="text-align: left;"
-                 sticky-header="1000px"
-                 striped hover small sort-icon-left>
+        <b-table
+            id="stats-table"
+            :items="filteredData"
+            :fields="columns"
+            :perPage="perPage"
+            :currentPage="currentPage"
+            :busy="tableLoading"
+            thead-class="text-nowrap"
+            tbody-class="text-nowrap"
+            style="text-align: left;"
+            sticky-header="1000px"
+            striped hover small sort-icon-left
+            class="my-0">
           <template v-slot:table-busy>
             <div class="text-center text-danger my-2">
               <b-spinner class="align-middle"></b-spinner>
@@ -62,16 +63,24 @@
         </b-table>
       </b-col>
     </b-row>
-    <b-row class="justify-content-md-center">
+    <b-row class="justify-content-md-center mt-2">
+      <b-col md="auto">
+        <b-form inline>
+          <label> Showing </label>
+          <b-form-select v-model="perPage" :options="perPageOptions" size="sm" class="mx-1"/>
+          <label> of {{ dataLength }} results </label>
+        </b-form>
+      </b-col>
       <b-col md="auto">
         <b-pagination v-model="currentPage"
                       v-if="paginationRequired"
                       :total-rows="dataLength"
                       :per-page="perPage"
                       aria-controls="stats-table"
-                      class="small"/>
+                      class="small m-0"/>
       </b-col>
     </b-row>
+    <hr/>
   </b-container>
 </template>
 

@@ -1,35 +1,35 @@
 <template>
   <div>
     <b-navbar toggleable="lg" type="dark" variant="dark">
-      <img alt="Plastics logo" src="../assets/PlasticsLogoText.png" width="64">
-      <b-container>
-        <b-navbar-brand href="#">Plastics Stats</b-navbar-brand>
-<!--        <b-navbar-toggle target="nav-collapse"></b-navbar-toggle>-->
-<!--        <b-collapse id="nav-collapse" is-nav>-->
-<!--          &lt;!&ndash; Right aligned nav items &ndash;&gt;-->
-<!--          <b-navbar-nav class="ml-auto">-->
-<!--            <b-nav-form>-->
-<!--              <b-form-input size="sm" class="mr-sm-2" placeholder="Search for a meal" v-model="meal"></b-form-input>-->
-<!--              <b-button size="sm" class="my-2 my-sm-0" type="submit" @click.prevent="getMeal">Search</b-button>-->
-<!--            </b-nav-form>-->
-<!--            <b-nav-item-dropdown right>-->
-<!--              &lt;!&ndash; Using 'button-content' slot &ndash;&gt;-->
-<!--              <template slot="button-content"><em>User</em></template>-->
-<!--              <b-dropdown-item href="#">Profile</b-dropdown-item>-->
-<!--              <b-dropdown-item href="#">Sign Out</b-dropdown-item>-->
-<!--            </b-nav-item-dropdown>-->
-<!--          </b-navbar-nav>-->
-<!--        </b-collapse>-->
-      </b-container>
+      <b-navbar-brand>
+        <img alt="Team logo" src="../assets/PlasticsLogoText.png" width="50">
+        {{ teamName }}
+      </b-navbar-brand>
+      <b-navbar-nav variant="dark" type="dark">
+        <div v-for="navOption in navOptions" :key="navOption.value">
+          <b-nav-item v-if="!navOption.hasOwnProperty('subOptions')" v-on:click="navChange(navOption)">
+            {{ navOption.display }}
+          </b-nav-item>
+          <b-nav-item-dropdown v-if="navOption.hasOwnProperty('subOptions')" :text="navOption.display">
+            <b-dropdown-item v-for="subOption in navOption.subOptions" :key="subOption.value" v-on:click="navChange(subOption)">
+              {{ subOption.display }}
+            </b-dropdown-item>
+          </b-nav-item-dropdown>
+        </div>
+      </b-navbar-nav>
     </b-navbar>
   </div>
 </template>
 <script>
-    export default {
-        data() {
-            return {
-                meal: ''
-            }
-        }
+  export default {
+    props: {
+      teamName: String,
+      navOptions: Array,
+    },
+    methods: {
+      navChange(request) {
+        this.$emit('navRequest', request)
+      }
     }
+  }
 </script>

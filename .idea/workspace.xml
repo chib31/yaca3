@@ -2,14 +2,10 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="79734e85-9db1-48f8-af36-7666f7a90495" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/server/src/main/java/com/example/server/enumerations/FilterType.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/client/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/client/package.json" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/client/src/App.vue" beforeDir="false" afterPath="$PROJECT_DIR$/client/src/App.vue" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/client/src/components/Navbar.vue" beforeDir="false" afterPath="$PROJECT_DIR$/client/src/components/Navbar.vue" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/client/src/components/StatsTable.vue" beforeDir="false" afterPath="$PROJECT_DIR$/client/src/components/StatsTable.vue" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/server/src/main/java/com/example/server/annotations/Filter.java" beforeDir="false" afterPath="$PROJECT_DIR$/server/src/main/java/com/example/server/annotations/Filter.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/server/src/main/java/com/example/server/statsEntities/PlayerBattingStat.java" beforeDir="false" afterPath="$PROJECT_DIR$/server/src/main/java/com/example/server/statsEntities/PlayerBattingStat.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/server/src/main/java/com/example/server/utils/Utils.java" beforeDir="false" afterPath="$PROJECT_DIR$/server/src/main/java/com/example/server/utils/Utils.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/server/src/main/java/com/example/server/controllers/StatsRestController.java" beforeDir="false" afterPath="$PROJECT_DIR$/server/src/main/java/com/example/server/controllers/StatsRestController.java" afterDir="false" />
     </list>
     <ignored path="$PROJECT_DIR$/out/" />
     <ignored path="$PROJECT_DIR$/server/.gradle/" />
@@ -98,8 +94,8 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/client/src/App.vue">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="51">
-              <caret line="3" column="29" selection-start-line="3" selection-start-column="16" selection-end-line="3" selection-end-column="29" />
+            <state relative-caret-position="323">
+              <caret line="19" column="35" lean-forward="true" selection-start-line="19" selection-start-column="35" selection-end-line="19" selection-end-column="35" />
               <folding>
                 <element signature="e#1970#2018#0" expanded="true" />
               </folding>
@@ -107,45 +103,45 @@
           </provider>
         </entry>
       </file>
-      <file pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/client/src/components/StatFilters.vue">
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/client/src/components/Navbar.vue">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="85">
-              <caret line="5" column="44" selection-start-line="5" selection-start-column="44" selection-end-line="5" selection-end-column="44" />
+            <state relative-caret-position="510">
+              <caret line="30" column="41" lean-forward="true" selection-start-line="30" selection-start-column="41" selection-end-line="30" selection-end-column="41" />
             </state>
           </provider>
         </entry>
       </file>
       <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/client/src/components/StatsTable.vue">
+        <entry file="file://$PROJECT_DIR$/server/src/main/java/com/example/server/controllers/StatsRestController.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="17">
-              <caret line="1" column="34" lean-forward="true" selection-start-line="1" selection-start-column="34" selection-end-line="1" selection-end-column="34" />
-              <folding>
-                <element signature="n#style#0;n#b-table#0;n#b-col#0;n#b-row#2;n#b-container#0;n#template#0;n#!!top" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/client/src/main.js">
-          <provider selected="true" editor-type-id="text-editor">
-            <state>
-              <folding>
-                <element signature="e#0#21#0" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/server/src/main/java/com/example/server/statsEntities/PlayerBattingStat.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="442">
-              <caret line="33" selection-start-line="33" selection-end-line="33" />
+            <state relative-caret-position="663">
+              <caret line="43" column="43" lean-forward="true" selection-start-line="43" selection-start-column="43" selection-end-line="43" selection-end-column="43" />
               <folding>
                 <element signature="imports" expanded="true" />
+                <element signature="e#994#995#0" expanded="true" />
+                <element signature="e#1062#1063#0" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/client/src/components/StatFilters.vue">
+          <provider selected="true" editor-type-id="text-editor">
+            <state>
+              <caret column="10" lean-forward="true" selection-start-column="10" selection-end-column="10" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/client/src/components/StatsTable.vue">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="459">
+              <caret line="27" column="38" lean-forward="true" selection-start-line="27" selection-start-column="38" selection-end-line="27" selection-end-column="38" />
+              <folding>
+                <element signature="n#style#0;n#b-table#0;n#b-card#0;n#b-col#0;n#b-row#1;n#b-container#0;n#template#0;n#!!top" expanded="true" />
               </folding>
             </state>
           </provider>
@@ -206,6 +202,7 @@
       <find>filterable</find>
       <find>tableData</find>
       <find>data</find>
+      <find>value</find>
     </findStrings>
     <replaceStrings>
       <replace>null,'$1',null,'$1',</replace>
@@ -230,6 +227,7 @@
       <replace>filteredData</replace>
       <replace>filterType</replace>
       <replace>tableData</replace>
+      <replace>key</replace>
     </replaceStrings>
     <dirStrings>
       <dir>C:\Programming\yaca3\client\node_modules\bootstrap-vue</dir>
@@ -256,7 +254,6 @@
         <option value="$PROJECT_DIR$/server/src/main/java/com/example/server/entities/PlayerBowlingInningsDetails.java" />
         <option value="$PROJECT_DIR$/server/src/main/java/com/example/server/repositories/PlayerBowlingInningsDetailsRepository.java" />
         <option value="$PROJECT_DIR$/client/src/custom.scss" />
-        <option value="$PROJECT_DIR$/client/src/components/Navbar.vue" />
         <option value="$PROJECT_DIR$/client/node_modules/bootstrap/scss/_variables.scss" />
         <option value="$PROJECT_DIR$/client/src/assets/custom-vars.scss" />
         <option value="$PROJECT_DIR$/server/src/main/java/com/example/server/JsonObjects/PlayerBattingInningsJson.java" />
@@ -278,7 +275,6 @@
         <option value="$PROJECT_DIR$/server/src/main/java/com/example/server/entities/PlayerBattingDetail.java" />
         <option value="$PROJECT_DIR$/server/src/main/java/com/example/server/annotations/Sortable.java" />
         <option value="$PROJECT_DIR$/server/src/main/java/com/example/server/services/PlayerBattingService.java" />
-        <option value="$PROJECT_DIR$/server/src/main/java/com/example/server/controllers/StatsRestController.java" />
         <option value="$PROJECT_DIR$/server/src/main/java/com/example/server/repositories/PlayerBowlingDetailsRepository.java" />
         <option value="$PROJECT_DIR$/server/database/setup_views.sql" />
         <option value="$PROJECT_DIR$/server/src/main/java/com/example/server/statsEntities/PlayerBowlingStat.java" />
@@ -291,9 +287,11 @@
         <option value="$PROJECT_DIR$/server/src/main/java/com/example/server/annotations/Filter.java" />
         <option value="$PROJECT_DIR$/server/src/main/java/com/example/server/statsEntities/PlayerBattingStat.java" />
         <option value="$PROJECT_DIR$/server/src/main/java/com/example/server/utils/Utils.java" />
+        <option value="$PROJECT_DIR$/client/src/components/StatFilters.vue" />
+        <option value="$PROJECT_DIR$/server/src/main/java/com/example/server/controllers/StatsRestController.java" />
+        <option value="$PROJECT_DIR$/client/src/components/Navbar.vue" />
         <option value="$PROJECT_DIR$/client/src/App.vue" />
         <option value="$PROJECT_DIR$/client/src/components/StatsTable.vue" />
-        <option value="$PROJECT_DIR$/client/src/components/StatFilters.vue" />
       </list>
     </option>
   </component>
@@ -304,10 +302,9 @@
     <auto-save>true</auto-save>
   </component>
   <component name="ProjectFrameBounds">
-    <option name="x" value="-8" />
-    <option name="y" value="-8" />
-    <option name="width" value="1296" />
-    <option name="height" value="1416" />
+    <option name="x" value="-7" />
+    <option name="width" value="1294" />
+    <option name="height" value="1407" />
   </component>
   <component name="ProjectLevelVcsManager" settingsEditedManually="true">
     <ConfirmationsSetting value="2" id="Add" />
@@ -338,6 +335,41 @@
             <path>
               <item name="server" type="b2602c69:ProjectViewProjectNode" />
               <item name="server" type="8a07ba80:GradleTreeStructureProvider$GradleModuleDirectoryNode" />
+            </path>
+            <path>
+              <item name="server" type="b2602c69:ProjectViewProjectNode" />
+              <item name="server" type="8a07ba80:GradleTreeStructureProvider$GradleModuleDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="server" type="b2602c69:ProjectViewProjectNode" />
+              <item name="server" type="8a07ba80:GradleTreeStructureProvider$GradleModuleDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="main" type="8a07ba80:GradleTreeStructureProvider$GradleModuleDirectoryNode" />
+            </path>
+            <path>
+              <item name="server" type="b2602c69:ProjectViewProjectNode" />
+              <item name="server" type="8a07ba80:GradleTreeStructureProvider$GradleModuleDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="main" type="8a07ba80:GradleTreeStructureProvider$GradleModuleDirectoryNode" />
+              <item name="java" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="server" type="b2602c69:ProjectViewProjectNode" />
+              <item name="server" type="8a07ba80:GradleTreeStructureProvider$GradleModuleDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="main" type="8a07ba80:GradleTreeStructureProvider$GradleModuleDirectoryNode" />
+              <item name="java" type="462c0819:PsiDirectoryNode" />
+              <item name="server" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="server" type="b2602c69:ProjectViewProjectNode" />
+              <item name="server" type="8a07ba80:GradleTreeStructureProvider$GradleModuleDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="main" type="8a07ba80:GradleTreeStructureProvider$GradleModuleDirectoryNode" />
+              <item name="java" type="462c0819:PsiDirectoryNode" />
+              <item name="server" type="462c0819:PsiDirectoryNode" />
+              <item name="controllers" type="462c0819:PsiDirectoryNode" />
             </path>
           </expand>
           <select />
@@ -445,7 +477,7 @@
       </list>
     </option>
   </component>
-  <component name="RunManager" selected="npm.serve">
+  <component name="RunManager" selected="Spring Boot.ServerApplication">
     <configuration name="ServerApplication" type="SpringBootApplicationConfigurationType" factoryName="Spring Boot">
       <module name="server.main" />
       <option name="SPRING_BOOT_MAIN_CLASS" value="com.example.server.ServerApplication" />
@@ -487,7 +519,7 @@
       <workItem from="1572032992885" duration="12503000" />
       <workItem from="1572379154833" duration="9914000" />
       <workItem from="1572693667679" duration="234000" />
-      <workItem from="1572822166175" duration="9144000" />
+      <workItem from="1572822166175" duration="19562000" />
     </task>
     <task id="LOCAL-00001" summary="Adding client directory">
       <created>1570841819278</created>
@@ -500,12 +532,12 @@
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="180546000" />
+    <option name="totallyTimeSpent" value="190964000" />
   </component>
   <component name="ToolWindowManager">
-    <frame x="-8" y="-8" width="1296" height="1416" extended-state="0" />
+    <frame x="-7" y="0" width="1294" height="1407" extended-state="0" />
     <layout>
-      <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.2564725" />
+      <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.25688818" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
       <window_info id="Designer" order="2" />
       <window_info id="Image Layers" order="3" />
@@ -516,14 +548,14 @@
       <window_info anchor="bottom" id="Database Console" order="0" sideWeight="0.49960256" weight="0.28414443" />
       <window_info anchor="bottom" id="Message" order="1" />
       <window_info anchor="bottom" id="Find" order="2" weight="0.32967034" />
-      <window_info active="true" anchor="bottom" id="Run" order="3" sideWeight="0.49918962" visible="true" weight="0.32969603" />
+      <window_info active="true" anchor="bottom" id="Run" order="3" sideWeight="0.49918962" visible="true" weight="0.32967034" />
       <window_info anchor="bottom" id="Debug" order="4" weight="0.39952904" />
       <window_info anchor="bottom" id="Cvs" order="5" weight="0.25" />
       <window_info anchor="bottom" id="Inspection" order="6" weight="0.4" />
       <window_info anchor="bottom" id="TODO" order="7" />
       <window_info anchor="bottom" id="Build" order="8" weight="0.32967034" />
       <window_info anchor="bottom" id="Spring" order="9" />
-      <window_info anchor="bottom" id="Terminal" order="10" sideWeight="0.493517" weight="0.32967034" />
+      <window_info anchor="bottom" id="Terminal" order="10" sideWeight="0.493517" weight="0.33124018" />
       <window_info anchor="bottom" id="Docker" order="11" show_stripe_button="false" />
       <window_info anchor="bottom" id="Event Log" order="12" sideWeight="0.50648296" side_tool="true" weight="0.32967034" />
       <window_info anchor="bottom" id="Messages" order="13" weight="0.32810047" />
@@ -732,13 +764,6 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/server/src/main/java/com/example/server/utils/JSONFunction.java" />
     <entry file="file://$PROJECT_DIR$/client/vue.config.js" />
-    <entry file="file://$PROJECT_DIR$/client/src/components/Navbar.vue">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="357">
-          <caret line="21" column="28" selection-start-line="21" selection-start-column="28" selection-end-line="21" selection-end-column="28" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/client/package-lock.json">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="238">
@@ -884,10 +909,34 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/client/src/components/Navbar.vue">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="510">
+          <caret line="30" column="41" lean-forward="true" selection-start-line="30" selection-start-column="41" selection-end-line="30" selection-end-column="41" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/client/src/App.vue">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="323">
+          <caret line="19" column="35" lean-forward="true" selection-start-line="19" selection-start-column="35" selection-end-line="19" selection-end-column="35" />
+          <folding>
+            <element signature="e#1970#2018#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/client/src/components/StatFilters.vue">
+      <provider selected="true" editor-type-id="text-editor">
+        <state>
+          <caret column="10" lean-forward="true" selection-start-column="10" selection-end-column="10" />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/server/src/main/java/com/example/server/controllers/StatsRestController.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="476">
-          <caret line="28" column="63" selection-start-line="28" selection-start-column="63" selection-end-line="28" selection-end-column="63" />
+        <state relative-caret-position="663">
+          <caret line="43" column="43" lean-forward="true" selection-start-line="43" selection-start-column="43" selection-end-line="43" selection-end-column="43" />
           <folding>
             <element signature="imports" expanded="true" />
             <element signature="e#994#995#0" expanded="true" />
@@ -896,30 +945,13 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/client/src/App.vue">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="51">
-          <caret line="3" column="29" selection-start-line="3" selection-start-column="16" selection-end-line="3" selection-end-column="29" />
-          <folding>
-            <element signature="e#1970#2018#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/client/src/components/StatsTable.vue">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="17">
-          <caret line="1" column="34" lean-forward="true" selection-start-line="1" selection-start-column="34" selection-end-line="1" selection-end-column="34" />
+        <state relative-caret-position="459">
+          <caret line="27" column="38" lean-forward="true" selection-start-line="27" selection-start-column="38" selection-end-line="27" selection-end-column="38" />
           <folding>
-            <element signature="n#style#0;n#b-table#0;n#b-col#0;n#b-row#2;n#b-container#0;n#template#0;n#!!top" expanded="true" />
+            <element signature="n#style#0;n#b-table#0;n#b-card#0;n#b-col#0;n#b-row#1;n#b-container#0;n#template#0;n#!!top" expanded="true" />
           </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/client/src/components/StatFilters.vue">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="85">
-          <caret line="5" column="44" selection-start-line="5" selection-start-column="44" selection-end-line="5" selection-end-column="44" />
         </state>
       </provider>
     </entry>
