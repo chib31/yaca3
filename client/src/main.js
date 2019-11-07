@@ -1,8 +1,4 @@
-import Vue from 'vue'
-import App from './App.vue'
 import BootstrapVue from 'bootstrap-vue';
-import 'bootstrap/dist/css/bootstrap.css';
-import 'bootstrap-vue/dist/bootstrap-vue.css';
 import { LayoutPlugin } from 'bootstrap-vue';
 import { BFormSelect } from 'bootstrap-vue'
 import { BContainer } from 'bootstrap-vue'
@@ -17,9 +13,13 @@ import { BInputGroup } from 'bootstrap-vue'
 import { BButton } from 'bootstrap-vue'
 import { BInputGroupAppend } from 'bootstrap-vue'
 import { BFormInput } from 'bootstrap-vue'
+import Vue from 'vue'
+import App from './App.vue'
+import VueNouislider from 'vue-nouislider'
 
 Vue.use(BootstrapVue);
 Vue.use(LayoutPlugin);
+Vue.use(VueNouislider);
 
 Vue.component('b-container', BContainer);
 Vue.component('b-form-select', BFormSelect);

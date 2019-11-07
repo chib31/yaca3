@@ -1,6 +1,6 @@
 <template xmlns:v-slot="http://www.w3.org/1999/XSL/Transform">
   <div>
-    <b-container fluid class="border border-secondary rounded m-0 p-2">
+    <b-container fluid class="thinBorder rounded rounded m-0 p-2">
       <b-row class="justify-content-center">
         <b-col cols="auto">
           <b-form inline>
@@ -121,13 +121,13 @@
               result = result.filter(e =>
                   e[column['key']].toLowerCase().includes(column['filterValue'].toLowerCase()));
             }
-            const minFilterColumns = this.columns.filter(e => Object.prototype.hasOwnProperty.call(e, 'filterMin'));
+            const minFilterColumns = this.columns.filter(e => Object.prototype.hasOwnProperty.call(e, 'filterRange'));
             for(const column of minFilterColumns) {
-              result = result.filter(e => e[column['key']] >= column['filterMin']);
+              result = result.filter(e => e[column['key']] >= column['filterRange']['0']);
             }
-            const maxFilterColumns = this.columns.filter(e => Object.prototype.hasOwnProperty.call(e, 'filterMax'));
+            const maxFilterColumns = this.columns.filter(e => Object.prototype.hasOwnProperty.call(e, 'filterRange'));
             for(const column of maxFilterColumns) {
-              result = result.filter(e => e[column['key']] <= column['filterMax']);
+              result = result.filter(e => e[column['key']] <= column['filterRange']['1']);
             }
             return result;
           },

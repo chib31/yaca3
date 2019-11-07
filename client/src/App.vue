@@ -31,7 +31,7 @@
     import StatFilters from './components/StatFilters'
     import axios from 'axios'
     import Vue from 'vue'
-
+    
     export default {
         name: 'app',
         components: {
@@ -66,9 +66,6 @@
             currentTitle: 'Batting Stats',
           };
         },
-        // mounted() {
-        //     this.fetchReport('batting');
-        // },
         methods: {
           fetchReport(navOption) {
             this.tableLoading = true;
@@ -100,10 +97,8 @@
               const key = column['key'];
               const min = this.getMinValue(key);
               const max = this.getMaxValue(key);
-              Vue.set(column, 'minValue', min);
-              Vue.set(column, 'maxValue', max);
-              Vue.set(column, 'filterMin', min);
-              Vue.set(column, 'filterMax', max);
+              Vue.set(column, 'filterConfig', {step: 1, range: {'min': min, 'max': max}});
+              Vue.set(column, 'filterRange', [min, max]);
             }
           },
           getMinValue(columnKey) {
@@ -125,6 +120,7 @@
 
 <style lang="scss">
   @import 'assets/custom-vars.scss';
-  @import '~bootstrap-vue/src/index.scss';
-  @import '~bootstrap/scss/bootstrap.scss';
+
+  @import "../node_modules/bootstrap/scss/bootstrap";
+  @import '../node_modules/bootstrap-vue/src/index.scss';
 </style>

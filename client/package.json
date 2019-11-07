@@ -12,7 +12,9 @@
     "bootstrap": "^4.3.1",
     "bootstrap-vue": "^2.0.4",
     "core-js": "^2.6.5",
-    "vue": "^2.6.10"
+    "nouislider": "^14.0.3",
+    "vue": "^2.6.10",
+    "vue-nouislider": "^1.0.1"
   },
   "devDependencies": {
     "@vue/cli-plugin-babel": "^3.12.0",

@@ -1,5 +1,5 @@
 <template>
-  <div class="border border-secondary rounded p-1 text-left">
+  <div class="thinBorder rounded p-1 text-left">
     <h3>Filters</h3>
     <b-form-group
         v-for="column in filterableColumns"
@@ -17,28 +17,35 @@
         </b-input-group-append>
       </b-input-group>
       <div v-if="column['filterType'] === 'NUMBER'" class="m-0">
-        <b-input-group :prepend="`Min: ${column['filterMin']}`" size="sm">
-          <b-form-input
-              v-model.number="column['filterMin']"
-              type="range"
-              :min="column['minValue']"
-              :max="column['maxValue']"/>
-        </b-input-group>
-        <b-input-group :prepend="`Max: ${column['filterMax']}`" size="sm">
-          <b-form-input
-              v-model.number="column['filterMax']"
-              type="range"
-              :min="column['minValue']"
-              :max="column['maxValue']"/>
-        </b-input-group>
+        <b-container>
+          <b-row>
+            <b-col cols="2">
+              <span class="text-right">{{ Math.round(column['filterRange']['0']) }}</span>
+            </b-col>
+            <b-col>
+              <nouislider
+                  :config="column['filterConfig']"
+                  :values="column['filterRange']"
+                  @update="column['filterRange']"/>
+            </b-col>
+            <b-col cols="2">
+              <span class="text-left">{{ Math.round(column['filterRange']['1']) }}</span>
+            </b-col>
+          </b-row>
+        </b-container>
       </div>
     </b-form-group>
   </div>
 </template>
 
 <script>
+  import Nouislider from 'vue-nouislider/src/components/noUiSlider';
+  
   export default {
     name: "StatFilters",
+    components: {
+      Nouislider,
+    },
     props: {
       filterableColumns: {
         type: Array,
