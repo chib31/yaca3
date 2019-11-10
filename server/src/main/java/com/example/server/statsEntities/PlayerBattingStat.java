@@ -2,68 +2,63 @@ package com.example.server.statsEntities;
 
 import com.example.server.annotations.DisplayName;
 import com.example.server.annotations.Filter;
-import com.example.server.annotations.Hidden;
+import com.example.server.annotations.Display;
 import com.example.server.annotations.Sortable;
 import com.example.server.enumerations.FilterType;
 import lombok.Data;
 
 import java.sql.Date;
 
+import static com.example.server.enumerations.DisplayType.*;
+
 @Data
 public class PlayerBattingStat {
 
-  @Hidden
+  @Display(ALWAYS_HIDE)
   private Integer id;
 
-  // Filter - multi select dropdown
+  @Display(ALWAYS_SHOW)
   @Filter(FilterType.TEXT)
   @Sortable
   private String playerName;
 
   @Filter(FilterType.NUMBER)
-  @Sortable
+  @Sortable("Asc-2")
   private Integer deliveries;
 
-  // Filter min / max
-  @Sortable
+  @Sortable("Desc-1")
   private Integer runs;
 
-  // Filter min / max
   @Sortable
   private Integer fours;
 
-  // Filter min / max
   @Sortable
   private Integer sixes;
 
-  // Filter - multi select dropdown
   @Filter(FilterType.TEXT)
-  @Sortable
   @DisplayName("Wicket")
   private String wicketType;
 
-  // Filter min / max
   @Sortable
   @DisplayName("S/R")
   private Double strikeRate;
 
-  // Filter min / max
   @Sortable
   @DisplayName("% of Total")
+  @Display(OPTIONAL_HIDE)
   private Double percentOfTotal;
 
-  // Filter - multi select dropdown
   @Sortable
+  @Display(OPTIONAL_HIDE)
   private Integer position;
 
-  // Filter - multi select dropdown for year
-  @Hidden
+  @Display(ALWAYS_HIDE)
   private Date date;
 
-  // Filter - multi select dropdown
-  @Hidden
+  @Display(ALWAYS_HIDE)
   private String opposition;
 
   @Sortable
+  @Display(OPTIONAL_HIDE)
   private String fixture;
 }

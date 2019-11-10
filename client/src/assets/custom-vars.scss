@@ -5,6 +5,7 @@ $primary: hotpink;
 $secondary: $gray-500;
 $dark: $gray-800;
 $light: $gray-100;
+$info: hotpink;
 
 // Pagination
 $pagination-color: $dark;
@@ -19,4 +20,21 @@ $pagination-disabled-bg: $gray-200;
   //margin-bottom: 1rem;
   //border: 0;
   border: 1px solid rgba(0, 0, 0, 0.1);
+}
+
+.showOnHover {
+  visibility: hidden;
+}
+
+.showChildOnHover:hover .showOnHover{
+  visibility: visible;
+}
+
+.headerLink {
+  color: $dark;
+  background-color: white;
+  font-weight: bold;
+  margin: 0 0 0 0;
+  padding: 0 0 0 0;
+  border: none;
 }

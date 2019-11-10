@@ -1,19 +1,27 @@
 <template>
   <div id="app">
     <navbar :teamName="teamName" :navOptions="navOptions" v-on:navRequest="fetchReport"/>
-    <h1 class="m-3 text-left">
-      <span class="mr-2">{{ this.currentTitle }}</span>
-      <b-button :pressed.sync="showFilters" style="display: inline">Show Filters</b-button>
-    </h1>
+    <b-container class="mx-0 mt-4">
+      <b-row>
+        <b-col cols="auto">
+          <h1>
+            <span>{{ this.currentTitle }}</span>
+            <b-button :pressed.sync="showFilters" variant="outline-dark" class="ml-3 mb-2">
+              <font-awesome-icon :icon="['fas', 'filter']"/>
+            </b-button>
+          </h1>
+        </b-col>
+      </b-row>
+    </b-container>
     <hr class="my-2"/>
     <b-container fluid>
       <b-row>
-        <b-col cols="3" v-if="showFilters" class="pr-1">
+        <b-col cols="3" v-if="showFilters" class="pr-1 pl-2">
           <stat-filters
               :filterableColumns="filterableColumns"
               :tableData="tableData"/>
         </b-col>
-        <b-col style="overflow-x: auto" class="pl-1">
+        <b-col style="overflow-x: auto" class="pl-1 pr-2">
           <stats-table
               v-if="tableData.length > 0"
               :columns="columns"
@@ -55,13 +63,16 @@
             showFilters: false,
             teamName: 'Plastics XI',
             navOptions: [
-              {'key': 'results', 'display': 'Results', 'title': 'Results'},
-              {'key': 'players', 'display': 'Players', 'title': 'Players'},
-              {'key': 'stats', 'display': 'Stats', 'subOptions': [
-                {'key': 'batting', 'display': 'Batting', 'title': 'Batting Stats'},
-                {'key': 'bowling', 'display': 'Bowling', 'title': 'Bowling Stats'},
-                {'key': 'fielding', 'display': 'Fielding', 'title': 'Fielding Stats'}
-              ]}
+              {'key': 'results', 'display': 'Results', 'title': 'Results',
+                'icon': {'style': 'far', 'name': 'calendar-check'}},
+              {'key': 'players', 'display': 'Players', 'title': 'Players',
+                'icon': {'style': 'fas', 'name': 'users'}},
+              {'key': 'stats', 'display': 'Stats',
+                'icon': {'style': 'far', 'name': 'chart-bar'},
+                'subOptions': [
+                    {'key': 'batting', 'display': 'Batting', 'title': 'Batting Stats'},
+                    {'key': 'bowling', 'display': 'Bowling', 'title': 'Bowling Stats'},
+                    {'key': 'fielding', 'display': 'Fielding', 'title': 'Fielding Stats'}]}
             ],
             currentTitle: 'Batting Stats',
           };

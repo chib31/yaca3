@@ -1,25 +1,27 @@
 package com.example.server.statsEntities;
 
 import com.example.server.annotations.DisplayName;
-import com.example.server.annotations.Hidden;
+import com.example.server.annotations.Display;
 import com.example.server.annotations.Sortable;
 import lombok.Data;
 
 import java.sql.Date;
 
+import static com.example.server.enumerations.DisplayType.ALWAYS_HIDE;
+
 @Data
 public class PlayerBowlingStat {
 
-  @Hidden
+  @Display(ALWAYS_HIDE)
   private Integer id;
   
   @Sortable
   private String playerName;
 
-  @Hidden
+  @Display(ALWAYS_HIDE)
   private Integer bowlerNumber;
 
-  @Hidden
+  @Display(ALWAYS_HIDE)
   private Integer deliveries;
 
   @Sortable
@@ -50,10 +52,10 @@ public class PlayerBowlingStat {
   @Sortable
   private Double economy;
 
-  @Hidden
+  @Display(ALWAYS_HIDE)
   private Date date;
 
-  @Hidden
+  @Display(ALWAYS_HIDE)
   private String opposition;
 
   @Sortable

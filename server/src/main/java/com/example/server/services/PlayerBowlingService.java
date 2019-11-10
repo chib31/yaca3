@@ -1,7 +1,7 @@
 package com.example.server.services;
 
 import com.example.server.entities.PlayerBowlingDetail;
-import com.example.server.enumerations.Index;
+import com.example.server.enumerations.IndexColumnType;
 import com.example.server.repositories.PlayerBowlingDetailsRepository;
 import com.example.server.statsEntities.PlayerBowlingStat;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -29,7 +29,7 @@ public class PlayerBowlingService {
   }
 
   public String constructPlayerBowlingColumnsJson() {
-    return constructColumnsJson(PlayerBowlingStat.class, Index.NUMBERED);
+    return ReportCreator.constructColumnsJson(PlayerBowlingStat.class, IndexColumnType.NUMBERED);
   }
 
   private PlayerBowlingStat convertToPlayerBowlingStats(PlayerBowlingDetail playerBowlingDetail) {

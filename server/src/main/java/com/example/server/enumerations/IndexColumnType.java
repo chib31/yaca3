@@ -1,6 +1,6 @@
 package com.example.server.enumerations;
 
-public enum Index {
+public enum IndexColumnType {
   NONE,
   NUMBERED
 }

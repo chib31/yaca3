@@ -1,20 +1,22 @@
 <template>
   <div class="thinBorder rounded p-1 text-left">
-    <h3>Filters</h3>
+    <h4>Filters</h4>
     <b-form-group
         v-for="column in filterableColumns"
         :key="column.id"
         :id="column.id"
-        :label="`${column.label}:`"
         class="mt-2" border-primary>
+      <template slot="label">
+        {{ column.label }}
+        <b-button @click="clearFilter(column)" size="sm" variant="light" class="p-0" pill>
+          <font-awesome-icon :icon="['far', 'times-circle']"/>
+        </b-button>
+      </template>
       <b-input-group v-if="column['filterType'] === 'TEXT'">
         <b-form-select
             v-model="column['filterValue']"
             :options="Array.from(new Set(tableData.map(e => e[column.key])))"
             size="sm"/>
-        <b-input-group-append>
-          <b-button @click="column['filterValue'] = ''" size="sm">Clear</b-button>
-        </b-input-group-append>
       </b-input-group>
       <div v-if="column['filterType'] === 'NUMBER'" class="m-0">
         <b-container>
@@ -24,9 +26,10 @@
             </b-col>
             <b-col>
               <nouislider
+                  :key="column['filterRange'][0]"
                   :config="column['filterConfig']"
                   :values="column['filterRange']"
-                  @update="column['filterRange']"/>
+                  class="mt-1"/>
             </b-col>
             <b-col cols="2">
               <span class="text-left">{{ Math.round(column['filterRange']['1']) }}</span>
@@ -40,6 +43,7 @@
 
 <script>
   import Nouislider from 'vue-nouislider/src/components/noUiSlider';
+  import Vue from 'vue'
   
   export default {
     name: "StatFilters",
@@ -56,5 +60,17 @@
         required: true,
       }
     },
+    methods: {
+      clearFilter(column) {
+        if (Object.prototype.hasOwnProperty.call(column, 'filterValue')) {
+          column['filterValue'] = '';
+        }
+        if (Object.prototype.hasOwnProperty.call(column, 'filterRange')) {
+          const minReset = column['filterRange'] = column['filterConfig']['range']['min'];
+          const maxReset = column['filterRange'] = column['filterConfig']['range']['max'];
+          Vue.set(column, 'filterRange', [minReset, maxReset]);
+        }
+      },
+    }
   }
 </script>
