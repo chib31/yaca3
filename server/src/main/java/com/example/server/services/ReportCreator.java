@@ -44,6 +44,9 @@ class ReportCreator {
         StringUtils.capitalize(StringUtils.join(StringUtils.splitByCharacterTypeCamelCase(name), StringUtils.SPACE)) :
         displayName);
     jsonObjectBuilder.add("displayType", displayType.toString());
+    // Flag to indicate default display settings so that defaults can be restored
+    jsonObjectBuilder.add("displayByDefault",
+        displayType == DisplayType.OPTIONAL_SHOW || displayType == DisplayType.ALWAYS_SHOW);
     if (filterType != null) {
       jsonObjectBuilder.add("filterType", filterType.toString());
     }
