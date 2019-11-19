@@ -6,6 +6,7 @@ $secondary: $gray-500;
 $dark: $gray-800;
 $light: $gray-100;
 $info: hotpink;
+$border: rgba(0, 0, 0, 0.1);
 
 // Pagination
 $pagination-color: $dark;
@@ -16,17 +17,22 @@ $pagination-active-border-color: $secondary;
 $pagination-disabled-bg: $gray-200;
 
 .thinBorder {
-  //margin-top: 1rem;
-  //margin-bottom: 1rem;
-  //border: 0;
-  border: 1px solid rgba(0, 0, 0, 0.1);
+  border: 1px solid $border;
 }
 
 .showOnHover {
-  visibility: hidden;
+  display: none;
 }
 
 .showChildOnHover:hover .showOnHover{
+  display: inline-block;
+}
+
+.visibleOnHover {
+  visibility: hidden;
+}
+
+.visibleChildOnHover:hover .visibleOnHover{
   visibility: visible;
 }
 
@@ -37,4 +43,19 @@ $pagination-disabled-bg: $gray-200;
   margin: 0 0 0 0;
   padding: 0 0 0 0;
   border: none;
+}
+
+.dragBox {
+  border: 2px solid $border;
+  border-radius: 0.5rem;
+  padding: 0 0 0 0.5rem;
+  margin: 0 0 0 0.25rem;
+  cursor: pointer;
+  display: inline-block;
+}
+
+.circleButton {
+  display: inline-block;
+  border: 2px solid $border;
+  border-radius: 10rem;
 }

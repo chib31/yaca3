@@ -4,6 +4,5 @@ import java.lang.annotation.Retention;
 import java.lang.annotation.RetentionPolicy;
 
 @Retention(RetentionPolicy.RUNTIME)
-public @interface Sortable {
-  int value() default -1; // Initial sort priority
+public @interface DefaultSortAsc { // If set this column will default to Asc when sorted
 }

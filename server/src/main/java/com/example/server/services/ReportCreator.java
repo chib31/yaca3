@@ -1,9 +1,6 @@
 package com.example.server.services;
 
-import com.example.server.annotations.Display;
-import com.example.server.annotations.DisplayName;
-import com.example.server.annotations.Filter;
-import com.example.server.annotations.Sortable;
+import com.example.server.annotations.*;
 import com.example.server.enumerations.DisplayType;
 import com.example.server.enumerations.FilterType;
 import com.example.server.enumerations.IndexColumnType;
@@ -20,7 +17,7 @@ class ReportCreator {
 
     JsonArrayBuilder arrayBuilder = Json.createArrayBuilder();
     if (indexColumnType == IndexColumnType.NUMBERED) {
-      arrayBuilder.add(createStatColumn("index", DisplayType.ALWAYS_SHOW, "#", null, false, null));
+      arrayBuilder.add(createStatColumn("index", DisplayType.ALWAYS_SHOW, "#", null, false, null, null));
     }
     Field[] fields = statClass.getDeclaredFields();
     for (Field field : fields) {
@@ -30,15 +27,17 @@ class ReportCreator {
           field.getAnnotation(DisplayName.class) == null ? null : field.getAnnotation(DisplayName.class).value(),
           field.getAnnotation(Filter.class) == null ? null : field.getAnnotation(Filter.class).value(),
           field.isAnnotationPresent(Sortable.class),
-          field.getAnnotation(Sortable.class) == null || field.getAnnotation(Sortable.class).value().length() < 1 ?
-              null : field.getAnnotation(Sortable.class).value()));
+          field.getAnnotation(Sortable.class) == null || field.getAnnotation(Sortable.class).value() < 0 ?
+              -1 : field.getAnnotation(Sortable.class).value(),
+          field.getAnnotation(DefaultSortAsc.class) == null ? "Desc" : "Asc"));
     }
     return arrayBuilder.build().toString();
   }
 
   private static JsonObjectBuilder createStatColumn(String name, DisplayType displayType, @Nullable String displayName,
                                                     @Nullable FilterType filterType, boolean sortable,
-                                                    String defaultSort) {
+                                                    @Nullable Integer initialSortPriority,
+                                                    @Nullable String defaultSortDir) {
     JsonObjectBuilder jsonObjectBuilder = Json.createObjectBuilder().add("key", name);
     jsonObjectBuilder.add("label", displayName == null ?
         StringUtils.capitalize(StringUtils.join(StringUtils.splitByCharacterTypeCamelCase(name), StringUtils.SPACE)) :
@@ -52,11 +51,8 @@ class ReportCreator {
     }
     if (sortable) {
       jsonObjectBuilder.add("sortColumn", true);
-      if (defaultSort != null) {
-        String[] arr = defaultSort.split("-");
-        jsonObjectBuilder.add("sortDirection", arr[0]);
-        jsonObjectBuilder.add("sortPriority", Integer.valueOf(arr[1]));
-      }
+      jsonObjectBuilder.add("initialSortPriority", initialSortPriority == null ? -1 : initialSortPriority);
+      jsonObjectBuilder.add("defaultSortDir", defaultSortDir);
     }
     return jsonObjectBuilder;
   }

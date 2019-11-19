@@ -34,6 +34,11 @@ import { faUsers } from '@fortawesome/free-solid-svg-icons';
 import { faFilter } from '@fortawesome/free-solid-svg-icons';
 import { faArrowUp } from '@fortawesome/free-solid-svg-icons';
 import { faArrowDown } from '@fortawesome/free-solid-svg-icons';
+import { faPlus } from '@fortawesome/free-solid-svg-icons';
+import { faMinus } from '@fortawesome/free-solid-svg-icons';
+import { faTimes } from '@fortawesome/free-solid-svg-icons';
+import { faCaretUp } from '@fortawesome/free-solid-svg-icons';
+import { faCaretDown } from '@fortawesome/free-solid-svg-icons';
 import { faChartBar } from '@fortawesome/free-regular-svg-icons';
 import { faTimesCircle } from '@fortawesome/free-regular-svg-icons';
 
@@ -43,9 +48,14 @@ library.add(faCalendarCheck);
 library.add(faUsers);
 library.add(faChartBar);
 library.add(faTimesCircle);
+library.add(faTimes);
 library.add(faFilter);
 library.add(faArrowUp);
 library.add(faArrowDown);
+library.add(faPlus);
+library.add(faMinus);
+library.add(faCaretUp);
+library.add(faCaretDown);
 
 Vue.component('font-awesome-icon', FontAwesomeIcon);
 

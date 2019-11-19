@@ -32,12 +32,30 @@
             striped hover small sort-icon-left no-local-sorting no-sorting
             class="my-0 text-left">
           <template v-slot:head()="displayedColumns">
-              <span class="showChildOnHover">
-                <button
-                    class="headerLink"
-                    :disabled="displayedColumns.field['sortColumn'] !== true">
-                  {{ displayedColumns.field.label }}
-                </button>
+            <span class="showChildOnHover" style="margin-left: -0.4rem;">
+              <b-button
+                  v-if="sortColumns.some(e => e.key === displayedColumns.field.key)"
+                  variant="light"
+                  class="py-0 px-1"
+                  style="background-color: white;">
+                <font-awesome-icon
+                    v-if="sortColumns.some(e => e.key === displayedColumns.field.key)"
+                    :icon="['fas',
+                    sortColumns.find(e => e.key === displayedColumns.field.key)['sortDirection'] === 'Asc' ?
+                        'caret-up' : 'caret-down']"/>
+              </b-button>
+              <b-button
+                  variant="light"
+                  class="py-0 px-1"
+                  style="font-weight: bold; background-color: white;"
+                  :disabled="displayedColumns.field['sortColumn'] !== true">
+                {{ displayedColumns.field.label }}
+                <span
+                    style="font-weight: normal"
+                    v-if="sortColumns.some(e => e.key === displayedColumns.field.key) && sortColumns.length > 1">
+                  [{{ sortColumns.findIndex(e => e.key === displayedColumns.field.key) + 1 }}]
+                </span>
+              </b-button>
 <!--                <b-button-->
 <!--                    v-if="displayedColumns.field['sortPriority'] > 0 && sortCols.length > 1"-->
 <!--                    @click="sortPriorityClick(displayedColumns.field)"-->
@@ -66,7 +84,7 @@
 <!--                    size="sm" variant="light" class="p-0 showOnHover ml-1" pill>-->
 <!--                  <font-awesome-icon :icon="['far', 'times-circle']"/>-->
 <!--                </b-button>-->
-              </span>
+          </span>
           </template>
           <template v-slot:table-busy>
             <div class="text-center text-danger my-2">
@@ -107,6 +125,7 @@
       filteredData: {type: Array},
       displayedColumns: {type: Array},
       tableLoading: {type: Boolean, default: false},
+      sortColumns: {type: Array},
     },
     data() {
       return {

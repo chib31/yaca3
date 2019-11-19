@@ -1,9 +1,6 @@
 package com.example.server.statsEntities;
 
-import com.example.server.annotations.DisplayName;
-import com.example.server.annotations.Filter;
-import com.example.server.annotations.Display;
-import com.example.server.annotations.Sortable;
+import com.example.server.annotations.*;
 import com.example.server.enumerations.FilterType;
 import lombok.Data;
 
@@ -20,13 +17,14 @@ public class PlayerBattingStat {
   @Display(ALWAYS_SHOW)
   @Filter(FilterType.TEXT)
   @Sortable
+  @DefaultSortAsc
   private String playerName;
 
   @Filter(FilterType.NUMBER)
-  @Sortable("Asc-2")
+  @Sortable
   private Integer deliveries;
 
-  @Sortable("Desc-1")
+  @Sortable(1)
   private Integer runs;
 
   @Sortable
@@ -39,7 +37,7 @@ public class PlayerBattingStat {
   @DisplayName("Wicket")
   private String wicketType;
 
-  @Sortable
+  @Sortable(2)
   @DisplayName("S/R")
   private Double strikeRate;
 
@@ -50,6 +48,7 @@ public class PlayerBattingStat {
 
   @Sortable
   @Display(OPTIONAL_HIDE)
+  @DefaultSortAsc
   private Integer position;
 
   @Display(ALWAYS_HIDE)

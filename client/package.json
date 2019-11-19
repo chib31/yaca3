@@ -20,7 +20,8 @@
     "vue": "^2.6.10",
     "vue-fontawesome": "0.0.2",
     "vue-nouislider": "^1.0.1",
-    "vue-template-compiler": "^2.6.10"
+    "vue-template-compiler": "^2.6.10",
+    "vuedraggable": "^2.23.2"
   },
   "devDependencies": {
     "@vue/cli-plugin-babel": "^3.12.0",
