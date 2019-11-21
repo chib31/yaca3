@@ -1,4 +1,4 @@
-<template xmlns:v-slot="http://www.w3.org/1999/XSL/Transform">
+<template>
   <div>
     <b-container fluid id="container-stats-page">
       <b-row class="my-2">
@@ -7,58 +7,13 @@
             <span class="align-text-bottom">{{ this.statType.title }}</span>
           </h1>
         </b-col>
-        <b-col cols="auto" class="mt-auto">
-          <span>Sorting by:</span>
-          <draggable
-              v-model="sortColumns"
-              group="this_is_group"
-              @start="drag=true"
-              @end="drag=false"
-              style="display: inline-block">
-            <span
-                v-for="(col, index) in sortColumns"
-                :key="col.key"
-                class="dragBox pl-2 visibleChildOnHover">
-              <span> {{ index + 1 }}-{{ col.label}} </span>
-              <b-button
-                  pill
-                  @click="sortDirectionClick(index)"
-                  variant="light"
-                  style="display: inline-block"
-                  class="px-1 py-0"
-                  size="sm">
-                <font-awesome-icon :icon="['fas', col.sortDirection === 'Asc' ? 'caret-up' : 'caret-down']"/>
-              </b-button>
-              <span>
-                <b-button
-                    pill
-                    @click="clearSortClick(index)"
-                    variant="light"
-                    class="mr-1 p-0 visibleOnHover"
-                    size="sm">
-                  <font-awesome-icon :icon="['fas', 'times']"/>
-                </b-button>
-              </span>
-            </span>
-          </draggable>
-          <b-dropdown
-              no-caret
-              variant="light"
-              id="button-add-sort"
-              size="sm"
-              class="ml-1"
-              :disabled="sortColumns.length >= 3">
-            <template v-slot:button-content disabled="true">
-              <font-awesome-icon :icon="['fas', 'plus']"/>
-            </template>
-            <b-dropdown-item
-                v-for="col in sortableColumns"
-                :key="col.key"
-                :disabled="sortColumns.some(e => e.key === col.key)"
-                @click="addSortColumn(col)">
-              {{ col.label }}
-            </b-dropdown-item>
-          </b-dropdown>
+        <b-col cols="auto" class="mt-auto" v-if="sortColumns.length > 0">
+          <h5 class="mr-2 my-0" style="display: inline-block">Sorting by:</h5>
+          <span v-for="(col, index) in sortColumns" :key="col.key">
+            <span style="font-weight: bold">{{ col.label}} </span>
+            <span>({{col.sortDirection}})</span>
+            <span v-if="index < sortColumns.length - 1">, </span>
+          </span>
         </b-col>
         <b-col cols="auto" class="ml-auto mt-auto">
           <b-dropdown text="Choose Columns" variant="outline-dark" size="sm" class="mr-2">
@@ -71,13 +26,6 @@
                 </b-form-checkbox-group>
               </b-form-group>
             </b-dropdown-form>
-          </b-dropdown>
-          <b-dropdown id="sortByDropdown" text="Sort By" variant="outline-dark" size="sm" class="mr-2">
-            <b-dropdown-item v-for="column in sortableColumns" :key="column['key']">
-              {{ column['label'] }}
-            </b-dropdown-item>
-            <b-dropdown-divider/>
-            <b-dropdown-item>Reset</b-dropdown-item>
           </b-dropdown>
           <b-button :pressed.sync="showFilters" variant="outline-dark" size="sm">
             <font-awesome-icon :icon="['fas', 'filter']"/>
@@ -93,7 +41,11 @@
               :filteredData="filteredData"
               :displayedColumns="activeColumns"
               :tableLoading="tableLoading"
-              :sortColumns="sortColumns"/>
+              :sortColumns="sortColumns"
+              v-on:clickHeader="clickHeader"
+              v-on:clickExistingPriority="clickExistingPriority"
+              v-on:clickNextPriority="clickNextPriority"
+              v-on:clearSortPriority="clearSortPriority"/>
         </b-col>
         <b-col cols="3" v-if="showFilters" class="pl-1 pr-2">
           <stat-filters
@@ -110,13 +62,11 @@
   import axios from 'axios'
   import StatsTable from "./StatsTable";
   import StatFilters from "./StatFilters";
-  import draggable from 'vuedraggable';
   
   export default {
     components: {
       StatsTable,
       StatFilters,
-      draggable
     },
     props: {
       statType: {type: Object},
@@ -150,9 +100,6 @@
       optionalColumns() {
         return this.columns.filter(e => e['displayType'] === 'OPTIONAL_SHOW' || e['displayType'] === 'OPTIONAL_HIDE');
       },
-      sortableColumns() {
-        return this.columns.filter(e => e['sortColumn'] === true);
-      },
       filteredData() {
         let result = this.tableData;
         const textFilterColumns = this.columns.filter(e => Object.prototype.hasOwnProperty.call(e, 'filterValue'));
@@ -171,11 +118,6 @@
         result.sort((a, b) => this.sortData(a, b));
         return result;
       },
-      // sortCols() {
-      //   let result = this.columns.filter(e => e['sortPriority'] > 0);
-      //   result.sort((a, b) => a['sortPriority'] > b['sortPriority'] ? 1 : -1);
-      //   return result;
-      // },
       filterableColumns() {
         return this.columns.filter(e => e['filterType'] != null);
       },
@@ -216,13 +158,13 @@
         this.sortColumns = [];
         const col1 = this.columns.find(e => e['initialSortPriority'] === 1);
         if (col1 != null) {
-          this.addSortColumn(col1);
+          this.addNextSortColumn(col1);
           const col2 = this.columns.find(e => e['initialSortPriority'] === 2);
           if (col2 != null) {
-            this.addSortColumn(col2);
+            this.addNextSortColumn(col2);
             const col3 = this.columns.find(e => e['initialSortPriority'] === 3);
             if (col3 != null) {
-              this.addSortColumn(col3);
+              this.addNextSortColumn(col3);
             }
           }
         }
@@ -272,44 +214,23 @@
           return result;
         }
       },
-      addSortColumn(col) {
-        const sortColCount = this.sortColumns.length;
-        if(sortColCount >= 3) {
+      addNextSortColumn(col) {
+        let position = this.sortColumns.length;
+        while(position >= 3) {
           this.sortColumns.pop();
+          position = this.sortColumns.length;
         }
-        this.sortColumns.push(col);
-        Vue.set(this.sortColumns[this.sortColumns.length - 1], 'sortDirection', col['defaultSortDir']);
+        this.addSortColumnWithPosition(col, position);
+      },
+      addSortColumnWithPosition(col, position) {
+        this.sortColumns.splice(position, 0, col);
+        Vue.set(this.sortColumns[position], 'sortDirection', col['defaultSortDir']);
       },
       // Compares 2 rows by a specific column value
       compareByCol(col, rowA, rowB) {
         const dModifier = col['sortDirection'] === 'Asc' ? 1 : -1;
         return rowA[col.key] > rowB[col.key] ? dModifier : (rowA[col.key] === rowB[col.key] ? 0 : -dModifier);
       },
-      // togglePriorityClick(col) {
-      //   let thisCol = this.columns.find(e => e['key'] === col['key']);
-      //   const pInitial = Object.prototype.hasOwnProperty.call(thisCol, 'sortPriority') ? thisCol['sortPriority'] : 0;
-      //   if (pInitial === 0) {
-      //     // Column does not yet have a priority - if there is an available slot take it, otherwise replace p3
-      //     const nextPriority = this.sortCols.length + 1;
-      //     if (nextPriority > 3) {
-      //       this.columns.filter(e => e['sortPriority'] > 2).map(e => delete e['sortPriority']);
-      //       Vue.set(thisCol, 'sortPriority', 3);
-      //     } else {
-      //       Vue.set(thisCol, 'sortPriority', nextPriority);
-      //     }
-      //     Vue.set(thisCol, 'sortDirection', 'Asc');
-      //   } else if (pInitial === 1) {
-      //     // Column is already p1: delete its priority and move everything else down 1
-      //     this.columns.filter(e => e['sortPriority'] > 0).map(e => e['sortPriority'] = e['sortPriority'] - 1);
-      //     delete thisCol['sortPriority'];
-      //   } else {
-      //     // Column is already p2 / p3: swap it with the next highest slot
-      //     const pTarget = pInitial - 1;
-      //     let swapCol = this.columns.find(e => e['sortPriority'] === pTarget);
-      //     Vue.set(swapCol, 'sortPriority', pInitial);
-      //     Vue.set(thisCol, 'sortPriority', pTarget);
-      //   }
-      // },
       sortDirectionClick(index) {
         if (this.sortColumns[index]['sortDirection'] === 'Asc') {
           Vue.set(this.sortColumns[index], 'sortDirection', 'Desc');
@@ -317,9 +238,41 @@
           Vue.set(this.sortColumns[index], 'sortDirection', 'Asc');
         }
       },
-      clearSortClick(index) {
+      clickHeader(key) {
+        if(this.sortColumns.map(e => e.key).includes(key)) {
+          this.sortDirectionToggle(key);
+        } else {
+          this.sortByOnly(key);
+        }
+      },
+      sortDirectionToggle(key) {
+        this.sortDirectionClick(this.sortColumns.findIndex(e => e.key === key));
+      },
+      clearSort(index) {
         this.sortColumns.splice(index, 1);
-      }
+      },
+      sortByOnly(key) {
+        this.sortColumns = [];
+        this.addNextSortColumn(this.columns.find(e => e.key === key));
+      },
+      clickExistingPriority(key) {
+        const col = this.sortColumns.find(e => e.key === key);
+        const currentPos = this.sortColumns.findIndex(e => e.key === key);
+        if(currentPos > 0) {
+          this.clearSort(currentPos);
+          this.addSortColumnWithPosition(col, currentPos - 1);
+        }
+        else{
+          this.clearSort(0);
+          this.addNextSortColumn(col);
+        }
+      },
+      clickNextPriority(key) {
+        this.addNextSortColumn(this.columns.find(e => e.key === key));
+      },
+      clearSortPriority(key) {
+        this.clearSort(this.sortColumns.findIndex(e => e.key === key));
+      },
     },
   };
 </script>
