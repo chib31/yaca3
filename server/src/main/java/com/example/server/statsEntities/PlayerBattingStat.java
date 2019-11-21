@@ -24,12 +24,15 @@ public class PlayerBattingStat {
   @Sortable
   private Integer deliveries;
 
+  @Filter(FilterType.NUMBER)
   @Sortable(1)
   private Integer runs;
 
+  @Filter(FilterType.NUMBER)
   @Sortable
   private Integer fours;
 
+  @Filter(FilterType.NUMBER)
   @Sortable
   private Integer sixes;
 
@@ -37,15 +40,18 @@ public class PlayerBattingStat {
   @DisplayName("Wicket")
   private String wicketType;
 
+  @Filter(FilterType.NUMBER)
   @Sortable(2)
   @DisplayName("S/R")
   private Double strikeRate;
 
+  @Filter(FilterType.NUMBER)
   @Sortable
   @DisplayName("% of Total")
   @Display(OPTIONAL_HIDE)
   private Double percentOfTotal;
 
+  @Filter(FilterType.NUMBER)
   @Sortable
   @Display(OPTIONAL_HIDE)
   @DefaultSortAsc
@@ -54,10 +60,10 @@ public class PlayerBattingStat {
   @Display(ALWAYS_HIDE)
   private Date date;
 
+  @Filter(FilterType.TEXT)
   @Display(ALWAYS_HIDE)
   private String opposition;
 
-  @Sortable
   @Display(OPTIONAL_HIDE)
   private String fixture;
 }

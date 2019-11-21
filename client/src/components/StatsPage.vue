@@ -7,7 +7,7 @@
             <span class="align-text-bottom">{{ this.statType.title }}</span>
           </h1>
         </b-col>
-        <b-col cols="auto" class="mt-auto" v-if="sortColumns.length > 0">
+        <b-col cols="auto" class="mt-auto text-dark" v-if="sortColumns.length > 0">
           <h5 class="mr-2 my-0" style="display: inline-block">Sorting by:</h5>
           <span v-for="(col, index) in sortColumns" :key="col.key">
             <span style="font-weight: bold">{{ col.label}} </span>

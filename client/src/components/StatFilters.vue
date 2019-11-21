@@ -7,8 +7,8 @@
         :id="column.id"
         class="mt-2" border-primary>
       <template slot="label">
-        {{ column.label }}
-        <b-button @click="clearFilter(column)" size="sm" variant="light" class="p-0" pill>
+        <h6 style="display: inline-block" class="mr-1"> {{ column.label }} </h6>
+        <b-button @click="clearFilter(column)" size="sm" variant="light" class="p-0 text-secondary" pill>
           <font-awesome-icon :icon="['far', 'times-circle']"/>
         </b-button>
       </template>
@@ -16,13 +16,14 @@
         <b-form-select
             v-model="column['filterValue']"
             :options="Array.from(new Set(tableData.map(e => e[column.key])))"
-            size="sm"/>
+            size="sm"
+            class="mx-2"/>
       </b-input-group>
       <div v-if="column['filterType'] === 'NUMBER'" class="m-0">
         <b-container>
           <b-row>
             <b-col cols="2">
-              <span class="text-right">{{ Math.round(column['filterRange']['0']) }}</span>
+              <span class="text-right text-muted">{{ Math.round(column['filterRange']['0']) }}</span>
             </b-col>
             <b-col>
               <nouislider
@@ -32,7 +33,7 @@
                   class="mt-1"/>
             </b-col>
             <b-col cols="2">
-              <span class="text-left">{{ Math.round(column['filterRange']['1']) }}</span>
+              <span class="text-left text-secondary">{{ Math.round(column['filterRange']['1']) }}</span>
             </b-col>
           </b-row>
         </b-container>
