@@ -26,9 +26,9 @@
           {'key': 'stats', 'display': 'Stats',
             'icon': {'style': 'far', 'name': 'chart-bar'},
             'subOptions': [
-                {'key': 'batting', 'display': 'Batting', 'title': 'Batting Stats'},
-                {'key': 'bowling', 'display': 'Bowling', 'title': 'Bowling Stats'},
-                {'key': 'fielding', 'display': 'Fielding', 'title': 'Fielding Stats'}]}
+                {'key': 'BATTING', 'display': 'Batting', 'title': 'Batting Stats'},
+                {'key': 'BOWLING', 'display': 'Bowling', 'title': 'Bowling Stats'},
+                {'key': 'FIELDING', 'display': 'Fielding', 'title': 'Fielding Stats'}]}
         ],
         statType: {type: Object},
       };

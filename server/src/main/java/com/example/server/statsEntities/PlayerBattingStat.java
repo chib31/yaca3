@@ -15,43 +15,43 @@ public class PlayerBattingStat {
   private Integer id;
 
   @Display(ALWAYS_SHOW)
-  @Filter(FilterType.TEXT)
+  @Filter(FilterType.TEXT_FILTER)
   @Sortable
-  @DefaultSortAsc
+  @DefaultSortAsc 
   private String playerName;
 
-  @Filter(FilterType.NUMBER)
+  @Filter(FilterType.NUMBER_FILTER)
   @Sortable
   private Integer deliveries;
 
-  @Filter(FilterType.NUMBER)
+  @Filter(FilterType.NUMBER_FILTER)
   @Sortable(1)
   private Integer runs;
 
-  @Filter(FilterType.NUMBER)
+  @Filter(FilterType.NUMBER_FILTER)
   @Sortable
   private Integer fours;
 
-  @Filter(FilterType.NUMBER)
+  @Filter(FilterType.NUMBER_FILTER)
   @Sortable
   private Integer sixes;
 
-  @Filter(FilterType.TEXT)
+  @Filter(FilterType.TEXT_FILTER)
   @DisplayName("Wicket")
   private String wicketType;
 
-  @Filter(FilterType.NUMBER)
+  @Filter(FilterType.NUMBER_FILTER)
   @Sortable(2)
   @DisplayName("S/R")
   private Double strikeRate;
 
-  @Filter(FilterType.NUMBER)
+  @Filter(FilterType.NUMBER_FILTER)
   @Sortable
   @DisplayName("% of Total")
   @Display(OPTIONAL_HIDE)
   private Double percentOfTotal;
 
-  @Filter(FilterType.NUMBER)
+  @Filter(FilterType.NUMBER_FILTER)
   @Sortable
   @Display(OPTIONAL_HIDE)
   @DefaultSortAsc
@@ -60,7 +60,7 @@ public class PlayerBattingStat {
   @Display(ALWAYS_HIDE)
   private Date date;
 
-  @Filter(FilterType.TEXT)
+  @Filter(FilterType.TEXT_FILTER)
   @Display(ALWAYS_HIDE)
   private String opposition;
 

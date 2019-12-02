@@ -15,7 +15,7 @@ public class PlayerBowlingStat {
   private Integer id;
   
   @Sortable
-  @Filter(FilterType.TEXT)
+  @Filter(FilterType.TEXT_FILTER)
   @Display(ALWAYS_SHOW)
   private String playerName;
 
@@ -23,53 +23,53 @@ public class PlayerBowlingStat {
   private Integer bowlerNumber;
 
   @Display(ALWAYS_HIDE)
-  @Filter(FilterType.NUMBER)
+  @Filter(FilterType.NUMBER_FILTER)
   private Integer deliveries;
 
   @Sortable
   private String overs;
 
   @Sortable
-  @Filter(FilterType.NUMBER)
+  @Filter(FilterType.NUMBER_FILTER)
   private Integer maidens;
 
   @Sortable
-  @Filter(FilterType.NUMBER)
+  @Filter(FilterType.NUMBER_FILTER)
   private Integer runs;
 
   @Sortable(1)
-  @Filter(FilterType.NUMBER)
+  @Filter(FilterType.NUMBER_FILTER)
   private Integer wickets;
 
   @Sortable
   @Display(OPTIONAL_HIDE)
-  @Filter(FilterType.NUMBER)
+  @Filter(FilterType.NUMBER_FILTER)
   private Integer wides;
 
   @Sortable
   @Display(OPTIONAL_HIDE)
-  @Filter(FilterType.NUMBER)
+  @Filter(FilterType.NUMBER_FILTER)
   private Integer noBalls;
 
   @Sortable
-  @Filter(FilterType.NUMBER)
+  @Filter(FilterType.NUMBER_FILTER)
   @DisplayName("S/R")
   private Double strikeRate;
 
   @Sortable
-  @Filter(FilterType.NUMBER)
+  @Filter(FilterType.NUMBER_FILTER)
   private Double average;
 
   @Sortable(2)
   @DefaultSortAsc
-  @Filter(FilterType.NUMBER)
+  @Filter(FilterType.NUMBER_FILTER)
   private Double economy;
 
   @Display(ALWAYS_HIDE)
   private Date date;
 
   @Display(ALWAYS_HIDE)
-  @Filter(FilterType.TEXT)
+  @Filter(FilterType.TEXT_FILTER)
   private String opposition;
 
   @Display(OPTIONAL_HIDE)

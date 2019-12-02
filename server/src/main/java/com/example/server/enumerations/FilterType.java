@@ -1,6 +1,7 @@
 package com.example.server.enumerations;
 
 public enum FilterType {
-  TEXT,
-  NUMBER
+  TEXT_FILTER,
+  NUMBER_FILTER,
+  NO_FILTER
 }

@@ -76,6 +76,7 @@
     },
     data() {
       return {
+        reportInfo: Object,
         columns: [],
         tableData: [],
         errors: [],
@@ -128,26 +129,33 @@
       }
     },
     methods: {
-      initialisePage(statKey) {
-        if(statKey != null) {
+      initialisePage(reportType, groupBy) {
+        if(reportType != null) {
+          let groupByString = '';
+          if(groupBy != null) {
+            groupByString = '&groupBy=' + groupBy.join(',');
+          }
           this.tableLoading = true;
-          axios.all([
-            axios.get('http://localhost:9090/api/' + statKey + 'Columns',
-                {auth: { username: 'user', password: 'password' }, timeout: 5000}),
-            axios.get('http://localhost:9090/api/' + statKey,
-                {auth: { username: 'user', password: 'password' }, timeout: 5000})
-          ]).catch(error => {
+          axios.get(
+            'http://localhost:9090/api/reports?reportType=' + reportType + groupByString,
+            {
+              auth: { username: 'user', password: 'password' },
+              timeout: 5000
+            }
+          ).catch(error => {
+            this.tableLoading = false;
             if (error.code === 'ECONNABORTED') {
-              this.tableLoading = false;
               return 'timeout';
             } else {
               throw error;
             }
-          }).then(responseArr => {
-            this.columns = responseArr[0].data;
+          }).then(response => {
+            const responseData = response.data;
+            this.reportInfo = responseData.reportInfo;
+            this.columns = responseData.columns;
             this.setInitialDisplayColumns();
             this.setInitialSortColumns();
-            this.tableData = responseArr[1].data;
+            this.tableData = responseData.tableData;
             this.getMinMaxValues();
             this.tableLoading = false;
           });

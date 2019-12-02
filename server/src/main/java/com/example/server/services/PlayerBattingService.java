@@ -7,6 +7,7 @@ import com.example.server.statsEntities.PlayerBattingStat;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import javax.persistence.EntityManager;
 import java.util.List;
 import java.util.stream.Collectors;
 
@@ -15,10 +16,14 @@ import static com.example.server.utils.Utils.*;
 @Service
 public class PlayerBattingService {
 
+  private final EntityManager em;
+
   private PlayerBattingDetailsRepository playerBattingDetailsRepository;
 
   @Autowired
-  public PlayerBattingService(PlayerBattingDetailsRepository playerBattingDetailsRepository) {
+  public PlayerBattingService(EntityManager em,
+                              PlayerBattingDetailsRepository playerBattingDetailsRepository) {
+    this.em = em;
     this.playerBattingDetailsRepository = playerBattingDetailsRepository;
   }
 

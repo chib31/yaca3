@@ -12,4 +12,6 @@ public interface PlayerBattingDetailsRepository extends JpaRepository<PlayerBatt
 
     List<PlayerBattingDetail> findAllByOrderByRunsDescDeliveriesAsc();
 
+
+
 }

@@ -1,14 +1,10 @@
 package com.example.server.controllers;
 
-import com.example.server.services.PlayerBattingService;
-import com.example.server.services.PlayerBowlingService;
-import com.example.server.statsEntities.PlayerBattingStat;
-import com.example.server.statsEntities.PlayerBowlingStat;
+import com.example.server.enumerations.Column;
+import com.example.server.enumerations.ReportType;
+import com.example.server.services.ReportService;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.CrossOrigin;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.ResponseBody;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
@@ -18,32 +14,11 @@ import java.util.List;
 public class StatsRestController {
 
   @Autowired
-  private PlayerBattingService playerBattingService;
+  private ReportService reportService;
 
-  @Autowired
-  private PlayerBowlingService playerBowlingService;
-
-  @RequestMapping(path = "/batting")
+  @RequestMapping(path = "/reports")
   public @ResponseBody
-  List<PlayerBattingStat> getPlayerBatting() {
-    return playerBattingService.fetchAllPlayerBattingDetails();
-  }
-
-  @RequestMapping(path = "/battingColumns")
-  public @ResponseBody
-  String getPlayerBattingColumns() {
-    return playerBattingService.constructPlayerBattingColumnsJson();
-  }
-
-  @RequestMapping(path = "/bowling")
-  public @ResponseBody
-  List<PlayerBowlingStat> getPlayerBowling() {
-    return playerBowlingService.fetchAllPlayerBowlingDetails();
-  }
-
-  @RequestMapping(path = "/bowlingColumns")
-  public @ResponseBody
-  String getPlayerBowlingColumns() {
-    return playerBowlingService.constructPlayerBowlingColumnsJson();
+  String fetchReport(@RequestParam ReportType reportType, @RequestParam(required = false) List<Column> groupBy) {
+    return reportService.fetchReport(reportType, groupBy);
   }
 }
