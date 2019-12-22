@@ -15,7 +15,7 @@
       <b-input-group v-if="column['filterType'] === 'TEXT'">
         <b-form-select
             v-model="column['filterValue']"
-            :options="Array.from(new Set(tableData.map(e => e[column.key])))"
+            :options="Array.from(new Set(rawData.map(e => e[column.key])))"
             size="sm"
             class="mx-2"/>
       </b-input-group>
@@ -56,7 +56,7 @@
         type: Array,
         required: true,
       },
-      tableData: {
+      rawData: {
         type: Array,
         required: true,
       }

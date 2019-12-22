@@ -1,12 +1,28 @@
 <template>
   <div>
-    <b-container fluid id="container-stats-page">
-      <b-row class="my-2">
-        <b-col cols="auto" class="py-0 my-0 mt-auto">
-          <h1 class="align-text-bottom py-0 my-0">
-            <span class="align-text-bottom">{{ this.statType.title }}</span>
-          </h1>
+    <b-container fluid>
+      <b-row>
+        <b-col cols="auto">
+          <h1 class="ml-2 my-2"> {{ this.statType.title }} </h1>
         </b-col>
+        <b-col cols="auto" class="flexAlignBottom pl-0">
+          <b-dropdown text="Group By" variant="light" class="ml-0 my-2">
+            <b-dropdown-form>
+              <b-form-group>
+                <b-form-checkbox-group v-model="groupBySelected">
+                  <b-form-checkbox v-for="gOption in groupableColumns" :key="gOption.key" :value="gOption.key">
+                    {{ gOption.label }}
+                  </b-form-checkbox>
+                </b-form-checkbox-group>
+              </b-form-group>
+            </b-dropdown-form>
+          </b-dropdown>
+        </b-col>
+      </b-row>
+    </b-container>
+    <hr class="mt-0 mb-2"/>
+    <b-container fluid>
+      <b-row class="mt-0 mb-2">
         <b-col cols="auto" class="mt-auto text-dark" v-if="sortColumns.length > 0">
           <h5 class="mr-2 my-0" style="display: inline-block">Sorting by:</h5>
           <span v-for="(col, index) in sortColumns" :key="col.key">
@@ -32,9 +48,6 @@
           </b-button>
         </b-col>
       </b-row>
-    </b-container>
-    <hr class="mt-0 mb-2"/>
-    <b-container fluid>
       <b-row>
         <b-col style="overflow-x: auto" class="px-2">
           <stats-table
@@ -50,7 +63,7 @@
         <b-col cols="3" v-if="showFilters" class="pl-1 pr-2">
           <stat-filters
               :filterableColumns="filterableColumns"
-              :tableData="tableData"/>
+              :rawData="rawData"/>
         </b-col>
       </b-row>
     </b-container>
@@ -62,6 +75,7 @@
   import axios from 'axios'
   import StatsTable from "./StatsTable";
   import StatFilters from "./StatFilters";
+  import * as d3 from "d3";
   
   export default {
     components: {
@@ -78,7 +92,7 @@
       return {
         reportInfo: Object,
         columns: [],
-        tableData: [],
+        rawData: [],
         errors: [],
         tableLoading: false,
         showFilters: false,
@@ -92,6 +106,7 @@
         ],
         sortColumns: [],
         activeColumns: [],
+        groupBySelected: [],
       };
     },
     computed: {
@@ -102,37 +117,55 @@
         return this.columns.filter(e => e['displayType'] === 'OPTIONAL_SHOW' || e['displayType'] === 'OPTIONAL_HIDE');
       },
       filteredData() {
-        let result = this.tableData;
+        let result = this.rawData;
         const textFilterColumns = this.columns.filter(e => Object.prototype.hasOwnProperty.call(e, 'filterValue'));
         for(const column of textFilterColumns) {
           result = result.filter(e =>
               e[column['key']].toLowerCase().includes(column['filterValue'].toLowerCase()));
         }
-        const minFilterColumns = this.columns.filter(e => Object.prototype.hasOwnProperty.call(e, 'filterRange'));
-        for(const column of minFilterColumns) {
-          result = result.filter(e => e[column['key']] >= column['filterRange']['0']);
-        }
-        const maxFilterColumns = this.columns.filter(e => Object.prototype.hasOwnProperty.call(e, 'filterRange'));
-        for(const column of maxFilterColumns) {
-          result = result.filter(e => e[column['key']] <= column['filterRange']['1']);
+        const numberFilterColumns = this.columns.filter(e => Object.prototype.hasOwnProperty.call(e, 'filterRange'));
+        for(const col of numberFilterColumns) {
+          const key = this.getValueColumnKey(col);
+          result = result
+              .filter(e => e[key] >= col['filterRange']['0'])
+              .filter(e => e[key] <= col['filterRange']['1']);
         }
         result.sort((a, b) => this.sortData(a, b));
         return result;
       },
       filterableColumns() {
-        return this.columns.filter(e => e['filterType'] != null);
+        return this.columns.filter(e => e['filterType'] != null && ['TEXT', 'NUMBER'].includes(e['filterType']));
       },
+      groupableColumns() {
+        return this.reportInfo['group_options'];
+      },
+      groupedColumns() {
+        return d3.nest()
+            .key(function(d) {return d['playerName']})
+            .rollup(v => {return {
+              innings: v.length,
+              runs: d3.sum(v, d => d['runs']),
+              deliveries: d3.sum(v, d => d['deliveries'])
+            }})
+            .entries(this.rawData);
+      }
     },
     watch: {
-      currentStat:function(statKey) {
-        this.initialisePage(statKey);
+      currentStat() {
+        this.initialisePage();
+      },
+      groupBySelected() {
+        this.initialisePage();
       }
     },
     methods: {
-      initialisePage(reportType, groupBy) {
+      
+      initialisePage() {
+        const reportType = this.currentStat;
+        const groupBy = this.groupBySelected.map(e => e.toUpperCase());
         if(reportType != null) {
           let groupByString = '';
-          if(groupBy != null) {
+          if(groupBy != null && groupBy.length > 0) {
             groupByString = '&groupBy=' + groupBy.join(',');
           }
           this.tableLoading = true;
@@ -151,11 +184,11 @@
             }
           }).then(response => {
             const responseData = response.data;
-            this.reportInfo = responseData.reportInfo;
-            this.columns = responseData.columns;
+            this.reportInfo = responseData['reportInfo'];
+            this.columns = responseData['columnList'];
             this.setInitialDisplayColumns();
             this.setInitialSortColumns();
-            this.tableData = responseData.tableData;
+            this.rawData = responseData['dataList'];
             this.getMinMaxValues();
             this.tableLoading = false;
           });
@@ -164,13 +197,13 @@
       // Constructs initial state of sortColumns array
       setInitialSortColumns() {
         this.sortColumns = [];
-        const col1 = this.columns.find(e => e['initialSortPriority'] === 1);
+        const col1 = this.columns.find(e => e['initialSortOrder'] === 1);
         if (col1 != null) {
           this.addNextSortColumn(col1);
-          const col2 = this.columns.find(e => e['initialSortPriority'] === 2);
+          const col2 = this.columns.find(e => e['initialSortOrder'] === 2);
           if (col2 != null) {
             this.addNextSortColumn(col2);
-            const col3 = this.columns.find(e => e['initialSortPriority'] === 3);
+            const col3 = this.columns.find(e => e['initialSortOrder'] === 3);
             if (col3 != null) {
               this.addNextSortColumn(col3);
             }
@@ -178,20 +211,20 @@
         }
       },
       getMinMaxValues() {
-        for (const column of this.columns.filter(e => e['filterType'] === 'NUMBER')) {
-          const key = column['key'];
+        for (const col of this.columns.filter(e => e['filterType'] === 'NUMBER')) {
+          const key = this.getValueColumnKey(col);
           const min = this.getMinValue(key);
           const max = this.getMaxValue(key);
-          Vue.set(column, 'filterConfig', {step: 1, range: {'min': min, 'max': max}});
-          Vue.set(column, 'filterRange', [min, max]);
+          Vue.set(col, 'filterConfig', {step: 1, range: {'min': min, 'max': max}});
+          Vue.set(col, 'filterRange', [min, max]);
         }
       },
-      getMinValue(columnKey) {
-        const values = this.tableData.map(e => e[columnKey]);
+      getMinValue(key) {
+        const values = this.rawData.map(e => e[key]);
         return Math.min(...values);
       },
-      getMaxValue(columnKey) {
-        const values = this.tableData.map(e => e[columnKey]);
+      getMaxValue(key) {
+        const values = this.rawData.map(e => e[key]);
         return Math.max(...values);
       },
       setInitialDisplayColumns() {
@@ -236,8 +269,18 @@
       },
       // Compares 2 rows by a specific column value
       compareByCol(col, rowA, rowB) {
+        const key = this.getValueColumnKey(col);
         const dModifier = col['sortDirection'] === 'Asc' ? 1 : -1;
-        return rowA[col.key] > rowB[col.key] ? dModifier : (rowA[col.key] === rowB[col.key] ? 0 : -dModifier);
+        // Set nulls to -1 (if we ever want nulls first, this will need to be a variable)
+        const valA = rowA[key] === null ? -1 : rowA[key];
+        const valB = rowB[key] === null ? -1 : rowB[key];
+        //TODO - need a new column enum: NULLS_HIGH, NULLS_LOW, NULL_ALWAYS_LAST, NULLS_ALWAYS_FIRST
+        if (valA >= 0 && valB < 0) {
+          return -1; // don't care about sort directions - nulls always last
+        } else if (valA < 0 && valB >= 0) {
+          return 1; // don't care about sort directions - nulls always last
+        } else
+        return valA > valB ? dModifier : (valA === valB ? 0 : -dModifier);
       },
       sortDirectionClick(index) {
         if (this.sortColumns[index]['sortDirection'] === 'Asc') {
@@ -280,6 +323,9 @@
       },
       clearSortPriority(key) {
         this.clearSort(this.sortColumns.findIndex(e => e.key === key));
+      },
+      getValueColumnKey(col) {
+        return Object.prototype.hasOwnProperty.call(col, 'valueColumnKey') ? col['valueColumnKey'] : col.key;
       },
     },
   };

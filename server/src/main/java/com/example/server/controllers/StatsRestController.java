@@ -1,9 +1,9 @@
 package com.example.server.controllers;
 
+import com.example.server.entities.Report;
 import com.example.server.enumerations.Column;
 import com.example.server.enumerations.ReportType;
 import com.example.server.services.ReportService;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
@@ -13,12 +13,15 @@ import java.util.List;
 @RequestMapping("/api")
 public class StatsRestController {
 
-  @Autowired
-  private ReportService reportService;
+  private final ReportService reportService;
+
+  public StatsRestController(ReportService reportService) {
+    this.reportService = reportService;
+  }
 
   @RequestMapping(path = "/reports")
   public @ResponseBody
-  String fetchReport(@RequestParam ReportType reportType, @RequestParam(required = false) List<Column> groupBy) {
+  Report fetchReport(@RequestParam ReportType reportType, @RequestParam(required = false) List<Column> groupBy) {
     return reportService.fetchReport(reportType, groupBy);
   }
 }

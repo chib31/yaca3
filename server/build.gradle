@@ -29,6 +29,7 @@ dependencies {
     implementation 'org.glassfish:javax.json:1.0.4'
     implementation 'org.apache.commons:commons-lang3:3.4'
     implementation 'com.fasterxml.jackson.core:jackson-core:2.10.1'
+    implementation 'com.google.code.gson:gson:2.8.6'
     compileOnly 'org.projectlombok:lombok'
     annotationProcessor 'org.projectlombok:lombok'
     developmentOnly 'org.springframework.boot:spring-boot-devtools'

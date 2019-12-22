@@ -1,7 +1,11 @@
 package com.example.server.utils;
 
+import com.example.server.enumerations.Column;
 import com.example.server.enumerations.Result;
 import com.example.server.enumerations.WicketType;
+import com.fasterxml.jackson.databind.node.ObjectNode;
+import org.apache.commons.lang3.StringUtils;
+import org.apache.commons.lang3.text.WordUtils;
 
 import java.math.BigDecimal;
 import java.math.RoundingMode;
@@ -18,6 +22,13 @@ public class Utils {
                .orElseThrow();
   }
 
+  public static ObjectNode transformWicketType(ObjectNode on) {
+    String key = Column.WICKET_TYPE.key;
+    String oldValue = on.get(key).textValue();
+    String newValue = getWicketTypeFromSql(oldValue).toString();
+    return on.put(key, newValue);
+  }
+
   public static Result getResultFromSql(String sqlResult) {
     return Arrays.stream(Result.values())
                .filter(e -> e.getSqlResult().equals(sqlResult))
@@ -25,7 +36,7 @@ public class Utils {
                .orElseThrow();
   }
 
-  public static Double calculateBattingStrikeRate(int runs, int deliveries) {
+  public static double calculateBattingStrikeRate(int runs, int deliveries) {
     if (deliveries > 0) {
       double dRuns = (double) runs;
       double dDeliveries = (double) deliveries;
@@ -33,11 +44,20 @@ public class Utils {
       bd = bd.setScale(1, RoundingMode.HALF_UP);
       return bd.doubleValue();
     } else {
-      return null;
+      // return -1 so these are sorted
+      return 0;
     }
   }
 
-  public static Double calculateBowlingStrikeRate(int deliveries, int wickets) {
+  public static String createStrikeRateString(int runs, int deliveries) {
+    if(deliveries > 0) {
+      return String.valueOf(calculateBattingStrikeRate(runs, deliveries));
+    } else {
+      return "n/a";
+    }
+  }
+
+  public static double calculateBowlingStrikeRate(int deliveries, int wickets) {
     if (wickets > 0) {
       double dDeliveries = (double) deliveries;
       double dWickets = (double) wickets;
@@ -45,11 +65,11 @@ public class Utils {
       bd = bd.setScale(1, RoundingMode.HALF_UP);
       return bd.doubleValue();
     } else {
-      return null;
+      return 0;
     }
   }
 
-  public static Double calculateBowlingAverage(int runs, int wickets) {
+  public static Double calculateAverage(int runs, int wickets) {
     if (wickets > 0) {
       double dRuns = (double) runs;
       double dWickets = (double) wickets;
@@ -61,15 +81,38 @@ public class Utils {
     }
   }
 
+  public static String getAverageDisplay(Double value) {
+    if(value != null) {
+      BigDecimal bd = BigDecimal.valueOf(value);
+      bd = bd.setScale(1, RoundingMode.HALF_UP);
+      return bd.toString();
+    } else {
+      return "n/a";
+    }
+  }
+
+  public static double getAverageValue(Double value) {
+    return value == null ? 0 : value;
+  }
+
   public static Double calculatePercentOfTotal(int playerRuns, int teamRuns) {
     if (teamRuns > 0) {
       double dPlayerRuns = (double) playerRuns;
       double dTeamRuns = (double) teamRuns;
       BigDecimal bd = BigDecimal.valueOf((dPlayerRuns * 100) / dTeamRuns);
-      bd = bd.setScale(1, RoundingMode.HALF_UP);
       return bd.doubleValue();
     } else {
       return null;
+    }
+  }
+
+  public static String getPercentOfTotalDisplay(Double value) {
+    if (value != null) {
+      BigDecimal bd = BigDecimal.valueOf(value);
+      bd = bd.setScale(1, RoundingMode.HALF_UP);
+      return bd.toString() + "%";
+    } else {
+      return "inf";
     }
   }
 
@@ -85,10 +128,34 @@ public class Utils {
     }
   }
 
+//  public static String getEconomyDisplay(Double value) {
+//    if (value != null) {
+//      BigDecimal bd = BigDecimal.valueOf(value);
+//      bd = bd.setScale(2, RoundingMode.HALF_UP);
+//      return bd.toString();
+//    } else {
+//      return "n/a";
+//    }
+//  }
+
   public static String calculateOvers(int deliveries, int overLength) {
     int overs = deliveries / overLength;
     int extraDeliveries = deliveries % overLength;
     return overs + "." + extraDeliveries;
+  }
+
+  public static String unCamel(String camelString) {
+    return StringUtils.capitalize(
+        StringUtils.join(StringUtils.splitByCharacterTypeCamelCase(camelString), StringUtils.SPACE)
+    );
+  }
+
+  public static String upperSnakeToCamel(String capitalised) {
+    return WordUtils.capitalizeFully(capitalised, '_').replaceAll("_", "");
+  }
+
+  public static String snakeToCamel(String snake) {
+    return WordUtils.capitalizeFully(snake).replaceAll("_", " ");
   }
 
 }

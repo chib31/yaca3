@@ -59,3 +59,9 @@ $pagination-disabled-bg: $gray-200;
   border: 2px solid $border;
   border-radius: 10rem;
 }
+
+.flexAlignBottom {
+  display: flex;
+  justify-content: flex-end;
+  flex-direction: column;
+}

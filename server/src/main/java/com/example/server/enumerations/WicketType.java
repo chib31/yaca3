@@ -24,11 +24,12 @@ public enum WicketType {
       this.type = type;
     }
 
-    public String getType() {
-      return type;
-    }
-
     public String getSqlType() {
       return sqlType;
+    }
+
+    @Override
+    public String toString() {
+        return this.type;
     }
 }

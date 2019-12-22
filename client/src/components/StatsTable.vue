@@ -1,5 +1,5 @@
 <template xmlns:v-slot="http://www.w3.org/1999/XSL/Transform">
-  <b-container fluid class="thinBorder rounded rounded m-0 p-2">
+  <b-container fluid class="thinBorder rounded rounded m-0 py-1 px-2" style="background-color: gray">
     <b-row class="justify-content-center">
       <b-col cols="auto">
         <b-form inline>
@@ -17,26 +17,27 @@
                       class="small m-0"/>
       </b-col>
     </b-row>
-    <b-row class="mt-2">
+    <b-row class="mt-1">
       <b-col>
-        <b-table
-            id="stats-table"
-            :items="filteredData"
-            :fields="displayedColumns"
-            :perPage="perPage"
-            :currentPage="currentPage"
-            :busy="tableLoading"
-            thead-class="text-nowrap"
-            tbody-class="text-nowrap"
-            sticky-header="1000px"
-            striped hover small sort-icon-left no-local-sorting no-sorting
-            class="my-0 text-left">
-          <template v-slot:head()="displayedColumns">
+        <b-container fluid class="px-1 thinBorder rounded" style="background-color: white">
+          <b-table
+              id="stats-table"
+              :items="filteredData"
+              :fields="displayedColumns"
+              :perPage="perPage"
+              :currentPage="currentPage"
+              :busy="tableLoading"
+              thead-class="text-nowrap"
+              tbody-class="text-nowrap"
+              sticky-header="1000px"
+              striped hover small sort-icon-left no-local-sorting no-sorting
+              class="my-0 text-left">
+            <template v-slot:head()="displayedColumns">
             <span class="visibleChildOnHover">
               <b-button pill
                         variant="light"
                         class="py-0 px-1"
-                        style="font-weight: bold; background-color: white; margin-left: -0.4rem;"
+                        style="font-weight: bold; background-color: white; margin-left: -0.2rem;"
                         :disabled="displayedColumns.field['sortColumn'] !== true"
                         @click="clickHeader(displayedColumns.field.key)">
                 {{ displayedColumns.field.label }}
@@ -76,20 +77,21 @@
                 {{ sortColumns.length + 1 }}
               </b-button>
             </span>
-          </template>
-          <template v-slot:table-busy>
-            <div class="text-center text-danger my-2">
-              <b-spinner class="align-middle"></b-spinner>
-              <strong>Loading...</strong>
-            </div>
-          </template>
-          <template v-slot:cell(index)="filteredData">
-            {{ (filteredData.index + 1) + (perPage * (currentPage - 1)) }}
-          </template>
-        </b-table>
+            </template>
+            <template v-slot:table-busy>
+              <div class="text-center text-danger my-2">
+                <b-spinner class="align-middle"></b-spinner>
+                <strong>Loading...</strong>
+              </div>
+            </template>
+            <template v-slot:cell(index)="filteredData">
+              {{ (filteredData.index + 1) + (perPage * (currentPage - 1)) }}
+            </template>
+          </b-table>
+        </b-container>
       </b-col>
     </b-row>
-    <b-row class="justify-content-center mt-2">
+    <b-row class="justify-content-center mt-1">
       <b-col cols="auto">
         <b-form inline>
           <label> Showing </label>

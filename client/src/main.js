@@ -94,3 +94,9 @@ Vue.component('b-form-checkbox', BFormCheckbox);
 new Vue({
   render: h => h(App),
 }).$mount('#app');
+
+Vue.mixin({
+  methods: {
+    calculateAverage: (runs, wickets) => runs / wickets
+  }
+});
