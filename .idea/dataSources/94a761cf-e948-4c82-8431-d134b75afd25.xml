@@ -7,20 +7,19 @@
     <database id="2" parent="1" name="postgres">
       <ObjectId>13012</ObjectId>
       <Comment>default administrative connection database</Comment>
-      <StateNumber>567</StateNumber>
       <Owner>postgres</Owner>
       <IntrospectionStateNumber>2164</IntrospectionStateNumber>
       <Current>1</Current>
-      <Visible>1</Visible>
-      <Relations>sequence|table|29370|29372|1
-sequence|table|29316|29318|1
-sequence|table|29326|29328|1
-sequence|table|29353|29355|1
-sequence|table|29394|29396|1
+      <Relations>sequence|table|29394|29396|1
 sequence|table|29437|29439|1
 sequence|table|29457|29459|1
 sequence|table|29479|29481|1
+sequence|table|29316|29318|1
+sequence|table|29370|29372|1
+sequence|table|29326|29328|1
+sequence|table|29353|29355|1
 </Relations>
+      <Visible>1</Visible>
     </database>
     <role id="3" parent="1" name="admin">
       <ObjectId>25605</ObjectId>
@@ -88,12 +87,14 @@ sequence|table|29479|29481|1
       <ObjectId>12716</ObjectId>
       <StateNumber>366</StateNumber>
       <Owner>postgres</Owner>
+      <Substituted>1</Substituted>
     </schema>
     <schema id="15" parent="2" name="pg_catalog">
       <ObjectId>11</ObjectId>
       <Comment>system catalog schema</Comment>
       <StateNumber>359</StateNumber>
       <Owner>postgres</Owner>
+      <Substituted>1</Substituted>
     </schema>
     <schema id="16" parent="2" name="pg_temp_1">
       <ObjectId>11804</ObjectId>

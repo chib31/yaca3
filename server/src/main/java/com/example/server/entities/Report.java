@@ -8,9 +8,9 @@ import java.util.Map;
 
 @Data
 public class Report {
-  HashMap reportInfo;
-  List<Map<String, Object>> columnList;
-  List<?> dataList;
+  private HashMap reportInfo;
+  private List<Map<String, Object>> columnList;
+  private List<?> dataList;
 
   public Report(HashMap reportInfo, List<Map<String, Object>> columnList, List<?> dataList) {
     this.reportInfo = reportInfo;
